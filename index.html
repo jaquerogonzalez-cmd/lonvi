@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONVI — Nacida en Longaví, Chile | Colección Ocaso & Senda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        lonvi: {
+                            navy: '#0B2246',
+                            green: '#05502A',
+                            court: '#064269',
+                            tennis: '#F4ED1F',
+                            rock: '#B5B5B5',
+                            slate: '#8C9298',
+                            frost: '#B6C0D2',
+                            sand: '#D2B48C',
+                            earth: '#3E3124',
+                            basalto: '#000000',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Default Primary Architecture: Negro / Blanco & Blanco / Negro */
+            --cta-bg: #000000;
+            --cta-hover: #222222;
+            --cta-text: #FFFFFF;
+            --cta-outline: #000000;
+            --cta-outline-text: #000000;
+            --topbar-bg: #000000;
+            --topbar-text: #FFFFFF;
+            --badge-bg: #000000;
+            --badge-text: #FFFFFF;
+            --court-bg: #064269;
+            --court-accent: #F4ED1F;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Accent Utilities driven by the Official 9-Swatch Brand Palette */
+        .btn-cta-solid {
+            background-color: var(--cta-bg);
+            color: var(--cta-text);
+            border: 1px solid var(--cta-bg);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-solid:hover {
+            background-color: var(--cta-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            border: 1px solid var(--cta-outline);
+            color: var(--cta-outline-text);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-outline:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .dynamic-topbar {
+            background-color: var(--topbar-bg);
+            color: var(--topbar-text);
+            transition: all 0.3s ease;
+        }
+
+        .dynamic-badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            transition: all 0.3s ease;
+        }
+
+        .nav-active-indicator {
+            border-bottom: 2px solid var(--cta-bg);
+            padding-bottom: 2px;
+        }
+
+        /* Editorial Mountain Texture Background */
+        .nevado-hero-bg {
+            background-color: #08090B;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.92) 80%),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
+        }
+
+        /* Micro-caption styling like the Instagram posts */
+        .micro-caption {
+            letter-spacing: 0.18em;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000000;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Custom subtle scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B5B5B5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white">
+
+    <!-- ==========================================
+         REUSABLE OFFICIAL LONVI LOGO SYMBOL
+         (Exact Mountain + River Meander + LONVI from Portada.png)
+    =========================================== -->
+    <svg class="hidden" aria-hidden="true">
+        <symbol id="lonvi-official-logo" viewBox="0 0 200 135">
+            <!-- Left Outer Slope -->
+            <path d="M14 94 L82 22 L90 30 L26 94 Z" fill="currentColor"/>
+            <!-- Left Inner Glacier / River Meander Channel -->
+            <path d="M34 94 L76 50 C81 45 86 49 82 55 L46 94 Z" fill="currentColor"/>
+            <!-- Central Nevado Peak & Right Ridges -->
+            <path d="M82 22 L106 46 L117 33 L168 94 L157 94 L115 44 L109 51 L126 30 L182 94 L173 94 L124 36 L118 42 L95 94 L64 94 L88 60 C92 53 84 44 76 52 L69 45 L86 27 Z" fill="currentColor"/>
+            <!-- Bold Geometric LONVI Wordmark -->
+            <text x="100" y="125" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="33" letter-spacing="2.5" fill="currentColor">LONVI</text>
+        </symbol>
+    </svg>
+
+    <!-- ==========================================
+         NOTIFICATION TOAST
+    =========================================== -->
+    <div id="toast-notification" class="fixed top-20 right-6 z-50 transform translate-x-full opacity-0 transition-all duration-300 pointer-events-none bg-black text-white px-5 py-3.5 rounded shadow-2xl flex items-center gap-3 border border-neutral-800">
+        <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+        <span id="toast-message" class="text-xs font-semibold tracking-wide uppercase">Producto añadido al carrito</span>
+    </div>
+
+    <!-- ==========================================
+         UPGRADE 1: TOP ANNOUNCEMENT BAR (KANNÚ / NIKE STYLE)
+    =========================================== -->
+    <div class="dynamic-topbar h-8 px-4 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold tracking-[0.16em] uppercase">
+        <div class="hidden lg:flex items-center gap-2 opacity-80">
+            <span>LONGAVÍ, REGIÓN DEL MAULE</span>
+            <span>//</span>
+            <span>CHILE</span>
+        </div>
+        <div class="mx-auto flex items-center gap-3">
+            <span>ENVÍOS A TODO CHILE</span>
+            <span class="opacity-50">·</span>
+            <span>COLECCIÓN RÍO LONGAVÍ DISPONIBLE</span>
+        </div>
+        <div class="hidden lg:flex items-center gap-3">
+            <button onclick="openFolderGuideModal()" class="underline hover:opacity-80 transition">Guía de Archivos JPG</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         STICKY MINIMAL HEADER (BLANCO / NEGRO CORE)
+    =========================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo: Official LONVI Mark -->
+            <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                <svg class="w-16 h-11 text-black transition-transform duration-300 group-hover:scale-105">
+                    <use href="#lonvi-official-logo"></use>
+                </svg>
+            </a>
+
+            <!-- Main Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-bold uppercase tracking-[0.12em] text-neutral-600">
+                <a href="#lanzamiento-seamless" onclick="setActiveNav(this)" class="nav-link nav-active-indicator text-black transition-colors hover:text-black">Novedades</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('hombre'); setActiveNav(this)" class="nav-link transition-colors hover:text-black">Hombre</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('mujer'); setActiveNav(this)" class="nav-link transition-colors hover:text-black">Mujer</a>
+                <a href="#seccion-deporte" onclick="setActiveNav(this)" class="nav-link transition-colors hover:text-black">Deporte</a>
+                <a href="#paleta-oficial" onclick="setActiveNav(this)" class="nav-link transition-colors hover:text-black">Identidad &amp; Colores</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('sale'); setActiveNav(this)" class="nav-link text-black bg-neutral-100 px-2.5 py-1 rounded transition-colors hover:bg-black hover:text-white">SALE</a>
+            </nav>
+
+            <!-- Right Icons: Search, Folder Helper, Cart -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <button onclick="toggleSearchModal()" class="p-2 text-neutral-800 hover:text-black rounded-full hover:bg-neutral-100 transition" title="Buscar productos">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path stroke-linecap="round" d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+
+                <button onclick="toggleCartDrawer()" class="relative p-2 text-neutral-800 hover:text-black rounded-full hover:bg-neutral-100 transition flex items-center gap-1.5" title="Ver Carrito">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span id="cart-badge" class="dynamic-badge text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-black rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-neutral-200 px-6 py-4 space-y-3 text-xs font-bold uppercase tracking-wider">
+            <a href="#lanzamiento-seamless" onclick="toggleMobileMenu()" class="block py-1.5 text-black">Novedades</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('hombre'); toggleMobileMenu()" class="block py-1.5 text-neutral-600">Hombre</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('mujer'); toggleMobileMenu()" class="block py-1.5 text-neutral-600">Mujer</a>
+            <a href="#seccion-deporte" onclick="toggleMobileMenu()" class="block py-1.5 text-neutral-600">Deporte &amp; Tenis</a>
+            <a href="#paleta-oficial" onclick="toggleMobileMenu()" class="block py-1.5 text-neutral-600">Paleta Lonvi</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('sale'); toggleMobileMenu()" class="block py-1.5 text-black underline">SALE</a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         2. HERO BANNER (NEGRO / BLANCO PRINCIPAL)
+    =========================================== -->
+    <section class="relative nevado-hero-bg text-white overflow-hidden">
+        <!-- Detailed SVG Topographic & Mountain Ridge Relief Layer -->
+        <div class="absolute inset-0 opacity-45 pointer-events-none">
+            <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+                <defs>
+                    <linearGradient id="ridgeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#374151" stop-opacity="0.55"/>
+                        <stop offset="50%" stop-color="#1F2937" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+                    </linearGradient>
+                    <linearGradient id="ridgeGrad2" x1="50%" y1="0%" x2="50%" y2="100%">
+                        <stop offset="0%" stop-color="#8C9298" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#000000" stop-opacity="0.98"/>
+                    </linearGradient>
+                </defs>
+                <path d="M0,450 L180,310 L340,370 L540,140 L730,280 L940,95 L1180,270 L1320,190 L1440,310 L1440,600 L0,600 Z" fill="url(#ridgeGrad1)"/>
+                <path d="M0,520 L240,340 L450,420 L690,180 L890,350 L1110,160 L1440,390 L1440,600 L0,600 Z" fill="url(#ridgeGrad2)"/>
+                <path d="M540,140 C560,260 490,380 520,520" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/>
+                <path d="M940,95 C910,220 980,340 930,540" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" fill="none"/>
+            </svg>
+        </div>
+
+        <div class="relative max-w-6xl mx-auto px-6 py-24 sm:py-32 md:py-36 flex flex-col md:items-end">
+            <div class="max-w-xl md:mr-6 text-center">
+                <div class="flex justify-center mb-5">
+                    <svg class="w-24 h-16 text-white">
+                        <use href="#lonvi-official-logo"></use>
+                    </svg>
+                </div>
+                <span class="inline-block text-[10px] font-bold uppercase tracking-[0.25em] text-white/90 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-5 border border-white/20">
+                    COLECCIÓN RÍO LONGAVÍ &amp; ELIGE EL SENDERO
+                </span>
+                <p class="text-base sm:text-lg text-neutral-200 font-light leading-relaxed mb-8">
+                    Nacida en Longaví, Chile.<br>
+                    Inspirada en la fuerza del Nevado Longaví y en la identidad de quienes llevan con orgullo sus raíces.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#lanzamiento-seamless" class="px-8 py-3.5 bg-white text-black hover:bg-neutral-200 text-xs font-bold uppercase tracking-[0.15em] transition duration-300">
+                        Explorar Lanzamiento
+                    </a>
+                    <a href="#paleta-oficial" class="px-7 py-3.5 bg-black/60 hover:bg-black text-white border border-white/40 text-xs font-bold uppercase tracking-[0.15em] transition duration-300">
+                        Probar Paleta de Colores
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         2B. INTERACTIVE BRAND PALETTE STRIP (PORTADA.PNG)
+             Allows testing all 9 official LONVI color combinations live
+    =========================================== -->
+    <section id="paleta-oficial" class="bg-white border-b border-neutral-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-2 h-2 rounded-full bg-black"></span>
+                    <h2 class="text-xs font-bold uppercase tracking-[0.18em] text-black">
+                        Sistema de Identidad Lonvi — Haz clic en un bloque para aplicar su combinación a la tienda:
+                    </h2>
+                </div>
+                <span id="active-palette-label" class="text-[11px] font-mono text-neutral-500">
+                    Activo: Principal Negro / Blanco (#000000 / #FFFFFF)
+                </span>
+            </div>
+
+            <!-- Exact 9-Swatch Strip from Portada.png -->
+            <div class="grid grid-cols-3 sm:grid-cols-9 border border-neutral-900 overflow-hidden shadow-sm">
+                <!-- 1. Azul Ocaso / Blanco -->
+                <button onclick="applyBrandSwatch('ocaso')" class="swatch-tile group relative h-24 sm:h-28 bg-[#0B2246] text-white flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Ocaso</span>
+                </button>
+
+                <!-- 2. Verde Sendero / Blanco -->
+                <button onclick="applyBrandSwatch('sendero')" class="swatch-tile group relative h-24 sm:h-28 bg-[#05502A] text-white flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Sendero</span>
+                </button>
+
+                <!-- 3. Azul Cancha / Amarillo Tenis -->
+                <button onclick="applyBrandSwatch('tenis')" class="swatch-tile group relative h-24 sm:h-28 bg-[#064269] text-[#F4ED1F] flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Tenis</span>
+                </button>
+
+                <!-- 4. Negro / Blanco (PRINCIPAL OSCURO) -->
+                <button onclick="applyBrandSwatch('negro-blanco')" class="swatch-tile group relative h-24 sm:h-28 bg-[#000000] text-white flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] ring-2 ring-inset ring-white/50 focus:outline-none">
+                    <span class="absolute top-1 right-1 text-[8px] font-mono bg-white text-black px-1 font-bold">BASE</span>
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-80 mt-1">Negro/Blanco</span>
+                </button>
+
+                <!-- 5. Blanco / Negro (PRINCIPAL CLARO) -->
+                <button onclick="applyBrandSwatch('blanco-negro')" class="swatch-tile group relative h-24 sm:h-28 bg-[#FFFFFF] text-[#000000] border-x border-neutral-200 flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <span class="absolute top-1 right-1 text-[8px] font-mono bg-black text-white px-1 font-bold">BASE</span>
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-80 mt-1">Blanco/Negro</span>
+                </button>
+
+                <!-- 6. Gris Roca / Negro -->
+                <button onclick="applyBrandSwatch('roca')" class="swatch-tile group relative h-24 sm:h-28 bg-[#B5B5B5] text-[#000000] flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Roca</span>
+                </button>
+
+                <!-- 7. Gris Pizarra / Blanco -->
+                <button onclick="applyBrandSwatch('pizarra')" class="swatch-tile group relative h-24 sm:h-28 bg-[#8C9298] text-white flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Pizarra</span>
+                </button>
+
+                <!-- 8. Escarcha / Blanco -->
+                <button onclick="applyBrandSwatch('escarcha')" class="swatch-tile group relative h-24 sm:h-28 bg-[#B6C0D2] text-white flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Escarcha</span>
+                </button>
+
+                <!-- 9. Senda Arena / Café Tierra -->
+                <button onclick="applyBrandSwatch('senda')" class="swatch-tile group relative h-24 sm:h-28 bg-[#D2B48C] text-[#3E3124] flex flex-col items-center justify-center p-2 transition hover:scale-[1.02] focus:outline-none">
+                    <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                    <span class="text-[9px] font-mono uppercase tracking-wider opacity-0 group-hover:opacity-90 transition mt-1">Senda</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         3. SEAMLESS FLOATING PRODUCT SHOWCASE
+            (100% Pure White Background - No Box Effect)
+            Includes Upgrade 3 (Lippi Technical Icons) & Upgrade 4 (Doite Cross-sell)
+    =========================================== -->
+    <section id="lanzamiento-seamless" class="bg-white py-16 sm:py-24 border-b border-neutral-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            
+            <!-- Section Header Badge -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-neutral-200 gap-4">
+                <div>
+                    <p class="text-[11px] font-bold uppercase tracking-[0.22em] text-neutral-400 mb-2">NUEVA COLECCIÓN // FONDO CONTINUO #FFFFFF</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-black">Lanzamiento Ocaso &amp; Senda</h2>
+                </div>
+                <button onclick="openFolderGuideModal()" class="text-xs font-semibold underline text-neutral-600 hover:text-black flex items-center gap-1.5 self-start sm:self-auto">
+                    <span>¿Cómo dejar tus fotos JPG fijas en la carpeta?</span>
+                    <span>→</span>
+                </button>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 1: POLERÓN OCASO
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-28">
+                
+                <!-- Left Column: Product Details, Lippi Icons & Doite Cross-Sell -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="dynamic-badge text-[10px] font-bold uppercase tracking-[0.16em] px-2.5 py-1">EDICIÓN RÍO LONGAVÍ</span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border border-neutral-300 px-2 py-0.5">NUEVO</span>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-black mb-2">Polerón Ocaso</h3>
+                    <p class="text-2xl sm:text-3xl font-bold text-black mb-6">$19.990</p>
+
+                    <!-- Selectors Row: Talla + Cantidad -->
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <div class="relative">
+                                <select id="talla-ocaso" class="w-full appearance-none bg-white border border-neutral-300 px-3.5 py-2.5 text-sm font-semibold text-black focus:outline-none focus:border-black">
+                                    <option value="S">S</option>
+                                    <option value="M" selected>M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 bg-white h-[42px]">
+                                <button onclick="updateQty('qty-ocaso', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-ocaso" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-black focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-ocaso', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2.5 mb-7">
+                        <button onclick="handleBuyNow('Polerón Ocaso', 19990, document.getElementById('talla-ocaso').value, 'Azul Ocaso', 'qty-ocaso')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Polerón Ocaso', 19990, document.getElementById('talla-ocaso').value, 'Azul Ocaso', 'qty-ocaso')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- UPGRADE 3: LIPPI-STYLE VISUAL TECHNICAL ICONS -->
+                    <div class="grid grid-cols-4 gap-2 py-4 border-y border-neutral-200 mb-6 text-center">
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">80/20</span>
+                            <span class="block text-[9px] text-neutral-500">Algodón/Pol.</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L12 4 3 20zm9-5l-3 5h6l-3-5z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Longaví</span>
+                            <span class="block text-[9px] text-neutral-500">Diseño Chile</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Térmico</span>
+                            <span class="block text-[9px] text-neutral-500">Abrigo Diario</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Meandro</span>
+                            <span class="block text-[9px] text-neutral-500">Bordado Río</span>
+                        </div>
+                    </div>
+
+                    <!-- Storytelling (OFKI Honest Material Tone) -->
+                    <div class="space-y-3 text-[13px] leading-relaxed text-neutral-700 mb-6">
+                        <p class="font-bold text-black">Polerón Ocaso — Lonvi</p>
+                        <p>Un clásico para acompañarte cuando baja la temperatura. Ocaso nace desde una idea simple: tener un polerón cómodo y fácil de usar, de esos que terminan formando parte de tus días para salir, descansar o recorrer la ciudad.</p>
+                        <p>Confeccionado en 80% algodón y 20% poliéster, combina la suavidad natural del algodón con la resistencia y estabilidad del poliéster.</p>
+                    </div>
+
+                    <!-- UPGRADE 4: DOITE-STYLE "COMPLETA EL SENDERO" CROSS-SELL -->
+                    <div class="bg-neutral-50 border border-neutral-200 p-4">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-neutral-500 mb-3">COMPLETA EL EQUIPO LONVI:</p>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between bg-white p-2.5 border border-neutral-200">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-[#D2B48C] border border-neutral-300 flex-shrink-0"></span>
+                                    <div>
+                                        <p class="text-xs font-bold text-black">Polera Senda (Arena)</p>
+                                        <p class="text-[11px] text-neutral-500">$7.990 · 100% Algodón</p>
+                                    </div>
+                                </div>
+                                <button onclick="quickAdd('Polera Senda', 7990, 'Arena')" class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider btn-cta-outline">
+                                    + Sumar
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between bg-white p-2.5 border border-neutral-200">
+                                <div class="flex items-center gap-3">
+                                    <span class="w-7 h-7 rounded-full bg-[#0B2246] border border-neutral-300 flex-shrink-0"></span>
+                                    <div>
+                                        <p class="text-xs font-bold text-black">Jockey Sendero</p>
+                                        <p class="text-[11px] text-neutral-500">$6.990 · Bordado Relieve</p>
+                                    </div>
+                                </div>
+                                <button onclick="quickAdd('Jockey Sendero', 6990, 'Azul Marino')" class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider btn-cta-outline">
+                                    + Sumar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Seamless Floating Ghost Mannequin Image -->
+                <div class="lg:col-span-7 order-1 lg:order-2 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        
+                        <!-- Custom Photo Override Preview -->
+                        <img id="custom-img-ocaso" src="poleron-ocaso.jpg" onerror="this.classList.add('hidden'); document.getElementById('svg-container-ocaso').classList.remove('hidden');" onload="this.classList.remove('hidden'); document.getElementById('svg-container-ocaso').classList.add('hidden');" alt="Polerón Ocaso" class="hidden w-full h-auto object-contain max-h-[560px]">
+
+                        <!-- Studio Ghost Mannequin Vector Illustration of Polerón Ocaso -->
+                        <div id="svg-container-ocaso" class="w-full flex flex-col items-center">
+                            <svg id="ocaso-main-svg" viewBox="0 0 500 560" class="w-full max-w-[460px] h-auto transition-transform duration-500 group-hover:scale-[1.01]">
+                                <defs>
+                                    <radialGradient id="ocasoNavyGrad" cx="45%" cy="35%" r="65%">
+                                        <stop offset="0%" stop-color="#14325C"/>
+                                        <stop offset="55%" stop-color="#0B2246"/>
+                                        <stop offset="100%" stop-color="#06142B"/>
+                                    </radialGradient>
+                                    <linearGradient id="ocasoSleeveLeft" x1="0%" y1="0%" x2="100%" y2="20%">
+                                        <stop offset="0%" stop-color="#112B52"/>
+                                        <stop offset="70%" stop-color="#0B2246"/>
+                                        <stop offset="100%" stop-color="#051124"/>
+                                    </linearGradient>
+                                    <linearGradient id="ocasoSleeveRight" x1="100%" y1="0%" x2="0%" y2="20%">
+                                        <stop offset="0%" stop-color="#112B52"/>
+                                        <stop offset="70%" stop-color="#0B2246"/>
+                                        <stop offset="100%" stop-color="#051124"/>
+                                    </linearGradient>
+                                    <filter id="softDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.12"/>
+                                    </filter>
+                                </defs>
+
+                                <g filter="url(#softDropShadow)">
+                                    <ellipse cx="250" cy="88" rx="60" ry="22" fill="#061326"/>
+                                    <path d="M194,84 Q250,98 306,84" stroke="#D2B48C" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+                                    <path d="M135,122 C102,145 78,245 66,355 C60,410 62,455 65,478 L118,480 C125,415 136,320 148,235 Z" fill="url(#ocasoSleeveLeft)"/>
+                                    <path d="M65,476 L118,478 L115,508 L68,506 Z" fill="#081A36" stroke="#051124" stroke-width="1"/>
+
+                                    <path d="M365,122 C398,145 422,245 434,355 C440,410 438,455 435,478 L382,480 C375,415 364,320 352,235 Z" fill="url(#ocasoSleeveRight)"/>
+                                    <path d="M435,476 L382,478 L385,508 L432,506 Z" fill="#081A36" stroke="#051124" stroke-width="1"/>
+
+                                    <path d="M188,78 C165,92 145,108 135,122 C142,185 144,250 140,468 L360,468 C356,250 358,185 365,122 C355,108 335,92 312,78 C295,112 205,112 188,78 Z" fill="url(#ocasoNavyGrad)"/>
+
+                                    <path d="M165,190 Q175,310 160,440" stroke="#051124" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
+                                    <path d="M335,190 Q325,310 340,440" stroke="#051124" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
+
+                                    <path d="M182,80 C202,126 298,126 318,80 C310,74 306,74 302,77 C286,112 214,112 198,77 C194,74 190,74 182,80 Z" fill="#091D3C" stroke="#051124" stroke-width="1.2"/>
+                                    <path d="M226,116 L250,154 L274,116" fill="#081A36" stroke="#14325C" stroke-width="1.5"/>
+
+                                    <path d="M140,466 L360,466 L357,498 L143,498 Z" fill="#081A36" stroke="#051124" stroke-width="1"/>
+
+                                    <g transform="translate(285, 198) scale(0.85)">
+                                        <path d="M4,4 C1,16 0,26 5,28 C10,30 15,26 18,22 M26,16 C20,16 17,22 20,27 C23,31 30,29 32,23 C33,18 29,16 26,16 Z M34,22 C37,17 41,17 43,23 C45,28 48,28 52,21 C55,17 57,24 61,27 C64,29 68,24 71,16 M73,15 L73,29" 
+                                              stroke="#FFFFFF" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <p class="micro-caption mt-2">EDICIÓN RÍO LONGAVÍ</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Thumbnails + Local Photo Upload Trigger -->
+                    <div class="flex items-center gap-3 mt-5">
+                        <button onclick="setOcasoView('full')" class="w-12 h-12 border-2 border-black p-1 bg-white hover:opacity-80 transition" title="Vista Completa">
+                            <div class="w-full h-full bg-[#0B2246] flex items-center justify-center text-[7px] text-white font-bold">OCASO</div>
+                        </button>
+                        <button onclick="setOcasoView('zoom')" class="w-12 h-12 border border-neutral-300 p-1 bg-white hover:border-black transition" title="Zoom Bordado Río Longaví">
+                            <div class="w-full h-full bg-[#0B2246] flex items-center justify-center">
+                                <span class="text-white italic font-serif text-[10px]">Lonvi</span>
+                            </div>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 border border-dashed border-neutral-400 hover:border-black text-[11px] font-medium text-neutral-600 hover:text-black transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Cargar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-ocaso', 'svg-container-ocaso')">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 2: POLERA SENDA (PALETA ARENA / CAFÉ TIERRA)
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-28 pt-12 border-t border-neutral-200">
+                
+                <!-- Left Column: Seamless Floating Ghost Mannequin Image -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        
+                        <img id="custom-img-senda" src="polera-senda.jpg" onerror="this.classList.add('hidden'); document.getElementById('svg-container-senda').classList.remove('hidden');" onload="this.classList.remove('hidden'); document.getElementById('svg-container-senda').classList.add('hidden');" alt="Polera Senda" class="hidden w-full h-auto object-contain max-h-[540px]">
+
+                        <div id="svg-container-senda" class="w-full flex flex-col items-center">
+                            <svg id="senda-main-svg" viewBox="0 0 500 540" class="w-full max-w-[450px] h-auto transition-transform duration-500 group-hover:scale-[1.01]">
+                                <defs>
+                                    <radialGradient id="sendaSandGrad" cx="48%" cy="35%" r="65%">
+                                        <stop offset="0%" stop-color="#DEC3A1"/>
+                                        <stop offset="65%" stop-color="#D2B48C"/>
+                                        <stop offset="100%" stop-color="#BFA077"/>
+                                    </radialGradient>
+                                </defs>
+                                <g filter="url(#softDropShadow)">
+                                    <ellipse cx="250" cy="92" rx="58" ry="20" fill="#B6956C"/>
+                                    <path d="M196,88 Q250,102 304,88" stroke="#9F7F58" stroke-width="2" fill="none"/>
+
+                                    <path d="M142,115 L52,215 L108,262 L148,215 Z" fill="#CBB08A" stroke="#BA9B73" stroke-width="0.8"/>
+                                    <path d="M358,115 L448,215 L392,262 L352,215 Z" fill="#CBB08A" stroke="#BA9B73" stroke-width="0.8"/>
+
+                                    <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,122 208,122 188,82 Z" fill="url(#sendaSandGrad)"/>
+
+                                    <path d="M205,170 Q200,320 195,465" stroke="#BFA077" stroke-width="2.5" fill="none" opacity="0.45"/>
+                                    <path d="M295,180 Q302,320 305,465" stroke="#BFA077" stroke-width="2.5" fill="none" opacity="0.45"/>
+
+                                    <path d="M180,84 C202,134 298,134 320,84 C312,77 307,77 303,81 C286,118 214,118 197,81 C193,77 188,77 180,84 Z" fill="#CEB08A" stroke="#B6956C" stroke-width="1.2"/>
+
+                                    <line x1="146" y1="466" x2="354" y2="466" stroke="#B6956C" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+                                    <!-- CENTER CHEST FLUID MEANDER "Lonvi" LOGO (#3E3124 Earth Brown from Portada.png) -->
+                                    <g transform="translate(216, 228) scale(0.95)">
+                                        <path d="M4,4 C1,16 0,26 5,28 C10,30 15,26 18,22 M26,16 C20,16 17,22 20,27 C23,31 30,29 32,23 C33,18 29,16 26,16 Z M34,22 C37,17 41,17 43,23 C45,28 48,28 52,21 C55,17 57,24 61,27 C64,29 68,24 71,16 M73,15 L73,29" 
+                                              stroke="#3E3124" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <p class="micro-caption mt-2">EDICIÓN RÍO LONGAVÍ</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnails + Upload -->
+                    <div class="flex items-center gap-3 mt-5">
+                        <button onclick="setSendaView('full')" class="w-12 h-12 border-2 border-black p-1 bg-white hover:opacity-80 transition">
+                            <div class="w-full h-full bg-[#D2B48C] flex items-center justify-center text-[7px] text-[#3E3124] font-bold">SENDA</div>
+                        </button>
+                        <button onclick="setSendaView('zoom')" class="w-12 h-12 border border-neutral-300 p-1 bg-white hover:border-black transition">
+                            <div class="w-full h-full bg-[#D2B48C] flex items-center justify-center">
+                                <span class="text-[#3E3124] italic font-serif text-[10px] font-bold">Lonvi</span>
+                            </div>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 border border-dashed border-neutral-400 hover:border-black text-[11px] font-medium text-neutral-600 hover:text-black transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Cargar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-senda', 'svg-container-senda')">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Right Column: Polera Senda Info -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-[#D2B48C] text-[#3E3124] text-[10px] font-bold uppercase tracking-[0.16em] px-2.5 py-1">ARENA / TIERRA</span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border border-neutral-300 px-2 py-0.5">100% ALGODÓN</span>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-black mb-2">Polera Senda</h3>
+                    <p class="text-2xl sm:text-3xl font-bold text-black mb-6">$7.990</p>
+
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <div class="relative">
+                                <select id="talla-senda" class="w-full appearance-none bg-white border border-neutral-300 px-3.5 py-2.5 text-sm font-semibold text-black focus:outline-none focus:border-black">
+                                    <option value="S">S</option>
+                                    <option value="M" selected>M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 bg-white h-[42px]">
+                                <button onclick="updateQty('qty-senda', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-senda" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-black focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-senda', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 mb-7">
+                        <button onclick="handleBuyNow('Polera Senda', 7990, document.getElementById('talla-senda').value, 'Arena', 'qty-senda')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Polera Senda', 7990, document.getElementById('talla-senda').value, 'Arena', 'qty-senda')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- UPGRADE 3: LIPPI-STYLE VISUAL TECHNICAL ICONS -->
+                    <div class="grid grid-cols-4 gap-2 py-4 border-y border-neutral-200 mb-6 text-center">
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">100%</span>
+                            <span class="block text-[9px] text-neutral-500">Algodón Suave</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 20h18L12 4 3 20z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Longaví</span>
+                            <span class="block text-[9px] text-neutral-500">Diseño Chile</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Respirable</span>
+                            <span class="block text-[9px] text-neutral-500">Tacto Natural</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Versátil</span>
+                            <span class="block text-[9px] text-neutral-500">Ciudad/Outdoor</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-[13px] leading-relaxed text-neutral-700 mb-6">
+                        <p class="font-bold text-black">Polera Senda — Lonvi</p>
+                        <p>Senda nace de esa idea de tener una prenda que puedas usar sin pensarlo demasiado. Su tono arena (`#D2B48C`) con logo tierra (`#3E3124`) transmite una sensación tranquila y orgánica, manteniendo la esencia del Río Longaví.</p>
+                    </div>
+
+                    <!-- UPGRADE 4: CROSS-SELL -->
+                    <div class="bg-neutral-50 border border-neutral-200 p-4">
+                        <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-neutral-500 mb-3">COMBÍNALA CON:</p>
+                        <div class="flex items-center justify-between bg-white p-2.5 border border-neutral-200">
+                            <div class="flex items-center gap-3">
+                                <span class="w-7 h-7 rounded-full bg-[#05502A] border border-neutral-300 flex-shrink-0"></span>
+                                <div>
+                                    <p class="text-xs font-bold text-black">Jockey Sendero (Verde)</p>
+                                    <p class="text-[11px] text-neutral-500">$6.990 · Contraste Outdoor</p>
+                                </div>
+                            </div>
+                            <button onclick="quickAdd('Jockey Sendero', 6990, 'Verde Sendero')" class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider btn-cta-outline">
+                                + Sumar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 3: JOCKEY SENDERO (3 COLORES INTERACTIVOS DE LA PALETA)
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start pt-12 border-t border-neutral-200">
+                
+                <!-- Left Column: Interactive Cap with 3 Colorways -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        <!-- Editorial Typographic Discount Tag (Replaces loud orange % box) -->
+                        <span class="absolute top-2 left-2 z-10 bg-black text-white font-mono font-bold text-[10px] tracking-widest uppercase px-2.5 py-1">LANZAMIENTO -13%</span>
+
+                        <img id="custom-img-jockey" src="jockey-azul.jpg" onerror="this.classList.add('hidden'); document.getElementById('svg-container-jockey').classList.remove('hidden');" onload="this.classList.remove('hidden'); document.getElementById('svg-container-jockey').classList.add('hidden');" alt="Jockey Sendero" class="hidden w-full h-auto object-contain max-h-[500px]">
+
+                        <div id="svg-container-jockey" class="w-full flex flex-col items-center">
+                            <svg id="jockey-main-svg" viewBox="0 0 500 490" class="w-full max-w-[430px] h-auto transition-all duration-300 group-hover:scale-[1.01]">
+                                <defs>
+                                    <radialGradient id="capCrownGrad" cx="50%" cy="35%" r="60%">
+                                        <stop id="capStop1" offset="0%" stop-color="#14325C"/>
+                                        <stop id="capStop2" offset="65%" stop-color="#0B2246"/>
+                                        <stop id="capStop3" offset="100%" stop-color="#051124"/>
+                                    </radialGradient>
+                                    <linearGradient id="capBrimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop id="brimStop1" offset="0%" stop-color="#091C3B"/>
+                                        <stop id="brimStop2" offset="50%" stop-color="#112C54"/>
+                                        <stop id="brimStop3" offset="100%" stop-color="#051124"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <ellipse cx="250" cy="405" rx="145" ry="22" fill="rgba(0,0,0,0.22)" filter="blur(8px)"/>
+                                <ellipse id="cap-button" cx="250" cy="65" rx="18" ry="8" fill="#0B2246" stroke="#051124" stroke-width="1.5"/>
+                                <path d="M92,265 C88,145 145,68 250,68 C355,68 412,145 408,265 C350,285 150,285 92,265 Z" fill="url(#capCrownGrad)"/>
+
+                                <line id="cap-seam-center" x1="250" y1="73" x2="250" y2="275" stroke="#051124" stroke-width="2" opacity="0.5"/>
+                                <path id="cap-seam-left" d="M235,72 C160,105 128,175 122,270" stroke="#051124" stroke-width="2" fill="none" opacity="0.45"/>
+                                <path id="cap-seam-right" d="M265,72 C340,105 372,175 378,270" stroke="#051124" stroke-width="2" fill="none" opacity="0.45"/>
+
+                                <circle id="eyelet-left" cx="185" cy="128" r="6" fill="none" stroke="#081833" stroke-width="3.5"/>
+                                <circle cx="185" cy="128" r="2.5" fill="#040D1C"/>
+                                <circle id="eyelet-right" cx="315" cy="128" r="6" fill="none" stroke="#081833" stroke-width="3.5"/>
+                                <circle cx="315" cy="128" r="2.5" fill="#040D1C"/>
+
+                                <path d="M104,258 C165,282 335,282 396,258 C406,315 398,370 368,392 C295,368 205,368 132,392 C102,370 94,315 104,258 Z" fill="url(#capBrimGrad)"/>
+
+                                <path d="M118,285 C180,306 320,306 382,285" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                                <path d="M122,302 C185,322 315,322 378,302" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                                <path d="M126,319 C190,338 310,338 374,319" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+
+                                <g filter="drop-shadow(0px 2px 2px rgba(0,0,0,0.35))">
+                                    <text x="250" y="218" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#FFFFFF" stroke="#F3F4F6" stroke-width="0.8">LONVI</text>
+                                </g>
+                            </svg>
+
+                            <p class="micro-caption mt-2">ELIGE EL SENDERO</p>
+                        </div>
+                    </div>
+
+                    <!-- Color Variant Thumbnails (Matches Official Swatches #0B2246, #B6C0D2, #05502A) -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+                        <button onclick="changeJockeyColor('Azul Marino')" id="thumb-jockey-navy" class="w-12 h-12 border-2 border-black p-1 bg-white transition flex flex-col items-center justify-center" title="Azul Ocaso (#0B2246)">
+                            <span class="w-7 h-7 rounded-full bg-[#0B2246] flex items-center justify-center text-[6px] text-white font-bold">LONVI</span>
+                        </button>
+                        <button onclick="changeJockeyColor('Blanco Escarcha')" id="thumb-jockey-frost" class="w-12 h-12 border border-neutral-300 p-1 bg-white hover:border-black transition flex flex-col items-center justify-center" title="Blanco Escarcha (#B6C0D2)">
+                            <span class="w-7 h-7 rounded-full bg-[#B6C0D2] flex items-center justify-center text-[6px] text-white font-bold">LONVI</span>
+                        </button>
+                        <button onclick="changeJockeyColor('Verde Sendero')" id="thumb-jockey-green" class="w-12 h-12 border border-neutral-300 p-1 bg-white hover:border-black transition flex flex-col items-center justify-center" title="Verde Sendero (#05502A)">
+                            <span class="w-7 h-7 rounded-full bg-[#05502A] flex items-center justify-center text-[6px] text-white font-bold">LONVI</span>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 border border-dashed border-neutral-400 hover:border-black text-[11px] font-medium text-neutral-600 hover:text-black transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Cargar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-jockey', 'svg-container-jockey')">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Right Column: Jockey Sendero Info -->
+                <div class="lg:col-span-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="dynamic-badge text-[10px] font-bold uppercase tracking-[0.16em] px-2.5 py-1">ELIGE EL SENDERO</span>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border border-neutral-300 px-2 py-0.5">3 COLORES</span>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold text-black mb-2">Jockey Sendero</h3>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-2xl sm:text-3xl font-bold text-black">$6.990</span>
+                        <span class="text-lg sm:text-xl font-medium text-neutral-400 line-through">$7.990</span>
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">VARIANTE DE COLOR</label>
+                            <div class="relative">
+                                <select id="variante-jockey" onchange="changeJockeyColor(this.value)" class="w-full appearance-none bg-white border border-neutral-300 px-3.5 py-2.5 text-sm font-semibold text-black focus:outline-none focus:border-black">
+                                    <option value="Azul Marino" selected>Azul Marino (#0B2246)</option>
+                                    <option value="Blanco Escarcha">Blanco Escarcha (#B6C0D2)</option>
+                                    <option value="Verde Sendero">Verde Sendero (#05502A)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-black">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 bg-white h-[42px]">
+                                <button onclick="updateQty('qty-jockey', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-jockey" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-black focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-jockey', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 mb-7">
+                        <button onclick="handleBuyNow('Jockey Sendero', 6990, 'Única', document.getElementById('variante-jockey').value, 'qty-jockey')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Jockey Sendero', 6990, 'Única', document.getElementById('variante-jockey').value, 'qty-jockey')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- UPGRADE 3: LIPPI-STYLE VISUAL TECHNICAL ICONS -->
+                    <div class="grid grid-cols-4 gap-2 py-4 border-y border-neutral-200 mb-6 text-center">
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">100% Pol.</span>
+                            <span class="block text-[9px] text-neutral-500">Alta Firmeza</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Bordado 3D</span>
+                            <span class="block text-[9px] text-neutral-500">Hilo Blanco</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Liviano</span>
+                            <span class="block text-[9px] text-neutral-500">Cancha &amp; Sol</span>
+                        </div>
+                        <div class="p-1.5">
+                            <svg class="w-5 h-5 mx-auto mb-1 text-black" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                            <span class="block text-[10px] font-bold uppercase text-black">Ajustable</span>
+                            <span class="block text-[9px] text-neutral-500">Todo el Año</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-[13px] leading-relaxed text-neutral-700">
+                        <p class="font-bold text-black">Jockey Sendero — Lonvi</p>
+                        <p>Un compañero pensado para seguir tu ritmo en la ciudad, en el cerro o en la cancha de tenis. Confeccionado en sarga 100% poliéster de estructura limpia y bordado frontal LONVI en relieve.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         4. UPGRADE 2: OFKI-STYLE 3-COLUMN BOUTIQUE CATALOG GRID
+            Generous whitespace & sober typographic badges instead of orange % boxes
+    =========================================== -->
+    <section id="catalogo-destacados" class="py-20 bg-white border-b border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-neutral-400 block mb-2">CATÁLOGO CURADO // ESTÉTICA BOUTIQUE</span>
+                    <h2 class="text-4xl font-bold text-black tracking-tight">Destacados</h2>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterCatalog('todos')" id="filter-todos" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white transition">
+                        Todos (9)
+                    </button>
+                    <button onclick="filterCatalog('hombre')" id="filter-hombre" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Hombre
+                    </button>
+                    <button onclick="filterCatalog('mujer')" id="filter-mujer" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Mujer
+                    </button>
+                    <button onclick="filterCatalog('deporte')" id="filter-deporte" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Deporte &amp; Tenis
+                    </button>
+                    <button onclick="filterCatalog('sale')" id="filter-sale" class="filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-black border border-black hover:bg-black hover:text-white transition">
+                        SALE
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3-Column Boutique Grid (OFKI Inspired) -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-16">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         5. UPGRADE 5: NIKE-STYLE "LONVI COURT LAB // BÁSICOS DEL TENIS"
+            Uses the official #064269 (Azul Cancha) + #F4ED1F (Amarillo Tenis) or Negro/Blanco
+    =========================================== -->
+    <section id="seccion-deporte" class="py-20 bg-white border-b border-neutral-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            
+            <!-- Editorial Header (No emojis, pure Nike/Valldoreix typography) -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+                <div>
+                    <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-neutral-400 block mb-2">LONVI COURT LAB // RENDIMIENTO &amp; TÉCNICA</span>
+                    <h2 class="text-4xl font-bold text-black tracking-tight">Tu Equipo Ideal en Cancha</h2>
+                </div>
+                <p class="text-xs text-neutral-500 max-w-xs">
+                    Combinación oficial <span class="font-mono font-bold text-[#064269]">#064269</span> + <span class="font-mono font-bold bg-[#064269] text-[#F4ED1F] px-1">#F4ED1F</span> de tu paleta Lonvi para la división Tenis.
+                </p>
+            </div>
+
+            <!-- Editorial Court Block using Swatch #3 (#064269 Blue + #F4ED1F Tennis Yellow) -->
+            <div class="bg-[#064269] text-white p-8 sm:p-12 mb-16 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border border-black">
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="inline-flex items-center gap-2 text-[11px] font-mono font-bold uppercase tracking-widest text-[#F4ED1F] bg-black/25 px-3 py-1 border border-[#F4ED1F]/30">
+                        <span>COURT STUDIES 001</span>
+                        <span>•</span>
+                        <span>CLÍNICA CON R.S.</span>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl font-bold tracking-tight text-white">Básicos del Tenis</h3>
+                    <p class="text-xs uppercase tracking-[0.16em] text-[#F4ED1F] font-bold">BIOMECÁNICA, PESO DE RAQUETA Y ESTILO DE JUEGO</p>
+                    <p class="text-sm text-white/90 leading-relaxed">
+                        Recuerda que la raqueta no es todo: el peso, balance, tamaño del aro y otros factores suelen ir con tu estilo de juego. Pero si no juegas con la técnica correcta, no habrá raqueta que te sea cómoda.
+                    </p>
+                    <div class="pt-3 flex flex-wrap gap-3">
+                        <button onclick="openTennisModal()" class="px-6 py-3.5 bg-[#F4ED1F] text-[#064269] hover:bg-white hover:text-black text-xs font-bold uppercase tracking-[0.15em] transition">
+                            Ver Cápsula Técnica
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Preview Thumbnail with Official Lonvi Tennis Logo -->
+                <div class="lg:col-span-6">
+                    <div onclick="openTennisModal()" class="relative group cursor-pointer overflow-hidden bg-[#042C47] border border-[#F4ED1F]/40 aspect-video flex flex-col items-center justify-center">
+                        <!-- Court Lines SVG Background -->
+                        <svg viewBox="0 0 400 225" class="absolute inset-0 w-full h-full opacity-35">
+                            <rect width="400" height="225" fill="#042C47"/>
+                            <line x1="50" y1="0" x2="50" y2="225" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="350" y1="0" x2="350" y2="225" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="50" y1="112" x2="350" y2="112" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="200" y1="40" x2="200" y2="185" stroke="#FFFFFF" stroke-width="1.5"/>
+                        </svg>
+                        <!-- Official LONVI Logo in Tennis Yellow -->
+                        <svg class="relative z-10 w-20 h-14 text-[#F4ED1F] mb-2 opacity-90">
+                            <use href="#lonvi-official-logo"></use>
+                        </svg>
+                        <div class="relative z-10 w-14 h-14 rounded-full bg-[#F4ED1F] text-[#064269] flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                            <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span class="relative z-10 mt-3 text-[11px] font-mono tracking-widest uppercase text-white">Reproducir Lección 01 (2:15)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Tennis Accessory: Cintillo Deportivo Lonvi -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                <div class="lg:col-span-6 flex flex-col items-center">
+                    <div class="relative w-full max-w-md bg-white p-4 flex flex-col items-center">
+                        <span class="absolute top-2 left-2 z-10 bg-black text-white font-mono font-bold text-[10px] tracking-widest uppercase px-2.5 py-1">EQUIPO DE CANCHA</span>
+                        <svg viewBox="0 0 440 380" class="w-full max-w-[380px] h-auto" filter="url(#softDropShadow)">
+                            <path d="M90,135 C90,95 350,95 350,135 C350,155 90,155 90,135 Z" fill="#1D1F22"/>
+                            <path d="M210,165 L145,285 L195,305 L235,185 Z" fill="#000000" stroke="#26292E" stroke-width="1"/>
+                            <path d="M235,165 L295,320 L335,295 L265,175 Z" fill="#111315" stroke="#26292E" stroke-width="1"/>
+                            <path d="M202,152 C220,145 245,148 258,165 C255,188 230,195 208,185 Z" fill="#000000"/>
+                            <path d="M85,125 C155,105 285,105 355,125 L350,175 C280,158 160,158 90,175 Z" fill="#000000" stroke="#24272C" stroke-width="1"/>
+                            <text x="220" y="146" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="20" letter-spacing="1.5" fill="#FFFFFF">LONVI</text>
+                        </svg>
+                        <p class="micro-caption mt-2">LONVI COURT &amp; TRAINING</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-black mb-2">Cintillo deportivo Lonvi</h3>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-2xl sm:text-3xl font-bold text-black">$3.990</span>
+                        <span class="text-lg sm:text-xl font-medium text-neutral-400 line-through">$4.990</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-5">
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <select id="talla-cintillo" class="w-full bg-white border border-neutral-300 px-3.5 py-2.5 text-sm font-semibold text-black">
+                                <option value="Pequeña">Pequeña</option>
+                                <option value="Ajustable Estándar" selected>Ajustable Estándar</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 bg-white h-[42px]">
+                                <button onclick="updateQty('qty-cintillo', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black">−</button>
+                                <input id="qty-cintillo" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-black bg-transparent">
+                                <button onclick="updateQty('qty-cintillo', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 mb-6">
+                        <button onclick="handleBuyNow('Cintillo deportivo Lonvi', 3990, document.getElementById('talla-cintillo').value, 'Negro/Blanco', 'qty-cintillo')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Cintillo deportivo Lonvi', 3990, document.getElementById('talla-cintillo').value, 'Negro/Blanco', 'qty-cintillo')" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.15em] btn-cta-outline">
+                            Añadir al carrito
+                        </button>
+                    </div>
+
+                    <div class="space-y-2.5 text-[13px] leading-relaxed text-neutral-700 border-t border-neutral-200 pt-5">
+                        <p class="font-bold text-black">Cintillo Deportivo — Lonvi</p>
+                        <p>Confeccionado en 100% poliéster de secado rápido, liviano y cómodo. Su diseño ajustable permite adaptarlo fácilmente para jugar tenis, salir a correr o entrenar sin distracciones.</p>
+                        <p class="font-bold text-black">Hecho en Longaví, Chile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. NEWSLETTER & FOOTER (BLANCO / NEGRO & GRIS ROCA)
+    =========================================== -->
+    <section class="py-20 bg-neutral-100 border-b border-neutral-200">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-black uppercase mb-3">
+                ÚNETE A NUESTRO NEWSLETTER
+            </h2>
+            <p class="text-xs sm:text-sm text-neutral-600 mb-8">
+                Recibe lanzamientos de colecciones, clínicas de tenis e información de Lonvi.
+            </p>
+
+            <form onsubmit="handleNewsletterSubmit(event)" class="text-left space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-1.5">
+                        DIRECCIÓN DE CORREO ELECTRÓNICO
+                    </label>
+                    <input type="email" required placeholder="Ingresar correo electrónico" class="w-full px-4 py-3 bg-white border border-neutral-300 text-sm text-black focus:outline-none focus:border-black">
+                </div>
+
+                <p class="text-[11px] text-neutral-600 leading-relaxed">
+                    Al registrarme, acepto que LONVI procese mis datos personales con fines de marketing de acuerdo con la <a href="#" class="text-black font-semibold underline">Política de Privacidad</a>.
+                </p>
+
+                <div class="flex justify-end pt-2">
+                    <button type="submit" class="px-8 py-3 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                        SUSCRIBIR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-14 text-center text-xs">
+        <div class="max-w-4xl mx-auto px-6 space-y-6">
+            <div class="flex justify-center">
+                <svg class="w-20 h-14 text-white">
+                    <use href="#lonvi-official-logo"></use>
+                </svg>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 font-medium text-neutral-300">
+                <a href="#" class="hover:text-white transition">Contáctanos</a>
+                <a href="#" class="hover:text-white transition">Términos Legales</a>
+                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="#" class="hover:text-white transition">Política de Cookies</a>
+            </div>
+
+            <p class="text-[11px] text-neutral-400">
+                LONVI — Nacida en Longaví, Región del Maule, Chile. Prototipo oficial para <span class="font-semibold text-white">lonvi.store</span>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         7. LIVE PALETTE & STORE TESTER BAR (FOR LONVI.STORE)
+    =========================================== -->
+    <div id="design-tester-bar" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-[450px] z-50 bg-black/95 backdrop-blur-md text-white p-4 shadow-2xl border border-neutral-700">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-neutral-800">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+                <span class="text-[11px] font-mono uppercase tracking-wider font-bold text-white">Inspector de Paleta Lonvi — lonvi.store</span>
+            </div>
+            <button onclick="toggleTesterBar()" class="text-[11px] text-neutral-400 hover:text-white">Minimizar</button>
+        </div>
+
+        <div class="space-y-3 text-xs">
+            <div>
+                <label class="block text-[10px] uppercase tracking-wider text-neutral-400 mb-1.5">
+                    Principales (Blanco/Negro) + 7 Mezclas de Colección:
+                </label>
+                <div class="grid grid-cols-3 gap-1.5">
+                    <button onclick="applyBrandSwatch('negro-blanco')" class="px-2 py-1.5 bg-black text-white border border-white/40 font-bold text-[10px] uppercase tracking-wider hover:border-white">
+                        1. Negro / Blanco
+                    </button>
+                    <button onclick="applyBrandSwatch('blanco-negro')" class="px-2 py-1.5 bg-white text-black font-bold text-[10px] uppercase tracking-wider">
+                        2. Blanco / Negro
+                    </button>
+                    <button onclick="applyBrandSwatch('ocaso')" class="px-2 py-1.5 bg-[#0B2246] text-white font-bold text-[10px] uppercase tracking-wider border border-white/20">
+                        3. Azul Ocaso
+                    </button>
+                    <button onclick="applyBrandSwatch('sendero')" class="px-2 py-1.5 bg-[#05502A] text-white font-bold text-[10px] uppercase tracking-wider">
+                        4. Verde Sendero
+                    </button>
+                    <button onclick="applyBrandSwatch('tenis')" class="px-2 py-1.5 bg-[#064269] text-[#F4ED1F] font-bold text-[10px] uppercase tracking-wider">
+                        5. Tenis / Cancha
+                    </button>
+                    <button onclick="applyBrandSwatch('senda')" class="px-2 py-1.5 bg-[#D2B48C] text-[#3E3124] font-bold text-[10px] uppercase tracking-wider">
+                        6. Senda Arena
+                    </button>
+                    <button onclick="applyBrandSwatch('roca')" class="px-2 py-1.5 bg-[#B5B5B5] text-black font-bold text-[10px] uppercase tracking-wider">
+                        7. Gris Roca
+                    </button>
+                    <button onclick="applyBrandSwatch('pizarra')" class="px-2 py-1.5 bg-[#8C9298] text-white font-bold text-[10px] uppercase tracking-wider">
+                        8. Gris Pizarra
+                    </button>
+                    <button onclick="applyBrandSwatch('escarcha')" class="px-2 py-1.5 bg-[#B6C0D2] text-black font-bold text-[10px] uppercase tracking-wider">
+                        9. Escarcha
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 pt-1">
+                <button onclick="toggleMicroCaptions()" class="px-3 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-left transition">
+                    <span class="block text-[9px] uppercase text-neutral-400">Pie de Foto ("ELIGE EL SENDERO")</span>
+                    <span id="caption-status" class="font-semibold text-white text-[11px]">Activado (Estilo IG)</span>
+                </button>
+                <button onclick="openFolderGuideModal()" class="px-3 py-2 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 text-left transition">
+                    <span class="block text-[9px] uppercase text-neutral-400">Estructura de Carpeta</span>
+                    <span class="font-semibold text-[#F4ED1F] text-[11px]">Ver Nombres JPG →</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimized Pill Button -->
+    <button id="tester-pill" onclick="toggleTesterBar()" class="hidden fixed bottom-5 right-5 z-50 bg-black text-white px-4 py-2.5 shadow-2xl border border-neutral-700 text-xs font-mono flex items-center gap-2 hover:scale-105 transition">
+        <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+        <span>Paleta Lonvi (9 Colores)</span>
+    </button>
+
+    <!-- ==========================================
+         8. SLIDE-OVER SHOPPING CART DRAWER
+    =========================================== -->
+    <div id="cart-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-neutral-200 flex items-center justify-between">
+            <div>
+                <h3 class="text-lg font-bold text-black uppercase tracking-wide">Tu Carrito Lonvi</h3>
+                <p class="text-xs text-neutral-500">Envíos a todo Chile desde Longaví</p>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-2 text-neutral-400 hover:text-black">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+        <div class="p-6 border-t border-neutral-200 bg-neutral-50 space-y-4">
+            <div class="flex items-center justify-between text-base font-bold text-black">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+            <button onclick="simulateCheckout()" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.16em] btn-cta-solid">
+                Finalizar Compra
+            </button>
+        </div>
+    </aside>
+
+    <!-- ==========================================
+         9. FOLDER GUIDE & TENNIS LESSON MODALS
+    =========================================== -->
+    <div id="folder-guide-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-black max-w-lg w-full border border-black p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200">
+                <span class="text-xs font-mono font-bold uppercase tracking-widest text-black">LISTO PARA SUBIR A LONVI.STORE</span>
+                <button onclick="closeFolderGuideModal()" class="text-neutral-500 hover:text-black font-bold">✕</button>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Este código ya detecta tus fotos automáticamente</h4>
+            <p class="text-xs text-neutral-600 leading-relaxed mb-4">
+                El código tiene conectadas las etiquetas <code class="bg-neutral-100 px-1 py-0.5 font-mono">&lt;img&gt;</code> inteligentes: si guardas tus fotos en la misma carpeta que este <code class="bg-neutral-100 px-1 py-0.5 font-mono">index.html</code> con los siguientes nombres exactos, se mostrarán automáticamente en lugar de las ilustraciones de respaldo:
+            </p>
+            <div class="bg-neutral-950 text-neutral-200 p-4 font-mono text-xs space-y-1.5 mb-5">
+                <p class="text-[#F4ED1F]">📁 lonvi-web/</p>
+                <p> ├── 📄 index.html</p>
+                <p> ├── 🖼️ poleron-ocaso.jpg</p>
+                <p> ├── 🖼️ polera-senda.jpg</p>
+                <p> ├── 🖼️ jockey-azul.jpg</p>
+                <p> ├── 🖼️ jockey-verde.jpg</p>
+                <p> └── 🖼️ jockey-blanco.jpg</p>
+            </div>
+            <button onclick="closeFolderGuideModal()" class="w-full py-3 text-xs font-bold uppercase tracking-widest btn-cta-solid">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <div id="tennis-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#064269] text-white max-w-lg w-full border border-[#F4ED1F] p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#F4ED1F]">BÁSICOS DEL TENIS CON R.S.</span>
+                <button onclick="closeTennisModal()" class="text-white/70 hover:text-white">✕</button>
+            </div>
+            <h4 class="text-2xl font-bold mb-3">Cómo elegir tu raqueta según tu biomecánica</h4>
+            <div class="space-y-3 text-sm text-white/90 leading-relaxed mb-6">
+                <p><strong class="text-[#F4ED1F]">1. Peso Estático vs. Swingweight:</strong> Un marco pesado (300g+) entrega mayor estabilidad frente a pelotas rápidas, pero exige técnica limpia y preparación temprana.</p>
+                <p><strong class="text-[#F4ED1F]">2. Tamaño del Aro:</strong> Aros de 98 sq.in priorizan control direccional; aros de 100 sq.in ofrecen mayor punto dulce y potencia libre.</p>
+                <p><strong class="text-[#F4ED1F]">3. Indumentaria en Cancha:</strong> Mantener el sudor fuera de los ojos con el <em>Cintillo Deportivo Lonvi</em> y usar telas respirables como la <em>Polera Cauce</em> te permite sostener la concentración en sets largos.</p>
+            </div>
+            <button onclick="closeTennisModal()" class="w-full py-3 bg-[#F4ED1F] text-[#064269] font-bold uppercase tracking-wider text-xs">
+                Volver a la tienda
+            </button>
+        </div>
+    </div>
+
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-start justify-center pt-24 p-4">
+        <div class="bg-white max-w-lg w-full p-5 shadow-2xl border border-black">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Buscar en Lonvi</span>
+                <button onclick="toggleSearchModal()" class="text-neutral-400 hover:text-black">✕</button>
+            </div>
+            <input id="search-input" type="text" oninput="runSearch(this.value)" placeholder="Escribe 'Ocaso', 'Senda', 'Jockey', 'Tenis'..." class="w-full px-4 py-3 border border-neutral-300 text-sm focus:outline-none focus:border-black mb-4">
+            <div id="search-results" class="space-y-2 max-h-60 overflow-y-auto text-sm"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         APPLICATION JAVASCRIPT
+    =========================================== -->
+    <script>
+        // Complete 9-Item Catalog matching the 3-Column OFKI-style Boutique Grid
+        const catalogProducts = [
+            {
+                id: 'poleron-ocaso',
+                name: 'Polerón Ocaso',
+                price: 19990,
+                oldPrice: null,
+                category: ['hombre', 'mujer'],
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                tag: 'LANZAMIENTO',
+                colorLabel: 'Azul Ocaso (#0B2246)',
+                svgType: 'sweatshirt-navy'
+            },
+            {
+                id: 'polera-senda',
+                name: 'Polera Senda',
+                price: 7990,
+                oldPrice: null,
+                category: ['hombre', 'mujer'],
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                tag: '100% ALGODÓN',
+                colorLabel: 'Arena / Tierra (#D2B48C)',
+                svgType: 'tshirt-sand'
+            },
+            {
+                id: 'jockey-sendero',
+                name: 'Jockey Sendero',
+                price: 6990,
+                oldPrice: 7990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'ELIGE EL SENDERO',
+                tag: '-13% LANZAMIENTO',
+                colorLabel: 'Azul / Escarcha / Verde',
+                svgType: 'cap-navy'
+            },
+            {
+                id: 'polera-basalto',
+                name: 'Polera Basalto',
+                price: 7990,
+                oldPrice: 8990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'SERIE NEVADO',
+                tag: 'NEGRO / BLANCO',
+                colorLabel: 'Negro Basalto (#000000)',
+                svgType: 'tshirt-basalto'
+            },
+            {
+                id: 'polera-pique-escarcha',
+                name: 'Polera Piqué Escarcha',
+                price: 9990,
+                oldPrice: 11990,
+                category: ['hombre', 'deporte', 'sale'],
+                caption: 'LONVI COURT',
+                tag: 'BLANCO / NEGRO',
+                colorLabel: 'Blanco Escarcha (#FFFFFF)',
+                svgType: 'polo-white'
+            },
+            {
+                id: 'jockey-nevado',
+                name: 'Jockey Nevado',
+                price: 6990,
+                oldPrice: 7990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'SERIE NEVADO',
+                tag: 'BLANCO PURO',
+                colorLabel: 'Blanco (#FFFFFF)',
+                svgType: 'cap-white'
+            },
+            {
+                id: 'polera-cauce',
+                name: 'Polera Cauce',
+                price: 10990,
+                oldPrice: 14990,
+                category: ['hombre', 'deporte', 'sale'],
+                caption: 'LONVI COURT',
+                tag: '-26% OFF',
+                colorLabel: 'Azul Cancha (#064269)',
+                svgType: 'tshirt-cauce'
+            },
+            {
+                id: 'cintillo-deportivo',
+                name: 'Cintillo deportivo Lonvi',
+                price: 3990,
+                oldPrice: 4990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'LONVI COURT',
+                tag: 'TENIS & TRAINING',
+                colorLabel: 'Negro (#000000)',
+                svgType: 'headband-black'
+            },
+            {
+                id: 'jockey-trigal',
+                name: 'Jockey Trigal',
+                price: 7990,
+                oldPrice: 9990,
+                category: ['hombre', 'mujer', 'sale'],
+                caption: 'ELIGE EL SENDERO',
+                tag: '-20% OFF',
+                colorLabel: 'Arena Trigal (#D2B48C)',
+                svgType: 'cap-sand'
+            }
+        ];
+
+        let cart = [
+            { name: 'Polerón Ocaso', price: 19990, size: 'M', variant: 'Azul Ocaso', qty: 1 }
+        ];
+        let showCaptions = true;
+
+        function formatCLP(amount) {
+            return '$' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        function getProductCardSVG(type) {
+            switch(type) {
+                case 'sweatshirt-navy':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M82,38 L42,65 L32,192 L58,194 L68,95 L68,202 L172,202 L172,95 L182,194 L208,192 L198,65 L158,38 C142,56 98,56 82,38 Z" fill="#0B2246"/>
+                        <path d="M135,88 C134,94 138,96 142,93 C146,89 152,96 158,90" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    </svg>`;
+                case 'tshirt-sand':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M84,42 L36,92 L62,115 L76,96 L76,200 L164,200 L164,96 L178,115 L204,92 L156,42 C140,60 100,60 84,42 Z" fill="#D2B48C"/>
+                        <path d="M105,105 C104,112 110,114 116,110 C122,106 128,114 135,107" stroke="#3E3124" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                    </svg>`;
+                case 'cap-navy':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <ellipse cx="120" cy="182" rx="68" ry="10" fill="rgba(0,0,0,0.15)"/>
+                        <path d="M55,125 C55,68 82,42 120,42 C158,42 185,68 185,125 Z" fill="#0B2246"/>
+                        <path d="M58,122 C95,134 145,134 182,122 C188,152 180,174 166,182 C135,172 105,172 74,182 C60,174 52,152 58,122 Z" fill="#071730"/>
+                        <text x="120" y="104" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="16" fill="#FFFFFF" letter-spacing="1">LONVI</text>
+                    </svg>`;
+                case 'cap-white':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <ellipse cx="120" cy="182" rx="68" ry="10" fill="rgba(0,0,0,0.1)"/>
+                        <path d="M55,125 C55,68 82,42 120,42 C158,42 185,68 185,125 Z" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1.2"/>
+                        <path d="M58,122 C95,134 145,134 182,122 C188,152 180,174 166,182 C135,172 105,172 74,182 C60,174 52,152 58,122 Z" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="1.2"/>
+                        <text x="120" y="104" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="16" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="0.8" letter-spacing="1">LONVI</text>
+                    </svg>`;
+                case 'tshirt-cauce':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#064269"/>
+                        <text x="142" y="88" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="7" fill="#FFFFFF" letter-spacing="0.8">LONVI</text>
+                    </svg>`;
+                case 'headband-black':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M55,95 C95,84 145,84 185,95 L182,122 C145,112 95,112 58,122 Z" fill="#000000"/>
+                        <path d="M112,118 L85,175 L108,184 L125,125 Z" fill="#000000"/>
+                        <path d="M126,118 L152,186 L172,174 L140,122 Z" fill="#181A1D"/>
+                        <text x="120" y="108" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="10" fill="#FFFFFF" letter-spacing="1">LONVI</text>
+                    </svg>`;
+                case 'tshirt-basalto':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#000000"/>
+                        <use href="#lonvi-official-logo" x="130" y="72" width="24" height="18" class="text-white"/>
+                    </svg>`;
+                case 'polo-white':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+                        <line x1="120" y1="54" x2="120" y2="86" stroke="#B5B5B5" stroke-width="2"/>
+                        <text x="142" y="88" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="6.5" fill="#8C9298">LONVI</text>
+                    </svg>`;
+                case 'cap-sand':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-64 object-contain">
+                        <ellipse cx="120" cy="182" rx="68" ry="10" fill="rgba(0,0,0,0.12)"/>
+                        <path d="M55,125 C55,68 82,42 120,42 C158,42 185,68 185,125 Z" fill="#D2B48C"/>
+                        <path d="M58,122 C95,134 145,134 182,122 C188,152 180,174 166,182 C135,172 105,172 74,182 C60,174 52,152 58,122 Z" fill="#C1A178"/>
+                        <text x="146" y="114" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#FFFFFF">LONVI</text>
+                    </svg>`;
+            }
+        }
+
+        // Render 3-Column Boutique Catalog Grid (OFKI Style)
+        function renderCatalog(filter = 'todos') {
+            const grid = document.getElementById('catalog-grid');
+            const filtered = filter === 'todos' 
+                ? catalogProducts 
+                : catalogProducts.filter(p => p.category.includes(filter));
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="group flex flex-col bg-white transition">
+                    <div class="relative bg-white py-6 px-4 flex flex-col items-center justify-center overflow-hidden border-b border-neutral-100">
+                        <span class="absolute top-2 left-0 z-10 dynamic-badge font-mono font-bold text-[10px] tracking-widest uppercase px-2.5 py-1">${product.tag}</span>
+                        <div class="w-full transition-transform duration-500 group-hover:scale-105">
+                            ${getProductCardSVG(product.svgType)}
+                        </div>
+                        <p class="micro-caption mt-2 ${showCaptions ? '' : 'opacity-0'}">${product.caption}</p>
+                    </div>
+
+                    <div class="pt-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-baseline justify-between gap-2">
+                                <h3 class="text-base font-bold text-black group-hover:underline">${product.name}</h3>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-base font-bold text-black">${formatCLP(product.price)}</span>
+                                    ${product.oldPrice ? `<span class="text-xs text-neutral-400 line-through">${formatCLP(product.oldPrice)}</span>` : ''}
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-neutral-500 mt-1">${product.colorLabel}</p>
+                        </div>
+
+                        <button onclick="quickAdd('${product.name}', ${product.price}, '${product.colorLabel}')" class="mt-4 w-full py-2.5 px-4 text-[11px] font-bold uppercase tracking-[0.14em] btn-cta-outline">
+                            + Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterCatalog(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition';
+            });
+            const activeBtn = document.getElementById('filter-' + category);
+            if (activeBtn) {
+                activeBtn.className = 'filter-btn px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white transition';
+            }
+            renderCatalog(category);
+        }
+
+        // Official 9-Swatch Brand Palette Engine (from Portada.png)
+        function applyBrandSwatch(swatchKey) {
+            const root = document.documentElement;
+            const label = document.getElementById('active-palette-label');
+
+            const swatches = {
+                'negro-blanco': {
+                    name: 'Principal Negro / Blanco (#000000 / #FFFFFF)',
+                    ctaBg: '#000000', ctaHover: '#222222', ctaText: '#FFFFFF',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#000000', topText: '#FFFFFF',
+                    badgeBg: '#000000', badgeText: '#FFFFFF'
+                },
+                'blanco-negro': {
+                    name: 'Principal Blanco / Negro (#FFFFFF / #000000)',
+                    ctaBg: '#FFFFFF', ctaHover: '#F3F4F6', ctaText: '#000000',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#F3F4F6', topText: '#000000',
+                    badgeBg: '#000000', badgeText: '#FFFFFF'
+                },
+                'ocaso': {
+                    name: 'Azul Ocaso / Blanco (#0B2246 / #FFFFFF)',
+                    ctaBg: '#0B2246', ctaHover: '#143566', ctaText: '#FFFFFF',
+                    outline: '#0B2246', outlineText: '#0B2246',
+                    topBg: '#0B2246', topText: '#FFFFFF',
+                    badgeBg: '#0B2246', badgeText: '#FFFFFF'
+                },
+                'sendero': {
+                    name: 'Verde Sendero / Blanco (#05502A / #FFFFFF)',
+                    ctaBg: '#05502A', ctaHover: '#086B39', ctaText: '#FFFFFF',
+                    outline: '#05502A', outlineText: '#05502A',
+                    topBg: '#05502A', topText: '#FFFFFF',
+                    badgeBg: '#05502A', badgeText: '#FFFFFF'
+                },
+                'tenis': {
+                    name: 'Azul Cancha / Amarillo Tenis (#064269 / #F4ED1F)',
+                    ctaBg: '#064269', ctaHover: '#085687', ctaText: '#F4ED1F',
+                    outline: '#064269', outlineText: '#064269',
+                    topBg: '#064269', topText: '#F4ED1F',
+                    badgeBg: '#064269', badgeText: '#F4ED1F'
+                },
+                'roca': {
+                    name: 'Gris Roca / Negro (#B5B5B5 / #000000)',
+                    ctaBg: '#B5B5B5', ctaHover: '#9E9E9E', ctaText: '#000000',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#B5B5B5', topText: '#000000',
+                    badgeBg: '#B5B5B5', badgeText: '#000000'
+                },
+                'pizarra': {
+                    name: 'Gris Pizarra / Blanco (#8C9298 / #FFFFFF)',
+                    ctaBg: '#8C9298', ctaHover: '#73797F', ctaText: '#FFFFFF',
+                    outline: '#8C9298', outlineText: '#000000',
+                    topBg: '#8C9298', topText: '#FFFFFF',
+                    badgeBg: '#8C9298', badgeText: '#FFFFFF'
+                },
+                'escarcha': {
+                    name: 'Escarcha / Blanco (#B6C0D2 / #000000)',
+                    ctaBg: '#B6C0D2', ctaHover: '#9FAAC0', ctaText: '#000000',
+                    outline: '#8C9298', outlineText: '#000000',
+                    topBg: '#B6C0D2', topText: '#000000',
+                    badgeBg: '#B6C0D2', badgeText: '#000000'
+                },
+                'senda': {
+                    name: 'Senda Arena / Café Tierra (#D2B48C / #3E3124)',
+                    ctaBg: '#D2B48C', ctaHover: '#C4A377', ctaText: '#3E3124',
+                    outline: '#3E3124', outlineText: '#3E3124',
+                    topBg: '#3E3124', topText: '#D2B48C',
+                    badgeBg: '#D2B48C', badgeText: '#3E3124'
+                }
+            };
+
+            const s = swatches[swatchKey] || swatches['negro-blanco'];
+            root.style.setProperty('--cta-bg', s.ctaBg);
+            root.style.setProperty('--cta-hover', s.ctaHover);
+            root.style.setProperty('--cta-text', s.ctaText);
+            root.style.setProperty('--cta-outline', s.outline);
+            root.style.setProperty('--cta-outline-text', s.outlineText);
+            root.style.setProperty('--topbar-bg', s.topBg);
+            root.style.setProperty('--topbar-text', s.topText);
+            root.style.setProperty('--badge-bg', s.badgeBg);
+            root.style.setProperty('--badge-text', s.badgeText);
+
+            if (label) label.textContent = 'Activo: ' + s.name;
+            showToast('Paleta aplicada: ' + s.name);
+        }
+
+        // Interactive Jockey Sendero Color Switcher using exact Portada.png hexes
+        function changeJockeyColor(variant) {
+            const selectEl = document.getElementById('variante-jockey');
+            if (selectEl && selectEl.value !== variant) {
+                selectEl.value = variant;
+            }
+
+            document.getElementById('custom-img-jockey').classList.add('hidden');
+            document.getElementById('svg-container-jockey').classList.remove('hidden');
+
+            const stop1 = document.getElementById('capStop1');
+            const stop2 = document.getElementById('capStop2');
+            const stop3 = document.getElementById('capStop3');
+            const brim1 = document.getElementById('brimStop1');
+            const brim2 = document.getElementById('brimStop2');
+            const brim3 = document.getElementById('brimStop3');
+            const button = document.getElementById('cap-button');
+
+            ['thumb-jockey-navy', 'thumb-jockey-frost', 'thumb-jockey-green'].forEach(id => {
+                document.getElementById(id).className = 'w-12 h-12 border border-neutral-300 p-1 bg-white hover:border-black transition flex flex-col items-center justify-center';
+            });
+
+            if (variant === 'Azul Marino') {
+                stop1.setAttribute('stop-color', '#14325C');
+                stop2.setAttribute('stop-color', '#0B2246');
+                stop3.setAttribute('stop-color', '#051124');
+                brim1.setAttribute('stop-color', '#091C3B');
+                brim2.setAttribute('stop-color', '#112C54');
+                brim3.setAttribute('stop-color', '#051124');
+                button.setAttribute('fill', '#0B2246');
+                document.getElementById('thumb-jockey-navy').className = 'w-12 h-12 border-2 border-black p-1 bg-white transition flex flex-col items-center justify-center';
+            } else if (variant === 'Blanco Escarcha') {
+                stop1.setAttribute('stop-color', '#CDD5E3');
+                stop2.setAttribute('stop-color', '#B6C0D2');
+                stop3.setAttribute('stop-color', '#9BA7BE');
+                brim1.setAttribute('stop-color', '#A8B3C8');
+                brim2.setAttribute('stop-color', '#C2CBE0');
+                brim3.setAttribute('stop-color', '#94A0B8');
+                button.setAttribute('fill', '#B6C0D2');
+                document.getElementById('thumb-jockey-frost').className = 'w-12 h-12 border-2 border-black p-1 bg-white transition flex flex-col items-center justify-center';
+            } else if (variant === 'Verde Sendero') {
+                stop1.setAttribute('stop-color', '#096B39');
+                stop2.setAttribute('stop-color', '#05502A');
+                stop3.setAttribute('stop-color', '#03361C');
+                brim1.setAttribute('stop-color', '#044222');
+                brim2.setAttribute('stop-color', '#075E32');
+                brim3.setAttribute('stop-color', '#022B16');
+                button.setAttribute('fill', '#05502A');
+                document.getElementById('thumb-jockey-green').className = 'w-12 h-12 border-2 border-black p-1 bg-white transition flex flex-col items-center justify-center';
+            }
+        }
+
+        function setOcasoView(mode) {
+            const svg = document.getElementById('ocaso-main-svg');
+            document.getElementById('custom-img-ocaso').classList.add('hidden');
+            document.getElementById('svg-container-ocaso').classList.remove('hidden');
+            svg.setAttribute('viewBox', mode === 'zoom' ? '220 140 160 150' : '0 0 500 560');
+        }
+
+        function setSendaView(mode) {
+            const svg = document.getElementById('senda-main-svg');
+            document.getElementById('custom-img-senda').classList.add('hidden');
+            document.getElementById('svg-container-senda').classList.remove('hidden');
+            svg.setAttribute('viewBox', mode === 'zoom' ? '170 175 160 140' : '0 0 500 540');
+        }
+
+        function previewLocalPhoto(event, imgId, svgContainerId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgEl = document.getElementById(imgId);
+                const svgEl = document.getElementById(svgContainerId);
+                imgEl.src = e.target.result;
+                imgEl.classList.remove('hidden');
+                svgEl.classList.add('hidden');
+                showToast('Tu fotografía local fue cargada con éxito');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateQty(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let current = parseInt(input.value, 10) || 1;
+            input.value = Math.max(1, current + delta);
+        }
+
+        function handleAddToCart(name, price, size, variant, qtyInputId) {
+            const qty = parseInt(document.getElementById(qtyInputId).value, 10) || 1;
+            addItemToCartState(name, price, size, variant, qty);
+            showToast(`${qty}x ${name} (${variant}) añadido`);
+        }
+
+        function handleBuyNow(name, price, size, variant, qtyInputId) {
+            const qty = parseInt(document.getElementById(qtyInputId).value, 10) || 1;
+            addItemToCartState(name, price, size, variant, qty);
+            toggleCartDrawer(true);
+        }
+
+        function quickAdd(name, price, variant) {
+            addItemToCartState(name, price, 'M', variant, 1);
+            showToast(`${name} sumado al equipo`);
+        }
+
+        function addItemToCartState(name, price, size, variant, qty) {
+            const existing = cart.find(i => i.name === name && i.size === size && i.variant === variant);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, price, size, variant, qty });
+            }
+            renderCart();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const badge = document.getElementById('cart-badge');
+            const list = document.getElementById('cart-items-list');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.textContent = totalCount;
+            subtotalEl.textContent = formatCLP(totalPrice);
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="text-center py-12 text-neutral-400 text-xs uppercase tracking-wider">Tu carrito está vacío.</div>`;
+                return;
+            }
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="flex items-center justify-between p-3.5 border border-neutral-200 bg-white">
+                    <div>
+                        <p class="text-sm font-bold text-black">${item.name}</p>
+                        <p class="text-xs text-neutral-500">Talla: ${item.size} · ${item.variant} · Cant: ${item.qty}</p>
+                        <p class="text-xs font-bold text-black mt-1">${formatCLP(item.price * item.qty)}</p>
+                    </div>
+                    <button onclick="removeCartItem(${idx})" class="text-xs text-neutral-400 hover:text-black underline p-1">Quitar</button>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const overlay = document.getElementById('cart-overlay');
+            const drawer = document.getElementById('cart-drawer');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (forceOpen || !isOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function simulateCheckout() {
+            if (cart.length === 0) {
+                showToast('Agrega una prenda antes de continuar');
+                return;
+            }
+            toggleCartDrawer();
+            showToast('Conectando con pasarela de pago en lonvi.store...');
+        }
+
+        function toggleMicroCaptions() {
+            showCaptions = !showCaptions;
+            document.querySelectorAll('.micro-caption').forEach(el => {
+                el.style.opacity = showCaptions ? '1' : '0';
+            });
+            document.getElementById('caption-status').textContent = showCaptions ? 'Activado (Estilo IG)' : 'Oculto (Solo Prenda)';
+        }
+
+        function toggleTesterBar() {
+            document.getElementById('design-tester-bar').classList.toggle('hidden');
+            document.getElementById('tester-pill').classList.toggle('hidden');
+        }
+
+        function openFolderGuideModal() {
+            document.getElementById('folder-guide-modal').classList.remove('hidden');
+        }
+        function closeFolderGuideModal() {
+            document.getElementById('folder-guide-modal').classList.add('hidden');
+        }
+        function openTennisModal() {
+            document.getElementById('tennis-modal').classList.remove('hidden');
+        }
+        function closeTennisModal() {
+            document.getElementById('tennis-modal').classList.add('hidden');
+        }
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+                runSearch('');
+            }
+        }
+        function runSearch(query) {
+            const container = document.getElementById('search-results');
+            const q = query.toLowerCase().trim();
+            const matches = catalogProducts.filter(p => p.name.toLowerCase().includes(q) || p.caption.toLowerCase().includes(q));
+            container.innerHTML = matches.map(p => `
+                <div class="flex items-center justify-between p-2.5 hover:bg-neutral-50 border border-neutral-200">
+                    <div>
+                        <p class="font-bold text-black">${p.name}</p>
+                        <p class="text-[11px] text-neutral-500">${p.colorLabel}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-bold text-black">${formatCLP(p.price)}</span>
+                        <button onclick="quickAdd('${p.name}', ${p.price}, '${p.colorLabel}'); toggleSearchModal();" class="px-3 py-1 text-[10px] font-bold uppercase btn-cta-solid">Sumar</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function setActiveNav(el) {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('nav-active-indicator', 'text-black'));
+            el.classList.add('nav-active-indicator', 'text-black');
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('¡Bienvenido a la comunidad Lonvi!');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-x-full', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+            }, 3000);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatalog('todos');
+            renderCart();
+        });
+    </script>
+</body>
+</html>
