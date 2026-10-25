@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONVI — Nacida en Longaví, Chile | Colección Ocaso & Senda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        lonvi: {
+                            navy: '#0E2238',
+                            sand: '#D6B593',
+                            green: '#0A7E46',
+                            frost: '#D8DCF2',
+                            basalto: '#141619',
+                            alabaster: '#F4F3EF',
+                            discount: '#D98254',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --cta-bg: #3CA6A0;
+            --cta-hover: #318C87;
+            --cta-text: #111111;
+            --cta-outline: #3CA6A0;
+            --section-alt-bg: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #141619;
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Accent Utilities driven by the Live Tester Bar */
+        .btn-cta-solid {
+            background-color: var(--cta-bg);
+            color: var(--cta-text);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-solid:hover {
+            background-color: var(--cta-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            border: 1px solid var(--cta-outline);
+            color: var(--cta-outline);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-outline:hover {
+            background-color: rgba(60, 166, 160, 0.06);
+            transform: translateY(-1px);
+        }
+
+        .nav-active-indicator {
+            color: var(--cta-bg);
+        }
+
+        /* Editorial Mountain Texture Background */
+        .nevado-hero-bg {
+            background-color: #121417;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.85) 80%),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
+        }
+
+        /* Chiaroscuro Editorial Section (Valldoreix Inspired) */
+        .chiaroscuro-card {
+            background: radial-gradient(circle at 75% 20%, #272B30 0%, #111315 70%);
+        }
+
+        /* Micro-caption styling like the Instagram posts */
+        .micro-caption {
+            letter-spacing: 0.16em;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #141619;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Custom subtle scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-teal-500 selection:text-white">
+
+    <!-- ==========================================
+         NOTIFICATION TOAST
+    =========================================== -->
+    <div id="toast-notification" class="fixed top-20 right-6 z-50 transform translate-x-full opacity-0 transition-all duration-300 pointer-events-none bg-neutral-900 text-white px-5 py-3.5 rounded-lg shadow-2xl flex items-center gap-3 border border-neutral-700">
+        <span class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></span>
+        <span id="toast-message" class="text-sm font-medium">Producto añadido al carrito</span>
+    </div>
+
+    <!-- ==========================================
+         1. STICKY MINIMAL HEADER
+    =========================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo: Nevado Longaví Mountain + LONVI -->
+            <a href="#" class="flex items-center gap-2.5 group focus:outline-none">
+                <div class="w-12 h-10 flex flex-col items-center justify-center">
+                    <svg viewBox="0 0 120 85" class="w-full h-full fill-current text-neutral-950 transition-transform duration-300 group-hover:scale-105">
+                        <!-- Mountain Peak Geometry -->
+                        <path d="M60 6 L12 62 L30 62 L52 34 L63 47 L78 26 L108 62 L60 6 Z" fill="#111111"/>
+                        <path d="M58 14 L34 45 L46 45 L60 28 L72 44 L86 44 L58 14 Z" fill="#FFFFFF"/>
+                        <!-- LONVI Bold Typography -->
+                        <text x="60" y="80" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="22" letter-spacing="3" fill="#111111">LONVI</text>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Main Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-neutral-700">
+                <a href="#lanzamiento-seamless" onclick="setActiveNav(this)" class="nav-link nav-active-indicator font-semibold transition-colors hover:text-black">Novedades</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('hombre'); setActiveNav(this)" class="nav-link transition-colors hover:text-black">Hombre</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('mujer'); setActiveNav(this)" class="nav-link transition-colors hover:text-black">Mujer</a>
+                <a href="#seccion-deporte" onclick="setActiveNav(this)" class="nav-link transition-colors hover:text-black">Deporte</a>
+                <a href="#seccion-materiales" onclick="setActiveNav(this)" class="nav-link transition-colors hover:text-black">Materiales</a>
+                <a href="#catalogo-destacados" onclick="filterCatalog('sale'); setActiveNav(this)" class="nav-link text-amber-700 font-semibold transition-colors hover:text-amber-900">SALE</a>
+            </nav>
+
+            <!-- Right Icons: Search, Upload Test Photo, Cart -->
+            <div class="flex items-center gap-3 sm:gap-5">
+                <button onclick="toggleSearchModal()" class="p-2 text-neutral-700 hover:text-black rounded-full hover:bg-neutral-100 transition" title="Buscar productos">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path stroke-linecap="round" d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+
+                <button onclick="toggleCartDrawer()" class="relative p-2 text-neutral-700 hover:text-black rounded-full hover:bg-neutral-100 transition flex items-center gap-1.5" title="Ver Carrito">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span id="cart-badge" class="bg-neutral-900 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-neutral-700 hover:text-black rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-neutral-100 px-6 py-4 space-y-3 text-sm font-medium">
+            <a href="#lanzamiento-seamless" onclick="toggleMobileMenu()" class="block py-1.5 text-neutral-900 font-semibold">Novedades</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('hombre'); toggleMobileMenu()" class="block py-1.5 text-neutral-600">Hombre</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('mujer'); toggleMobileMenu()" class="block py-1.5 text-neutral-600">Mujer</a>
+            <a href="#seccion-deporte" onclick="toggleMobileMenu()" class="block py-1.5 text-neutral-600">Deporte</a>
+            <a href="#seccion-materiales" onclick="toggleMobileMenu()" class="block py-1.5 text-neutral-600">Materiales</a>
+            <a href="#catalogo-destacados" onclick="filterCatalog('sale'); toggleMobileMenu()" class="block py-1.5 text-amber-700 font-semibold">SALE %</a>
+        </div>
+    </header>
+
+    <!-- ==========================================
+         2. HERO BANNER (NEVADO LONGAVÍ MONOCHROME)
+    =========================================== -->
+    <section class="relative nevado-hero-bg text-white overflow-hidden">
+        <!-- Detailed SVG Topographic & Mountain Ridge Relief Layer -->
+        <div class="absolute inset-0 opacity-40 pointer-events-none">
+            <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+                <defs>
+                    <linearGradient id="ridgeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#374151" stop-opacity="0.6"/>
+                        <stop offset="50%" stop-color="#1F2937" stop-opacity="0.3"/>
+                        <stop offset="100%" stop-color="#090A0C" stop-opacity="0.9"/>
+                    </linearGradient>
+                    <linearGradient id="ridgeGrad2" x1="50%" y1="0%" x2="50%" y2="100%">
+                        <stop offset="0%" stop-color="#6B7280" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#111315" stop-opacity="0.95"/>
+                    </linearGradient>
+                </defs>
+                <!-- Dramatic Craggy Ridges inspired by Nevado Longaví aerial rock texture -->
+                <path d="M0,450 L180,310 L340,370 L540,140 L730,280 L940,95 L1180,270 L1320,190 L1440,310 L1440,600 L0,600 Z" fill="url(#ridgeGrad1)"/>
+                <path d="M0,520 L240,340 L450,420 L690,180 L890,350 L1110,160 L1440,390 L1440,600 L0,600 Z" fill="url(#ridgeGrad2)"/>
+                <!-- Meander River Contour Lines -->
+                <path d="M540,140 C560,260 490,380 520,520" stroke="rgba(255,255,255,0.12)" stroke-width="2" fill="none"/>
+                <path d="M940,95 C910,220 980,340 930,540" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" fill="none"/>
+                <path d="M690,180 C710,300 650,410 700,580" stroke="rgba(255,255,255,0.15)" stroke-width="2.5" fill="none"/>
+            </svg>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-6 py-24 sm:py-32 md:py-40 text-center md:text-left flex flex-col md:items-end">
+            <div class="max-w-xl md:mr-8 text-center">
+                <span class="inline-block text-[11px] uppercase tracking-[0.25em] text-neutral-300 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 rounded-full mb-5 border border-white/15">
+                    Colección Ocaso &amp; Senda — Lanzamiento
+                </span>
+                <h1 class="font-display text-5xl sm:text-6xl font-bold tracking-[0.08em] text-white mb-5">
+                    LONVI
+                </h1>
+                <p class="text-base sm:text-lg text-neutral-200 font-light leading-relaxed mb-8">
+                    Nacida en Longaví, Chile.<br>
+                    Inspirada en la fuerza del Nevado Longaví y en la identidad de quienes llevan con orgullo sus raíces.
+                </p>
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <a href="#lanzamiento-seamless" class="px-7 py-3 bg-black/50 hover:bg-white hover:text-black text-white border border-white/60 text-sm font-medium tracking-wide transition duration-300 rounded">
+                        Descubre Lonvi
+                    </a>
+                    <a href="#catalogo-destacados" class="px-7 py-3 bg-white/10 hover:bg-white/20 text-white text-sm font-medium tracking-wide transition duration-300 rounded backdrop-blur-sm">
+                        Ver Catálogo Completo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         3. SEAMLESS FLOATING PRODUCT SHOWCASE
+            (100% Pure White Background - No Box Effect)
+    =========================================== -->
+    <section id="lanzamiento-seamless" class="bg-white py-16 sm:py-24 border-b border-neutral-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            
+            <!-- Section Header Badge -->
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-neutral-100 gap-4">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 mb-2">Lanzamiento Nueva Colección</p>
+                    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-neutral-950">Edición Río Longaví &amp; Sendero</h2>
+                </div>
+                <p class="text-xs text-neutral-500 max-w-xs">
+                    Diseño de fondo blanco unificado (<span class="font-mono text-neutral-800">#FFFFFF</span>) para eliminar bordes y resaltar el volumen real de cada prenda.
+                </p>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 1: POLERÓN OCASO
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-28">
+                
+                <!-- Left Column: Product Details & Purchase Controls (Matches user's latest screenshot) -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-neutral-950 mb-2">Polerón Ocaso</h3>
+                    <p class="text-2xl sm:text-3xl font-bold text-neutral-950 mb-6">$19.990</p>
+
+                    <!-- Selectors Row: Talla + Cantidad -->
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <div class="relative">
+                                <select id="talla-ocaso" class="w-full appearance-none bg-white border border-neutral-300 rounded px-3.5 py-2.5 text-sm font-semibold text-neutral-900 focus:outline-none focus:border-neutral-900">
+                                    <option value="S">S</option>
+                                    <option value="M" selected>M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 rounded bg-white h-[42px]">
+                                <button onclick="updateQty('qty-ocaso', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-ocaso" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-neutral-900 focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-ocaso', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons (Turquoise / Configurable Accent) -->
+                    <div class="space-y-3 mb-8">
+                        <button onclick="handleBuyNow('Polerón Ocaso', 19990, document.getElementById('talla-ocaso').value, 'Azul Marino', 'qty-ocaso')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-solid shadow-sm">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Polerón Ocaso', 19990, document.getElementById('talla-ocaso').value, 'Azul Marino', 'qty-ocaso')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- Storytelling & Technical Details (Right-aligned as in screenshot) -->
+                    <div class="text-right space-y-3.5 text-[13px] leading-relaxed text-neutral-700 border-t border-neutral-100 pt-6">
+                        <p class="font-bold text-neutral-950">Polerón Ocaso — Lonvi</p>
+                        <p>Un clásico para acompañarte cuando baja la temperatura.</p>
+                        <p>Ocaso nace desde una idea simple: tener un polerón cómodo y fácil de usar, de esos que terminan formando parte de tus días. Para salir, descansar, recorrer la ciudad o disfrutar una tarde tranquila. Un diseño de cuello redondo que busca hacer de lo simple algo que quieras usar una y otra vez.</p>
+                        <p>Confeccionado en 80% algodón y 20% poliéster, combina la suavidad del algodón con la resistencia y practicidad del poliéster. Una composición pensada para entregar comodidad y abrigo en el día a día, manteniendo una prenda versátil y fácil de llevar.</p>
+                        <p>Un polerón simple, hecho para quedarse contigo.</p>
+
+                        <div class="pt-2">
+                            <p class="font-bold text-neutral-950 mb-1.5">Detalles técnicos</p>
+                            <ul class="space-y-0.5 text-neutral-600">
+                                <li>• 80% algodón</li>
+                                <li>• 20% poliéster</li>
+                                <li>• Cuello redondo</li>
+                                <li>• Cómodo y abrigador</li>
+                                <li>• Ideal para uso diario</li>
+                                <li>• Diseñado en Chile</li>
+                            </ul>
+                        </div>
+
+                        <p class="font-bold text-neutral-950 pt-2">Lonvi — Longvibe</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Seamless Floating Ghost Mannequin Image -->
+                <div class="lg:col-span-7 order-1 lg:order-2 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        
+                        <!-- Custom Photo Override Preview (Hidden until user uploads their JPG) -->
+                        <img id="custom-img-ocaso" src="" alt="Polerón Ocaso" class="hidden w-full h-auto object-contain max-h-[560px]">
+
+                        <!-- Studio Ghost Mannequin Vector Illustration of Polerón Ocaso -->
+                        <div id="svg-container-ocaso" class="w-full flex flex-col items-center">
+                            <svg id="ocaso-main-svg" viewBox="0 0 500 560" class="w-full max-w-[460px] h-auto transition-transform duration-500 group-hover:scale-[1.01]">
+                                <defs>
+                                    <!-- Deep Navy Ocaso Fabric Shading -->
+                                    <radialGradient id="ocasoNavyGrad" cx="45%" cy="35%" r="65%">
+                                        <stop offset="0%" stop-color="#163354"/>
+                                        <stop offset="55%" stop-color="#0E2238"/>
+                                        <stop offset="100%" stop-color="#081524"/>
+                                    </radialGradient>
+                                    <linearGradient id="ocasoSleeveLeft" x1="0%" y1="0%" x2="100%" y2="20%">
+                                        <stop offset="0%" stop-color="#132D4A"/>
+                                        <stop offset="70%" stop-color="#0C1E33"/>
+                                        <stop offset="100%" stop-color="#071220"/>
+                                    </linearGradient>
+                                    <linearGradient id="ocasoSleeveRight" x1="100%" y1="0%" x2="0%" y2="20%">
+                                        <stop offset="0%" stop-color="#132D4A"/>
+                                        <stop offset="70%" stop-color="#0C1E33"/>
+                                        <stop offset="100%" stop-color="#071220"/>
+                                    </linearGradient>
+                                    <filter id="softDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.12"/>
+                                    </filter>
+                                </defs>
+
+                                <g filter="url(#softDropShadow)">
+                                    <!-- Back Inside Collar & Cream Neck Tape -->
+                                    <ellipse cx="250" cy="88" rx="60" ry="22" fill="#081422"/>
+                                    <path d="M194,84 Q250,98 306,84" stroke="#E5D0B1" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+                                    <!-- Left Sleeve -->
+                                    <path d="M135,122 C102,145 78,245 66,355 C60,410 62,455 65,478 L118,480 C125,415 136,320 148,235 Z" fill="url(#ocasoSleeveLeft)"/>
+                                    <!-- Left Cuff -->
+                                    <path d="M65,476 L118,478 L115,508 L68,506 Z" fill="#0A192B" stroke="#06101C" stroke-width="1"/>
+
+                                    <!-- Right Sleeve -->
+                                    <path d="M365,122 C398,145 422,245 434,355 C440,410 438,455 435,478 L382,480 C375,415 364,320 352,235 Z" fill="url(#ocasoSleeveRight)"/>
+                                    <!-- Right Cuff -->
+                                    <path d="M435,476 L382,478 L385,508 L432,506 Z" fill="#0A192B" stroke="#06101C" stroke-width="1"/>
+
+                                    <!-- Main Torso Body -->
+                                    <path d="M188,78 C165,92 145,108 135,122 C142,185 144,250 140,468 L360,468 C356,250 358,185 365,122 C355,108 335,92 312,78 C295,112 205,112 188,78 Z" fill="url(#ocasoNavyGrad)"/>
+
+                                    <!-- Subtle Drape Folds for 3D Ghost Mannequin Realism -->
+                                    <path d="M165,190 Q175,310 160,440" stroke="#081423" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
+                                    <path d="M335,190 Q325,310 340,440" stroke="#081423" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round"/>
+                                    <path d="M220,380 Q250,395 290,375" stroke="#1A3A5E" stroke-width="2" fill="none" opacity="0.25"/>
+
+                                    <!-- Ribbed Crewneck Collar + Dorito V-Stitch -->
+                                    <path d="M182,80 C202,126 298,126 318,80 C310,74 306,74 302,77 C286,112 214,112 198,77 C194,74 190,74 182,80 Z" fill="#0C1E33" stroke="#071321" stroke-width="1.2"/>
+                                    <!-- Classic V-Gusset Stitch under Collar -->
+                                    <path d="M226,116 L250,154 L274,116" fill="#0B1C30" stroke="#163250" stroke-width="1.5"/>
+
+                                    <!-- Bottom Ribbed Hem -->
+                                    <path d="M140,466 L360,466 L357,498 L143,498 Z" fill="#0A192B" stroke="#071321" stroke-width="1"/>
+
+                                    <!-- FLUID MEANDER "Lonvi" EMBROIDERED LOGO (Left Chest) -->
+                                    <g transform="translate(285, 198) scale(0.85)">
+                                        <path d="M4,4 C1,16 0,26 5,28 C10,30 15,26 18,22 M26,16 C20,16 17,22 20,27 C23,31 30,29 32,23 C33,18 29,16 26,16 Z M34,22 C37,17 41,17 43,23 C45,28 48,28 52,21 C55,17 57,24 61,27 C64,29 68,24 71,16 M73,15 L73,29" 
+                                              stroke="#F9FAFB" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <!-- Micro-caption directly under product like the user's final photo -->
+                            <p class="micro-caption mt-2">EDICIÓN RÍO LONGAVÍ</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Thumbnails + Local Photo Upload Trigger -->
+                    <div class="flex items-center gap-3 mt-5">
+                        <button onclick="setOcasoView('full')" class="w-14 h-14 rounded border-2 border-neutral-900 p-1 bg-white hover:opacity-80 transition" title="Vista Completa">
+                            <div class="w-full h-full bg-[#0E2238] rounded-sm flex items-center justify-center text-[8px] text-white font-bold">OCASO</div>
+                        </button>
+                        <button onclick="setOcasoView('zoom')" class="w-14 h-14 rounded border border-neutral-200 p-1 bg-white hover:border-neutral-900 transition" title="Zoom Bordado Río Longaví">
+                            <div class="w-full h-full bg-[#0E2238] rounded-sm flex items-center justify-center">
+                                <span class="text-white italic font-serif text-xs">Lonvi</span>
+                            </div>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 rounded border border-dashed border-neutral-300 hover:border-neutral-800 text-[11px] text-neutral-500 hover:text-neutral-900 transition flex items-center gap-1.5" title="Prueba cómo se ve subiendo tu archivo Instagram Poleron Ocaso.jpg">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Probar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-ocaso', 'svg-container-ocaso')">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 2: POLERA SENDA
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-28 pt-12 border-t border-neutral-100">
+                
+                <!-- Left Column: Seamless Floating Ghost Mannequin Image -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        
+                        <img id="custom-img-senda" src="" alt="Polera Senda" class="hidden w-full h-auto object-contain max-h-[540px]">
+
+                        <div id="svg-container-senda" class="w-full flex flex-col items-center">
+                            <svg id="senda-main-svg" viewBox="0 0 500 540" class="w-full max-w-[450px] h-auto transition-transform duration-500 group-hover:scale-[1.01]">
+                                <defs>
+                                    <radialGradient id="sendaSandGrad" cx="48%" cy="35%" r="65%">
+                                        <stop offset="0%" stop-color="#E4C7A8"/>
+                                        <stop offset="65%" stop-color="#D6B593"/>
+                                        <stop offset="100%" stop-color="#C29F7B"/>
+                                    </radialGradient>
+                                </defs>
+                                <g filter="url(#softDropShadow)">
+                                    <!-- Inside Back Collar -->
+                                    <ellipse cx="250" cy="92" rx="58" ry="20" fill="#B99572"/>
+                                    <path d="M196,88 Q250,102 304,88" stroke="#A6825E" stroke-width="2" fill="none"/>
+
+                                    <!-- Short Sleeves -->
+                                    <path d="M142,115 L52,215 L108,262 L148,215 Z" fill="#CFAF8D" stroke="#C19E7A" stroke-width="0.8"/>
+                                    <path d="M358,115 L448,215 L392,262 L352,215 Z" fill="#CFAF8D" stroke="#C19E7A" stroke-width="0.8"/>
+
+                                    <!-- Main Cotton Torso -->
+                                    <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,122 208,122 188,82 Z" fill="url(#sendaSandGrad)"/>
+
+                                    <!-- Subtle Cotton Drape Folds -->
+                                    <path d="M205,170 Q200,320 195,465" stroke="#C29F7B" stroke-width="2.5" fill="none" opacity="0.45"/>
+                                    <path d="M295,180 Q302,320 305,465" stroke="#C29F7B" stroke-width="2.5" fill="none" opacity="0.45"/>
+
+                                    <!-- Ribbed Crewneck Collar -->
+                                    <path d="M180,84 C202,134 298,134 320,84 C312,77 307,77 303,81 C286,118 214,118 197,81 C193,77 188,77 180,84 Z" fill="#D2B18F" stroke="#BC9975" stroke-width="1.2"/>
+
+                                    <!-- Bottom Hem Stitching -->
+                                    <line x1="146" y1="466" x2="354" y2="466" stroke="#BA9672" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+                                    <!-- CENTER CHEST FLUID MEANDER "Lonvi" LOGO (Dark Espresso Brown) -->
+                                    <g transform="translate(216, 228) scale(0.95)">
+                                        <path d="M4,4 C1,16 0,26 5,28 C10,30 15,26 18,22 M26,16 C20,16 17,22 20,27 C23,31 30,29 32,23 C33,18 29,16 26,16 Z M34,22 C37,17 41,17 43,23 C45,28 48,28 52,21 C55,17 57,24 61,27 C64,29 68,24 71,16 M73,15 L73,29" 
+                                              stroke="#3A2314" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                    </g>
+                                </g>
+                            </svg>
+
+                            <p class="micro-caption mt-2">EDICIÓN RÍO LONGAVÍ</p>
+                        </div>
+                    </div>
+
+                    <!-- Thumbnails + Upload -->
+                    <div class="flex items-center gap-3 mt-5">
+                        <button onclick="setSendaView('full')" class="w-14 h-14 rounded border-2 border-neutral-900 p-1 bg-white hover:opacity-80 transition">
+                            <div class="w-full h-full bg-[#D6B593] rounded-sm flex items-center justify-center text-[8px] text-amber-950 font-bold">SENDA</div>
+                        </button>
+                        <button onclick="setSendaView('zoom')" class="w-14 h-14 rounded border border-neutral-200 p-1 bg-white hover:border-neutral-900 transition">
+                            <div class="w-full h-full bg-[#D6B593] rounded-sm flex items-center justify-center">
+                                <span class="text-amber-950 italic font-serif text-xs font-bold">Lonvi</span>
+                            </div>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 rounded border border-dashed border-neutral-300 hover:border-neutral-800 text-[11px] text-neutral-500 hover:text-neutral-900 transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Probar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-senda', 'svg-container-senda')">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Right Column: Polera Senda Info -->
+                <div class="lg:col-span-5">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-neutral-950 mb-2">Polera Senda</h3>
+                    <p class="text-2xl sm:text-3xl font-bold text-neutral-950 mb-6">$7.990</p>
+
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <div class="relative">
+                                <select id="talla-senda" class="w-full appearance-none bg-white border border-neutral-300 rounded px-3.5 py-2.5 text-sm font-semibold text-neutral-900 focus:outline-none focus:border-neutral-900">
+                                    <option value="S">S</option>
+                                    <option value="M" selected>M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 rounded bg-white h-[42px]">
+                                <button onclick="updateQty('qty-senda', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-senda" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-neutral-900 focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-senda', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <button onclick="handleBuyNow('Polera Senda', 7990, document.getElementById('talla-senda').value, 'Arena', 'qty-senda')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-solid shadow-sm">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Polera Senda', 7990, document.getElementById('talla-senda').value, 'Arena', 'qty-senda')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3.5 text-[13px] leading-relaxed text-neutral-700 border-t border-neutral-100 pt-6">
+                        <p class="font-bold text-neutral-950">Polera Senda — Lonvi</p>
+                        <p>Una polera simple para acompañarte todos los días.</p>
+                        <p>Senda nace de esa idea de tener una prenda que puedas usar sin pensarlo demasiado. Para salir, recorrer la ciudad, descansar o simplemente disfrutar el día. Su tono beige y diseño limpio buscan transmitir una sensación tranquila y natural, manteniendo la esencia de Lonvi.</p>
+                        <p>Confeccionada en 100% algodón, entrega una sensación suave y cómoda al contacto con la piel. Su composición y diseño la convierten en una prenda fácil de combinar y pensada para formar parte de tu día a día.</p>
+                        <p>Una polera simple, hecha para seguir tu propia senda.</p>
+
+                        <div class="pt-2">
+                            <p class="font-bold text-neutral-950 mb-1.5">Detalles técnicos</p>
+                            <ul class="space-y-0.5 text-neutral-600">
+                                <li>• 100% algodón suave</li>
+                                <li>• Tipografía inspirada en los meandros del Río Longaví</li>
+                                <li>• Calce regular cómodo</li>
+                                <li>• Ideal para uso diario y outdoor casual</li>
+                                <li>• Diseñado en Chile</li>
+                            </ul>
+                        </div>
+
+                        <p class="font-bold text-neutral-950 pt-2">Lonvi — Longvibe</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 SHOWCASE ITEM 3: JOCKEY SENDERO (3 COLORES INTERACTIVOS)
+            =========================================== -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start pt-12 border-t border-neutral-100">
+                
+                <!-- Left Column: Interactive Cap with 3 Colorways -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    <div class="relative w-full max-w-lg bg-white flex flex-col items-center justify-center p-2 group">
+                        <!-- Discount Badge % -->
+                        <span class="absolute top-2 left-2 z-10 bg-lonvi-discount text-neutral-950 font-bold text-xs px-2.5 py-1.5">%</span>
+
+                        <img id="custom-img-jockey" src="" alt="Jockey Sendero" class="hidden w-full h-auto object-contain max-h-[500px]">
+
+                        <div id="svg-container-jockey" class="w-full flex flex-col items-center">
+                            <svg id="jockey-main-svg" viewBox="0 0 500 490" class="w-full max-w-[430px] h-auto transition-all duration-300 group-hover:scale-[1.01]">
+                                <defs>
+                                    <!-- Dynamic gradients updated via JS when switching colors -->
+                                    <radialGradient id="capCrownGrad" cx="50%" cy="35%" r="60%">
+                                        <stop id="capStop1" offset="0%" stop-color="#1D3858"/>
+                                        <stop id="capStop2" offset="65%" stop-color="#122640"/>
+                                        <stop id="capStop3" offset="100%" stop-color="#091526"/>
+                                    </radialGradient>
+                                    <linearGradient id="capBrimGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop id="brimStop1" offset="0%" stop-color="#0F2138"/>
+                                        <stop id="brimStop2" offset="50%" stop-color="#172F4D"/>
+                                        <stop id="brimStop3" offset="100%" stop-color="#0A1729"/>
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Ground Contact Shadow (like the studio photos) -->
+                                <ellipse cx="250" cy="405" rx="145" ry="22" fill="rgba(0,0,0,0.22)" filter="blur(8px)"/>
+
+                                <!-- Top Button (Squatchee) -->
+                                <ellipse id="cap-button" cx="250" cy="65" rx="18" ry="8" fill="#122640" stroke="#091526" stroke-width="1.5"/>
+
+                                <!-- 6-Panel Crown -->
+                                <path d="M92,265 C88,145 145,68 250,68 C355,68 412,145 408,265 C350,285 150,285 92,265 Z" fill="url(#capCrownGrad)"/>
+
+                                <!-- Center & Side Panel Seam Lines -->
+                                <line id="cap-seam-center" x1="250" y1="73" x2="250" y2="275" stroke="#081220" stroke-width="2" opacity="0.5"/>
+                                <path id="cap-seam-left" d="M235,72 C160,105 128,175 122,270" stroke="#081220" stroke-width="2" fill="none" opacity="0.45"/>
+                                <path id="cap-seam-right" d="M265,72 C340,105 372,175 378,270" stroke="#081220" stroke-width="2" fill="none" opacity="0.45"/>
+
+                                <!-- Embroidered Eyelets -->
+                                <circle id="eyelet-left" cx="185" cy="128" r="6" fill="none" stroke="#0B192C" stroke-width="3.5"/>
+                                <circle cx="185" cy="128" r="2.5" fill="#060E1A"/>
+                                <circle id="eyelet-right" cx="315" cy="128" r="6" fill="none" stroke="#0B192C" stroke-width="3.5"/>
+                                <circle cx="315" cy="128" r="2.5" fill="#060E1A"/>
+
+                                <!-- Curved Visor / Brim -->
+                                <path d="M104,258 C165,282 335,282 396,258 C406,315 398,370 368,392 C295,368 205,368 132,392 C102,370 94,315 104,258 Z" fill="url(#capBrimGrad)"/>
+
+                                <!-- Concentric Visor Stitching Rows -->
+                                <path d="M118,285 C180,306 320,306 382,285" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                                <path d="M122,302 C185,322 315,322 378,302" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                                <path d="M126,319 C190,338 310,338 374,319" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+                                <path d="M132,336 C195,354 305,354 368,336" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" stroke-dasharray="3,2" fill="none"/>
+
+                                <!-- 3D White Embroidered "LONVI" Block Logo -->
+                                <g filter="drop-shadow(0px 2px 2px rgba(0,0,0,0.35))">
+                                    <text x="250" y="218" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#FFFFFF" stroke="#F3F4F6" stroke-width="0.8">LONVI</text>
+                                </g>
+                            </svg>
+
+                            <p class="micro-caption mt-2">ELIGE EL SENDERO</p>
+                        </div>
+                    </div>
+
+                    <!-- Color Variant Thumbnails (Matches screenshot carousel) -->
+                    <div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+                        <button onclick="changeJockeyColor('Azul Marino')" id="thumb-jockey-navy" class="w-14 h-14 rounded border-2 border-neutral-900 p-1 bg-white transition flex flex-col items-center justify-center" title="Azul Marino">
+                            <span class="w-8 h-8 rounded-full bg-[#122640] border border-neutral-200 flex items-center justify-center text-[7px] text-white font-bold">LONVI</span>
+                        </button>
+                        <button onclick="changeJockeyColor('Blanco Escarcha')" id="thumb-jockey-frost" class="w-14 h-14 rounded border border-neutral-200 p-1 bg-white hover:border-neutral-900 transition flex flex-col items-center justify-center" title="Blanco Escarcha">
+                            <span class="w-8 h-8 rounded-full bg-[#D8DCF2] border border-neutral-300 flex items-center justify-center text-[7px] text-white font-bold drop-shadow">LONVI</span>
+                        </button>
+                        <button onclick="changeJockeyColor('Verde Sendero')" id="thumb-jockey-green" class="w-14 h-14 rounded border border-neutral-200 p-1 bg-white hover:border-neutral-900 transition flex flex-col items-center justify-center" title="Verde Sendero">
+                            <span class="w-8 h-8 rounded-full bg-[#0A7E46] border border-neutral-200 flex items-center justify-center text-[7px] text-white font-bold">LONVI</span>
+                        </button>
+                        <label class="cursor-pointer px-3 py-2 rounded border border-dashed border-neutral-300 hover:border-neutral-800 text-[11px] text-neutral-500 hover:text-neutral-900 transition flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                            <span>Probar tu JPG</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="previewLocalPhoto(event, 'custom-img-jockey', 'svg-container-jockey')">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Right Column: Jockey Sendero Info -->
+                <div class="lg:col-span-5">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-neutral-950 mb-2">Jockey Sendero</h3>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-2xl sm:text-3xl font-bold text-lonvi-discount">$6.990</span>
+                        <span class="text-xl sm:text-2xl font-bold text-neutral-400 line-through">$7.990</span>
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-3 mb-5">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">VARIANTE</label>
+                            <div class="relative">
+                                <select id="variante-jockey" onchange="changeJockeyColor(this.value)" class="w-full appearance-none bg-white border border-neutral-300 rounded px-3.5 py-2.5 text-sm font-semibold text-neutral-900 focus:outline-none focus:border-neutral-900">
+                                    <option value="Azul Marino" selected>Azul Marino</option>
+                                    <option value="Blanco Escarcha">Blanco Escarcha</option>
+                                    <option value="Verde Sendero">Verde Sendero</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-neutral-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 rounded bg-white h-[42px]">
+                                <button onclick="updateQty('qty-jockey', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">−</button>
+                                <input id="qty-jockey" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-neutral-900 focus:outline-none bg-transparent">
+                                <button onclick="updateQty('qty-jockey', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black transition">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-8">
+                        <button onclick="handleBuyNow('Jockey Sendero', 6990, 'Única', document.getElementById('variante-jockey').value, 'qty-jockey')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-solid shadow-sm">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Jockey Sendero', 6990, 'Única', document.getElementById('variante-jockey').value, 'qty-jockey')" class="w-full py-3.5 px-6 rounded text-sm font-semibold tracking-wide btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3.5 text-[13px] leading-relaxed text-neutral-700 border-t border-neutral-100 pt-6">
+                        <p class="font-bold text-neutral-950">Jockey Sendero — Lonvi</p>
+                        <p>Un jockey pensado para acompañarte todos los días.</p>
+                        <p>Sendero nace desde una idea simple: tener una prenda que puedas llevar contigo sin importar el momento, ya sea para salir, recorrer la ciudad, hacer deporte o simplemente disfrutar el día. Un compañero de vida, hecho para seguir tu ritmo.</p>
+                        <p>Confeccionado en 100% poliéster, es liviano, resistente y cómodo. Su diseño simple y versátil combina con distintos estilos y momentos, mientras que su construcción permite mantenerlo como parte de tu día a día durante todo el año.</p>
+
+                        <div class="pt-2">
+                            <p class="font-bold text-neutral-950 mb-1.5">Detalles técnicos</p>
+                            <ul class="space-y-0.5 text-neutral-600">
+                                <li>• 100% poliéster</li>
+                                <li>• Bordado Lonvi frontal en relieve</li>
+                                <li>• Ideal para uso diario</li>
+                                <li>• Diseñado en Chile</li>
+                            </ul>
+                        </div>
+
+                        <p class="font-bold text-neutral-950 pt-2">Lonvi — Longvibe</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==========================================
+         4. FULL CATALOG GRID ("DESTACADOS")
+            All 8 products from the screenshots
+    =========================================== -->
+    <section id="catalogo-destacados" class="py-20 bg-white border-b border-neutral-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                <div>
+                    <h2 class="text-4xl font-bold text-neutral-950 tracking-tight mb-2">Destacados</h2>
+                    <p class="text-sm text-neutral-500">Explora toda la línea Casual, Outdoor y Deporte de Lonvi.</p>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterCatalog('todos')" id="filter-todos" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-950 text-white transition">
+                        Todos (8)
+                    </button>
+                    <button onclick="filterCatalog('hombre')" id="filter-hombre" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Hombre
+                    </button>
+                    <button onclick="filterCatalog('mujer')" id="filter-mujer" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Mujer
+                    </button>
+                    <button onclick="filterCatalog('deporte')" id="filter-deporte" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">
+                        Deporte &amp; Tenis
+                    </button>
+                    <button onclick="filterCatalog('sale')" id="filter-sale" class="filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200 hover:bg-amber-100 transition">
+                        Ofertas %
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Product Grid Rendered by JS -->
+            <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         5. DEPORTE & BÁSICOS DEL TENIS SECTION
+            (Combines their Tennis lesson + Cintillo Deportivo + Valldoreix Editorial Contrast)
+    =========================================== -->
+    <section id="seccion-deporte" class="py-20 bg-white border-b border-neutral-100">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            
+            <!-- Header Banner -->
+            <div class="mb-12">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400 block mb-2">Lonvi Court &amp; Outdoor</span>
+                <h2 class="text-4xl font-bold text-neutral-950 mb-2">Tu equipo ideal 🫵</h2>
+                <p class="text-sm text-neutral-600">Estamos para acompañarte en tu deporte, dentro y fuera de la cancha.</p>
+            </div>
+
+            <!-- Editorial Chiaroscuro Block: Básicos del Tenis -->
+            <div class="chiaroscuro-card rounded-2xl text-white p-8 sm:p-12 mb-16 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-6 space-y-4">
+                    <div class="inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-teal-300 bg-white/5 px-3 py-1 rounded border border-white/10">
+                        <span>COURT STUDIES 001</span>
+                        <span>•</span>
+                        <span>CLÍNICA TÉCNICA</span>
+                    </div>
+                    <h3 class="text-3xl font-bold tracking-tight">Básicos del Tenis</h3>
+                    <p class="text-xs uppercase tracking-wider text-neutral-400 font-semibold">Lecciones Básicas de tenis con R.S.</p>
+                    <p class="text-sm text-neutral-300 leading-relaxed">
+                        Recuerda que la raqueta no es todo: el peso, balance, tamaño del aro y tensión de encordado suelen ir con tu estilo de juego. Pero si no juegas con la técnica correcta y comodidad en cancha, no habrá raqueta que te sea cómoda.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <button onclick="openTennisModal()" class="px-6 py-3 rounded text-sm font-semibold btn-cta-solid">
+                            Ver Guía de Empuñaduras y Peso
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Preview Thumbnail with Chiaroscuro Aesthetic -->
+                <div class="lg:col-span-6">
+                    <div onclick="openTennisModal()" class="relative group cursor-pointer rounded-xl overflow-hidden bg-neutral-950 border border-white/10 aspect-video flex flex-col items-center justify-center">
+                        <!-- Court Lines SVG Background -->
+                        <svg viewBox="0 0 400 225" class="absolute inset-0 w-full h-full opacity-35">
+                            <rect width="400" height="225" fill="#16191D"/>
+                            <line x1="50" y1="0" x2="50" y2="225" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="350" y1="0" x2="350" y2="225" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="50" y1="112" x2="350" y2="112" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <line x1="200" y1="40" x2="200" y2="185" stroke="#FFFFFF" stroke-width="1.5"/>
+                            <!-- Chiaroscuro Tennis Ball Highlight -->
+                            <circle cx="290" cy="75" r="18" fill="#D4E157" opacity="0.85"/>
+                        </svg>
+                        <div class="relative z-10 w-16 h-16 rounded-full bg-white/95 text-neutral-950 flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                            <svg class="w-6 h-6 ml-1 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                        <span class="relative z-10 mt-3 text-xs font-mono tracking-widest uppercase text-neutral-300">Reproducir Cápsula Técnica (2:15)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Tennis Accessory: Cintillo Deportivo Lonvi -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                <div class="lg:col-span-6 flex flex-col items-center">
+                    <div class="relative w-full max-w-md bg-white p-4 flex flex-col items-center">
+                        <span class="absolute top-2 left-2 z-10 bg-lonvi-discount text-neutral-950 font-bold text-xs px-2.5 py-1.5">%</span>
+                        <!-- Studio SVG of Cintillo Deportivo Lonvi -->
+                        <svg viewBox="0 0 440 380" class="w-full max-w-[380px] h-auto" filter="url(#softDropShadow)">
+                            <!-- Back Loop of Headband -->
+                            <path d="M90,135 C90,95 350,95 350,135 C350,155 90,155 90,135 Z" fill="#1D1F22"/>
+                            <!-- Knot & Tails -->
+                            <path d="M210,165 L145,285 L195,305 L235,185 Z" fill="#121315" stroke="#26292E" stroke-width="1"/>
+                            <path d="M235,165 L295,320 L335,295 L265,175 Z" fill="#181A1D" stroke="#26292E" stroke-width="1"/>
+                            <!-- Center Tie Knot -->
+                            <path d="M202,152 C220,145 245,148 258,165 C255,188 230,195 208,185 Z" fill="#0D0E10"/>
+                            <!-- Front Main Band -->
+                            <path d="M85,125 C155,105 285,105 355,125 L350,175 C280,158 160,158 90,175 Z" fill="#141619" stroke="#24272C" stroke-width="1"/>
+                            <!-- Crisp White LONVI Logo -->
+                            <text x="220" y="146" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="20" letter-spacing="1.5" fill="#FFFFFF">LONVI</text>
+                        </svg>
+                        <p class="micro-caption mt-2">LONVI COURT &amp; TRAINING</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-neutral-950 mb-2">Cintillo deportivo Lonvi</h3>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-2xl sm:text-3xl font-bold text-lonvi-discount">$3.990</span>
+                        <span class="text-xl sm:text-2xl font-bold text-neutral-400 line-through">$4.990</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-5">
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">TALLA</label>
+                            <select id="talla-cintillo" class="w-full bg-white border border-neutral-300 rounded px-3.5 py-2.5 text-sm font-semibold text-neutral-900">
+                                <option value="Ajustable Estándar">Ajustable Estándar</option>
+                                <option value="Pequeña">Pequeña</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1.5">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 rounded bg-white h-[42px]">
+                                <button onclick="updateQty('qty-cintillo', -1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black">−</button>
+                                <input id="qty-cintillo" type="text" value="1" readonly class="w-full text-center text-sm font-bold text-neutral-900 bg-transparent">
+                                <button onclick="updateQty('qty-cintillo', 1)" class="w-9 h-full flex items-center justify-center text-neutral-500 hover:text-black">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 mb-6">
+                        <button onclick="handleBuyNow('Cintillo deportivo Lonvi', 3990, document.getElementById('talla-cintillo').value, 'Negro', 'qty-cintillo')" class="w-full py-3.5 px-6 rounded text-sm font-semibold btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('Cintillo deportivo Lonvi', 3990, document.getElementById('talla-cintillo').value, 'Negro', 'qty-cintillo')" class="w-full py-3.5 px-6 rounded text-sm font-semibold btn-cta-outline">
+                            Añadir al carrito 🛒
+                        </button>
+                    </div>
+
+                    <div class="space-y-2.5 text-[13px] leading-relaxed text-neutral-700 border-t border-neutral-100 pt-5">
+                        <p class="font-bold text-neutral-950">Cintillo Deportivo — Lonvi</p>
+                        <p>Una pieza simple para acompañarte en movimiento. Confeccionado en 100% poliéster, es liviano y cómodo, pensado para entrenar, jugar tenis, salir a correr o llevarlo durante el día.</p>
+                        <p class="font-semibold text-neutral-900">Hecho en Longaví, Chile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         6. MATERIALES & ORIGEN SECTION
+    =========================================== -->
+    <section id="seccion-materiales" class="py-16 bg-neutral-50 border-b border-neutral-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-7 rounded-xl border border-neutral-100 shadow-sm">
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">01 // IDENTIDAD</span>
+                    <h4 class="text-lg font-bold text-neutral-950 mt-2 mb-2">Meandros del Río Longaví</h4>
+                    <p class="text-xs text-neutral-600 leading-relaxed">
+                        El logotipo manuscrito presente en el Polerón Ocaso y la Polera Senda nace de las curvas orgánicas y meandros del Río Longaví, conectando cada prenda con su geografía de origen.
+                    </p>
+                </div>
+                <div class="bg-white p-7 rounded-xl border border-neutral-100 shadow-sm">
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">02 // COMPOSICIÓN</span>
+                    <h4 class="text-lg font-bold text-neutral-950 mt-2 mb-2">Algodón &amp; Poliéster Técnico</h4>
+                    <p class="text-xs text-neutral-600 leading-relaxed">
+                        Seleccionamos mezclas de 80% algodón / 20% poliéster para máximo abrigo y retención de forma en nuestros polerones, y 100% algodón peinado o poliéster respirable para deporte.
+                    </p>
+                </div>
+                <div class="bg-white p-7 rounded-xl border border-neutral-100 shadow-sm">
+                    <span class="text-xs font-mono uppercase tracking-widest text-neutral-400">03 // DIRECCIÓN VISUAL</span>
+                    <h4 class="text-lg font-bold text-neutral-950 mt-2 mb-2">Minimalismo Funcional</h4>
+                    <p class="text-xs text-neutral-600 leading-relaxed">
+                        Prendas versátiles diseñadas para transicionar sin esfuerzo desde una sesión de entrenamiento o partido de tenis hasta una tarde casual en la ciudad o la montaña.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         7. NEWSLETTER & FOOTER (MATCHES SCREENSHOT)
+    =========================================== -->
+    <section class="py-20 bg-[#F3F2EE]">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950 uppercase mb-3">
+                ÚNETE A NUESTRO NEWSLETTER
+            </h2>
+            <p class="text-xs sm:text-sm text-neutral-600 mb-8">
+                Recibe correos informativos, de productos, promociones, eventos e información de la marca.
+            </p>
+
+            <form onsubmit="handleNewsletterSubmit(event)" class="text-left space-y-4">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-1.5">
+                        DIRECCIÓN DE CORREO ELECTRÓNICO
+                    </label>
+                    <input type="email" required placeholder="Ingresar correo electrónico" class="w-full px-4 py-3 bg-white border border-neutral-300 rounded text-sm text-neutral-900 focus:outline-none focus:border-neutral-900">
+                </div>
+
+                <p class="text-[11px] text-neutral-600 leading-relaxed">
+                    Al registrarme, acepto que LONVI procese mis datos personales con fines de marketing. Estoy informado de que mis datos están sujetos a la <a href="#" class="text-amber-700 underline">Política de Privacidad</a>.
+                </p>
+
+                <div class="flex justify-end pt-2">
+                    <button type="submit" class="px-7 py-2.5 rounded text-xs font-bold uppercase tracking-wider btn-cta-solid">
+                        SUSCRIBIR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-[#E6E5E0] py-12 text-center text-xs text-neutral-700 border-t border-neutral-300/60">
+        <div class="max-w-4xl mx-auto px-6 space-y-6">
+            <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 font-medium">
+                <a href="#" class="hover:text-black transition">Contáctanos</a>
+                <a href="#" class="hover:text-black transition">Términos Legales</a>
+                <a href="#" class="hover:text-black transition">Política de Privacidad</a>
+                <a href="#" class="hover:text-black transition">Política de Cookies</a>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center justify-center gap-5 text-neutral-900">
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="p-2 hover:bg-neutral-300/50 rounded-full transition" aria-label="Instagram">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" class="p-2 hover:bg-neutral-300/50 rounded-full transition" aria-label="Facebook">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                </a>
+                <a href="#" class="p-2 hover:bg-neutral-300/50 rounded-full transition" aria-label="X">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-neutral-500">
+                LONVI — Hecho con orgullo en Longaví, Región del Maule, Chile. Prototipo interactivo para <span class="font-semibold text-neutral-700">lonvi.store</span>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         8. LIVE DESIGN TESTER BAR (FOR LONVI.STORE)
+    =========================================== -->
+    <div id="design-tester-bar" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-[430px] z-50 bg-neutral-950/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl border border-neutral-800">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-neutral-800">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+                <span class="text-xs font-mono uppercase tracking-wider font-bold text-neutral-200">Panel de Pruebas — lonvi.store</span>
+            </div>
+            <button onclick="toggleTesterBar()" class="text-[11px] text-neutral-400 hover:text-white">Minimizar</button>
+        </div>
+
+        <div class="space-y-3 text-xs">
+            <!-- CTA Color Selector -->
+            <div>
+                <label class="block text-[10px] uppercase tracking-wider text-neutral-400 mb-1.5">1. Probar Color de Botones (CTA):</label>
+                <div class="grid grid-cols-4 gap-1.5">
+                    <button onclick="setAccentTheme('turquoise')" class="px-2 py-1.5 rounded bg-[#3CA6A0] text-neutral-950 font-bold text-[11px] flex items-center justify-center gap-1 ring-2 ring-white">
+                        Turquesa
+                    </button>
+                    <button onclick="setAccentTheme('mustard')" class="px-2 py-1.5 rounded bg-[#D4A528] text-neutral-950 font-bold text-[11px] flex items-center justify-center gap-1 opacity-90 hover:opacity-100">
+                        Mostaza
+                    </button>
+                    <button onclick="setAccentTheme('navy')" class="px-2 py-1.5 rounded bg-[#0E2238] text-white font-bold text-[11px] border border-white/20 opacity-90 hover:opacity-100">
+                        Azul Lonvi
+                    </button>
+                    <button onclick="setAccentTheme('black')" class="px-2 py-1.5 rounded bg-neutral-800 text-white font-bold text-[11px] border border-white/20 opacity-90 hover:opacity-100">
+                        Clínico
+                    </button>
+                </div>
+            </div>
+
+            <!-- Micro-Captions & Background Seam Toggle -->
+            <div class="grid grid-cols-2 gap-2 pt-1">
+                <button onclick="toggleMicroCaptions()" id="btn-toggle-captions" class="px-3 py-2 rounded bg-neutral-800 hover:bg-neutral-700 text-left transition">
+                    <span class="block text-[10px] text-neutral-400">Pie de Foto ("ELIGE EL SENDERO")</span>
+                    <span id="caption-status" class="font-semibold text-teal-300">Activado (Estilo IG)</span>
+                </button>
+                <button onclick="toggleSeamlessBg()" id="btn-toggle-bg" class="px-3 py-2 rounded bg-neutral-800 hover:bg-neutral-700 text-left transition">
+                    <span class="block text-[10px] text-neutral-400">Fondo de Página</span>
+                    <span id="bg-status" class="font-semibold text-teal-300">Blanco Puro (Sin Cajas)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimized Pill Button (Hidden by default) -->
+    <button id="tester-pill" onclick="toggleTesterBar()" class="hidden fixed bottom-5 right-5 z-50 bg-neutral-950 text-white px-4 py-2.5 rounded-full shadow-2xl border border-neutral-700 text-xs font-mono flex items-center gap-2 hover:scale-105 transition">
+        <span class="w-2 h-2 rounded-full bg-teal-400"></span>
+        <span>Personalizar lonvi.store</span>
+    </button>
+
+    <!-- ==========================================
+         9. SLIDE-OVER SHOPPING CART DRAWER
+    =========================================== -->
+    <div id="cart-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-neutral-100 flex items-center justify-between">
+            <div>
+                <h3 class="text-lg font-bold text-neutral-950">Tu Carrito Lonvi</h3>
+                <p class="text-xs text-neutral-500">Envíos a todo Chile desde Longaví</p>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-2 text-neutral-400 hover:text-black rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Populated dynamically -->
+        </div>
+
+        <div class="p-6 border-t border-neutral-100 bg-neutral-50 space-y-4">
+            <div class="flex items-center justify-between text-base font-bold text-neutral-950">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+            <button onclick="simulateCheckout()" class="w-full py-3.5 px-6 rounded text-sm font-bold uppercase tracking-wider btn-cta-solid shadow">
+                Finalizar Compra
+            </button>
+        </div>
+    </aside>
+
+    <!-- ==========================================
+         10. TENNIS LESSON & SEARCH MODALS
+    =========================================== -->
+    <div id="tennis-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-neutral-900 text-white max-w-lg w-full rounded-2xl border border-neutral-700 p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono uppercase tracking-widest text-teal-400">BÁSICOS DEL TENIS CON R.S.</span>
+                <button onclick="closeTennisModal()" class="text-neutral-400 hover:text-white">✕</button>
+            </div>
+            <h4 class="text-2xl font-bold mb-3">Cómo elegir tu raqueta según tu biomecánica</h4>
+            <div class="space-y-3 text-sm text-neutral-300 leading-relaxed mb-6">
+                <p><strong class="text-white">1. Peso Estático vs. Swingweight:</strong> Un marco pesado (300g+) entrega mayor estabilidad frente a pelotas rápidas, pero exige técnica limpia y preparación temprana.</p>
+                <p><strong class="text-white">2. Tamaño del Aro:</strong> Aros de 98 sq.in priorizan control direccional; aros de 100 sq.in ofrecen mayor punto dulce y potencia libre.</p>
+                <p><strong class="text-white">3. Indumentaria en Cancha:</strong> Mantener el sudor fuera de los ojos con el <em>Cintillo Deportivo Lonvi</em> y usar telas respirables como la <em>Polera Cauce</em> te permite sostener la concentración en sets largos.</p>
+            </div>
+            <button onclick="closeTennisModal()" class="w-full py-3 rounded font-semibold text-sm btn-cta-solid">
+                Entendido, volver a la tienda
+            </button>
+        </div>
+    </div>
+
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-start justify-center pt-24 p-4">
+        <div class="bg-white max-w-lg w-full rounded-xl p-5 shadow-2xl border border-neutral-100">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Buscar en Lonvi</span>
+                <button onclick="toggleSearchModal()" class="text-neutral-400 hover:text-black">✕</button>
+            </div>
+            <input id="search-input" type="text" oninput="runSearch(this.value)" placeholder="Escribe 'Ocaso', 'Senda', 'Jockey', 'Tenis'..." class="w-full px-4 py-3 border border-neutral-300 rounded-lg text-sm focus:outline-none focus:border-neutral-900 mb-4">
+            <div id="search-results" class="space-y-2 max-h-60 overflow-y-auto text-sm"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         APPLICATION JAVASCRIPT
+    =========================================== -->
+    <script>
+        // Complete Catalog Data matching the user's screenshots
+        const catalogProducts = [
+            {
+                id: 'poleron-ocaso',
+                name: 'Polerón Ocaso',
+                price: 19990,
+                oldPrice: null,
+                category: ['hombre', 'mujer'],
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                colorLabel: 'Azul Marino',
+                svgType: 'sweatshirt-navy'
+            },
+            {
+                id: 'polera-senda',
+                name: 'Polera Senda',
+                price: 7990,
+                oldPrice: null,
+                category: ['hombre', 'mujer'],
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                colorLabel: 'Arena',
+                svgType: 'tshirt-sand'
+            },
+            {
+                id: 'jockey-sendero',
+                name: 'Jockey Sendero',
+                price: 6990,
+                oldPrice: 7990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'ELIGE EL SENDERO',
+                colorLabel: 'Azul / Escarcha / Verde',
+                svgType: 'cap-navy'
+            },
+            {
+                id: 'polera-cauce',
+                name: 'Polera Cauce',
+                price: 10990,
+                oldPrice: 14990,
+                category: ['hombre', 'deporte', 'sale'],
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                colorLabel: 'Azul Marino Técnico',
+                svgType: 'tshirt-cauce'
+            },
+            {
+                id: 'cintillo-deportivo',
+                name: 'Cintillo deportivo Lonvi',
+                price: 3990,
+                oldPrice: 4990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'LONVI COURT',
+                colorLabel: 'Negro',
+                svgType: 'headband-black'
+            },
+            {
+                id: 'polera-basalto',
+                name: 'Polera Basalto',
+                price: 7990,
+                oldPrice: 8990,
+                category: ['hombre', 'mujer', 'deporte', 'sale'],
+                caption: 'SERIE NEVADO',
+                colorLabel: 'Negro Basalto',
+                svgType: 'tshirt-basalto'
+            },
+            {
+                id: 'polera-pique-escarcha',
+                name: 'Polera Piqué Escarcha',
+                price: 9990,
+                oldPrice: 11990,
+                category: ['hombre', 'deporte', 'sale'],
+                caption: 'LONVI COURT',
+                colorLabel: 'Blanco Escarcha',
+                svgType: 'polo-white'
+            },
+            {
+                id: 'jockey-trigal',
+                name: 'Jockey Trigal',
+                price: 7990,
+                oldPrice: 9990,
+                category: ['hombre', 'mujer', 'sale'],
+                caption: 'ELIGE EL SENDERO',
+                colorLabel: 'Arena Trigal',
+                svgType: 'cap-sand'
+            }
+        ];
+
+        let cart = [
+            { name: 'Polerón Ocaso', price: 19990, size: 'M', variant: 'Azul Marino', qty: 1 }
+        ];
+        let showCaptions = true;
+        let pureWhiteSeamless = true;
+
+        // Format CLP Currency
+        function formatCLP(amount) {
+            return '$' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // Generate clean studio SVG thumbnails for the Catalog Grid
+        function getProductCardSVG(type) {
+            switch(type) {
+                case 'sweatshirt-navy':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M82,38 L42,65 L32,192 L58,194 L68,95 L68,202 L172,202 L172,95 L182,194 L208,192 L198,65 L158,38 C142,56 98,56 82,38 Z" fill="#0E2238"/>
+                        <path d="M135,88 C134,94 138,96 142,93 C146,89 152,96 158,90" stroke="#FFFFFF" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                    </svg>`;
+                case 'tshirt-sand':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M84,42 L36,92 L62,115 L76,96 L76,200 L164,200 L164,96 L178,115 L204,92 L156,42 C140,60 100,60 84,42 Z" fill="#D6B593"/>
+                        <path d="M105,105 C104,112 110,114 116,110 C122,106 128,114 135,107" stroke="#3A2314" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                    </svg>`;
+                case 'cap-navy':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <ellipse cx="120" cy="182" rx="68" ry="10" fill="rgba(0,0,0,0.15)"/>
+                        <path d="M55,125 C55,68 82,42 120,42 C158,42 185,68 185,125 Z" fill="#122640"/>
+                        <path d="M58,122 C95,134 145,134 182,122 C188,152 180,174 166,182 C135,172 105,172 74,182 C60,174 52,152 58,122 Z" fill="#0D1D33"/>
+                        <text x="120" y="104" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="16" fill="#FFFFFF" letter-spacing="1">LONVI</text>
+                    </svg>`;
+                case 'tshirt-cauce':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#1C3554"/>
+                        <text x="142" y="88" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="7" fill="#FFFFFF" letter-spacing="0.8">LONVI</text>
+                    </svg>`;
+                case 'headband-black':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M55,95 C95,84 145,84 185,95 L182,122 C145,112 95,112 58,122 Z" fill="#141619"/>
+                        <path d="M112,118 L85,175 L108,184 L125,125 Z" fill="#141619"/>
+                        <path d="M126,118 L152,186 L172,174 L140,122 Z" fill="#1D2024"/>
+                        <text x="120" y="108" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="10" fill="#FFFFFF" letter-spacing="1">LONVI</text>
+                    </svg>`;
+                case 'tshirt-basalto':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#141619"/>
+                        <path d="M142,80 L135,90 L149,90 Z" fill="#FFFFFF"/>
+                    </svg>`;
+                case 'polo-white':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <path d="M84,42 L40,90 L66,112 L76,94 L76,200 L164,200 L164,94 L174,112 L200,90 L156,42 C140,58 100,58 84,42 Z" fill="#F8F9FA" stroke="#E5E7EB" stroke-width="1.5"/>
+                        <line x1="120" y1="54" x2="120" y2="86" stroke="#D1D5DB" stroke-width="2"/>
+                        <text x="142" y="88" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="6.5" fill="#9CA3AF">LONVI</text>
+                    </svg>`;
+                case 'cap-sand':
+                    return `<svg viewBox="0 0 240 240" class="w-full h-56 object-contain">
+                        <ellipse cx="120" cy="182" rx="68" ry="10" fill="rgba(0,0,0,0.12)"/>
+                        <path d="M55,125 C55,68 82,42 120,42 C158,42 185,68 185,125 Z" fill="#D5B895"/>
+                        <path d="M58,122 C95,134 145,134 182,122 C188,152 180,174 166,182 C135,172 105,172 74,182 C60,174 52,152 58,122 Z" fill="#C6A682"/>
+                        <text x="146" y="114" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="11" fill="#FFFFFF">LONVI</text>
+                    </svg>`;
+            }
+        }
+
+        // Render Catalog Grid
+        function renderCatalog(filter = 'todos') {
+            const grid = document.getElementById('catalog-grid');
+            const filtered = filter === 'todos' 
+                ? catalogProducts 
+                : catalogProducts.filter(p => p.category.includes(filter));
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="group flex flex-col bg-white transition">
+                    <div class="relative bg-white p-4 flex flex-col items-center justify-center overflow-hidden">
+                        ${product.oldPrice ? `<span class="absolute top-2 left-2 z-10 bg-lonvi-discount text-neutral-950 font-bold text-xs px-2.5 py-1">%</span>` : ''}
+                        <div class="w-full transition-transform duration-300 group-hover:scale-105">
+                            ${getProductCardSVG(product.svgType)}
+                        </div>
+                        <p class="micro-caption mt-1 ${showCaptions ? '' : 'opacity-0'}">${product.caption}</p>
+                    </div>
+
+                    <div class="pt-4 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-base font-medium text-neutral-950 group-hover:underline">${product.name}</h3>
+                            <div class="flex items-baseline gap-2 mt-1">
+                                <span class="text-base font-semibold ${product.oldPrice ? 'text-lonvi-discount' : 'text-neutral-950'}">${formatCLP(product.price)}</span>
+                                ${product.oldPrice ? `<span class="text-sm text-neutral-400 line-through">${formatCLP(product.oldPrice)}</span>` : ''}
+                            </div>
+                            <p class="text-[10px] uppercase tracking-wider text-neutral-400 mt-1">MÁS VARIANTES DISPONIBLES</p>
+                        </div>
+
+                        <button onclick="quickAdd('${product.name}', ${product.price}, '${product.colorLabel}')" class="mt-4 w-full py-2.5 px-4 rounded text-xs font-semibold btn-cta-outline">
+                            Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Catalog Buttons
+        function filterCatalog(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition';
+            });
+            const activeBtn = document.getElementById('filter-' + category);
+            if (activeBtn) {
+                activeBtn.className = 'filter-btn px-4 py-2 rounded-full text-xs font-semibold bg-neutral-950 text-white transition';
+            }
+            renderCatalog(category);
+        }
+
+        // Interactive Jockey Sendero Color Switcher (Azul Marino, Blanco Escarcha, Verde Sendero)
+        function changeJockeyColor(variant) {
+            const selectEl = document.getElementById('variante-jockey');
+            if (selectEl && selectEl.value !== variant) {
+                selectEl.value = variant;
+            }
+
+            // Show SVG in case custom photo was uploaded
+            document.getElementById('custom-img-jockey').classList.add('hidden');
+            document.getElementById('svg-container-jockey').classList.remove('hidden');
+
+            const stop1 = document.getElementById('capStop1');
+            const stop2 = document.getElementById('capStop2');
+            const stop3 = document.getElementById('capStop3');
+            const brim1 = document.getElementById('brimStop1');
+            const brim2 = document.getElementById('brimStop2');
+            const brim3 = document.getElementById('brimStop3');
+            const button = document.getElementById('cap-button');
+
+            // Reset thumbnail borders
+            ['thumb-jockey-navy', 'thumb-jockey-frost', 'thumb-jockey-green'].forEach(id => {
+                document.getElementById(id).className = 'w-14 h-14 rounded border border-neutral-200 p-1 bg-white hover:border-neutral-900 transition flex flex-col items-center justify-center';
+            });
+
+            if (variant === 'Azul Marino') {
+                stop1.setAttribute('stop-color', '#1D3858');
+                stop2.setAttribute('stop-color', '#122640');
+                stop3.setAttribute('stop-color', '#091526');
+                brim1.setAttribute('stop-color', '#0F2138');
+                brim2.setAttribute('stop-color', '#172F4D');
+                brim3.setAttribute('stop-color', '#0A1729');
+                button.setAttribute('fill', '#122640');
+                document.getElementById('thumb-jockey-navy').classList.replace('border-neutral-200', 'border-neutral-900');
+                document.getElementById('thumb-jockey-navy').classList.add('border-2');
+            } else if (variant === 'Blanco Escarcha') {
+                stop1.setAttribute('stop-color', '#E8EBF8');
+                stop2.setAttribute('stop-color', '#D6DBF2');
+                stop3.setAttribute('stop-color', '#BCC3E5');
+                brim1.setAttribute('stop-color', '#C7CEEB');
+                brim2.setAttribute('stop-color', '#DCE0F5');
+                brim3.setAttribute('stop-color', '#B2BBE0');
+                button.setAttribute('fill', '#D6DBF2');
+                document.getElementById('thumb-jockey-frost').classList.replace('border-neutral-200', 'border-neutral-900');
+                document.getElementById('thumb-jockey-frost').classList.add('border-2');
+            } else if (variant === 'Verde Sendero') {
+                stop1.setAttribute('stop-color', '#129656');
+                stop2.setAttribute('stop-color', '#0A7E46');
+                stop3.setAttribute('stop-color', '#06572F');
+                brim1.setAttribute('stop-color', '#076336');
+                brim2.setAttribute('stop-color', '#0D8A4E');
+                brim3.setAttribute('stop-color', '#054D29');
+                button.setAttribute('fill', '#0A7E46');
+                document.getElementById('thumb-jockey-green').classList.replace('border-neutral-200', 'border-neutral-900');
+                document.getElementById('thumb-jockey-green').classList.add('border-2');
+            }
+        }
+
+        // Zoom view toggles for Polerón Ocaso and Polera Senda
+        function setOcasoView(mode) {
+            const svg = document.getElementById('ocaso-main-svg');
+            document.getElementById('custom-img-ocaso').classList.add('hidden');
+            document.getElementById('svg-container-ocaso').classList.remove('hidden');
+            if (mode === 'zoom') {
+                svg.setAttribute('viewBox', '220 140 160 150');
+            } else {
+                svg.setAttribute('viewBox', '0 0 500 560');
+            }
+        }
+
+        function setSendaView(mode) {
+            const svg = document.getElementById('senda-main-svg');
+            document.getElementById('custom-img-senda').classList.add('hidden');
+            document.getElementById('svg-container-senda').classList.remove('hidden');
+            if (mode === 'zoom') {
+                svg.setAttribute('viewBox', '170 175 160 140');
+            } else {
+                svg.setAttribute('viewBox', '0 0 500 540');
+            }
+        }
+
+        // Allow founder to test their local JPG photos right inside the page
+        function previewLocalPhoto(event, imgId, svgContainerId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgEl = document.getElementById(imgId);
+                const svgEl = document.getElementById(svgContainerId);
+                imgEl.src = e.target.result;
+                imgEl.classList.remove('hidden');
+                svgEl.classList.add('hidden');
+                showToast('Tu fotografía local fue cargada con éxito');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Quantity Stepper
+        function updateQty(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let current = parseInt(input.value, 10) || 1;
+            current = Math.max(1, current + delta);
+            input.value = current;
+        }
+
+        // Cart Management
+        function handleAddToCart(name, price, size, variant, qtyInputId) {
+            const qty = parseInt(document.getElementById(qtyInputId).value, 10) || 1;
+            addItemToCartState(name, price, size, variant, qty);
+            showToast(`${qty}x ${name} (${variant}) añadido al carrito`);
+        }
+
+        function handleBuyNow(name, price, size, variant, qtyInputId) {
+            const qty = parseInt(document.getElementById(qtyInputId).value, 10) || 1;
+            addItemToCartState(name, price, size, variant, qty);
+            toggleCartDrawer(true);
+        }
+
+        function quickAdd(name, price, variant) {
+            addItemToCartState(name, price, 'M', variant, 1);
+            showToast(`${name} añadido al carrito`);
+        }
+
+        function addItemToCartState(name, price, size, variant, qty) {
+            const existing = cart.find(i => i.name === name && i.size === size && i.variant === variant);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, price, size, variant, qty });
+            }
+            renderCart();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const badge = document.getElementById('cart-badge');
+            const list = document.getElementById('cart-items-list');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.textContent = totalCount;
+            subtotalEl.textContent = formatCLP(totalPrice);
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="text-center py-12 text-neutral-400 text-sm">Tu carrito está vacío. Explora la colección Ocaso & Senda.</div>`;
+                return;
+            }
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="flex items-center justify-between p-3.5 rounded-lg border border-neutral-100 bg-neutral-50/60">
+                    <div>
+                        <p class="text-sm font-bold text-neutral-950">${item.name}</p>
+                        <p class="text-xs text-neutral-500">Talla: ${item.size} • ${item.variant} • Cant: ${item.qty}</p>
+                        <p class="text-xs font-bold text-neutral-900 mt-1">${formatCLP(item.price * item.qty)}</p>
+                    </div>
+                    <button onclick="removeCartItem(${idx})" class="text-xs text-neutral-400 hover:text-red-600 p-1">Eliminar</button>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const overlay = document.getElementById('cart-overlay');
+            const drawer = document.getElementById('cart-drawer');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (forceOpen || !isOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function simulateCheckout() {
+            if (cart.length === 0) {
+                showToast('Agrega al menos una prenda antes de continuar');
+                return;
+            }
+            toggleCartDrawer();
+            showToast('Redirigiendo a pasarela de pago Webpay / MercadoPago...');
+        }
+
+        // Live Tester Bar Functions (for lonvi.store testing)
+        function setAccentTheme(theme) {
+            const root = document.documentElement;
+            if (theme === 'turquoise') {
+                root.style.setProperty('--cta-bg', '#3CA6A0');
+                root.style.setProperty('--cta-hover', '#318C87');
+                root.style.setProperty('--cta-text', '#111111');
+                root.style.setProperty('--cta-outline', '#3CA6A0');
+                showToast('Tema aplicado: Turquesa Nuevo (#3CA6A0)');
+            } else if (theme === 'mustard') {
+                root.style.setProperty('--cta-bg', '#D4A528');
+                root.style.setProperty('--cta-hover', '#B88D1D');
+                root.style.setProperty('--cta-text', '#111111');
+                root.style.setProperty('--cta-outline', '#D4A528');
+                showToast('Tema aplicado: Mostaza Original (#D4A528)');
+            } else if (theme === 'navy') {
+                root.style.setProperty('--cta-bg', '#0E2238');
+                root.style.setProperty('--cta-hover', '#193759');
+                root.style.setProperty('--cta-text', '#FFFFFF');
+                root.style.setProperty('--cta-outline', '#0E2238');
+                showToast('Tema aplicado: Azul Marino Ocaso (#0E2238)');
+            } else if (theme === 'black') {
+                root.style.setProperty('--cta-bg', '#141619');
+                root.style.setProperty('--cta-hover', '#2D3138');
+                root.style.setProperty('--cta-text', '#FFFFFF');
+                root.style.setProperty('--cta-outline', '#141619');
+                showToast('Tema aplicado: Negro Clínico Minimalista');
+            }
+        }
+
+        function toggleMicroCaptions() {
+            showCaptions = !showCaptions;
+            document.querySelectorAll('.micro-caption').forEach(el => {
+                el.style.opacity = showCaptions ? '1' : '0';
+            });
+            document.getElementById('caption-status').textContent = showCaptions ? 'Activado (Estilo IG)' : 'Oculto (Solo Prenda)';
+        }
+
+        function toggleSeamlessBg() {
+            pureWhiteSeamless = !pureWhiteSeamless;
+            const showcase = document.getElementById('lanzamiento-seamless');
+            const catalog = document.getElementById('catalogo-destacados');
+            if (pureWhiteSeamless) {
+                showcase.style.backgroundColor = '#FFFFFF';
+                catalog.style.backgroundColor = '#FFFFFF';
+                document.getElementById('bg-status').textContent = 'Blanco Puro (Sin Cajas)';
+                showToast('Fondo 100% Blanco: Efecto flotante sin recuadros');
+            } else {
+                showcase.style.backgroundColor = '#F3F2EE';
+                catalog.style.backgroundColor = '#F3F2EE';
+                document.getElementById('bg-status').textContent = 'Alabastro (Con Cajas)';
+                showToast('Fondo Alabastro Original (#F3F2EE)');
+            }
+        }
+
+        function toggleTesterBar() {
+            const bar = document.getElementById('design-tester-bar');
+            const pill = document.getElementById('tester-pill');
+            bar.classList.toggle('hidden');
+            pill.classList.toggle('hidden');
+        }
+
+        // Modals & Navigation Helpers
+        function openTennisModal() {
+            document.getElementById('tennis-modal').classList.remove('hidden');
+        }
+        function closeTennisModal() {
+            document.getElementById('tennis-modal').classList.add('hidden');
+        }
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+                runSearch('');
+            }
+        }
+        function runSearch(query) {
+            const container = document.getElementById('search-results');
+            const q = query.toLowerCase().trim();
+            const matches = catalogProducts.filter(p => p.name.toLowerCase().includes(q) || p.caption.toLowerCase().includes(q));
+            container.innerHTML = matches.map(p => `
+                <div class="flex items-center justify-between p-2.5 hover:bg-neutral-50 rounded-lg border border-neutral-100">
+                    <div>
+                        <p class="font-semibold text-neutral-900">${p.name}</p>
+                        <p class="text-xs text-neutral-400">${p.caption}</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="font-bold text-neutral-900">${formatCLP(p.price)}</span>
+                        <button onclick="quickAdd('${p.name}', ${p.price}, '${p.colorLabel}'); toggleSearchModal();" class="px-3 py-1 rounded text-xs font-semibold btn-cta-solid">Añadir</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function setActiveNav(el) {
+            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('nav-active-indicator', 'font-semibold'));
+            el.classList.add('nav-active-indicator', 'font-semibold');
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('¡Gracias por unirte a la comunidad Lonvi!');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-x-full', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+            }, 3000);
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatalog('todos');
+            renderCart();
+        });
+    </script>
+</body>
+</html>
