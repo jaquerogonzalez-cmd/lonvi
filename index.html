@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LONVI — Nacida en Longaví, Chile | Colección Ocaso & Senda</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                    },
+                    colors: {
+                        lonvi: {
+                            navy: '#0B2246',
+                            green: '#05502A',
+                            court: '#064269',
+                            tennis: '#F4ED1F',
+                            rock: '#B5B5B5',
+                            slate: '#8C9298',
+                            frost: '#B6C0D2',
+                            sand: '#D2B48C',
+                            earth: '#3E3124',
+                            basalto: '#000000',
+                            turquoise: '#3CA6A0',
+                            mustard: '#D4A528'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Default Primary Architecture: Negro / Blanco & Blanco / Negro */
+            --cta-bg: #000000;
+            --cta-hover: #222222;
+            --cta-text: #FFFFFF;
+            --cta-outline: #000000;
+            --cta-outline-text: #000000;
+            --topbar-bg: #000000;
+            --topbar-text: #FFFFFF;
+            --badge-bg: #000000;
+            --badge-text: #FFFFFF;
+            --price-sale: #D97736;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FFFFFF;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Dynamic Accent Utilities driven by the Official Brand Palette */
+        .btn-cta-solid {
+            background-color: var(--cta-bg);
+            color: var(--cta-text);
+            border: 1px solid var(--cta-bg);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-solid:hover {
+            background-color: var(--cta-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-cta-outline {
+            background-color: transparent;
+            border: 1px solid var(--cta-outline);
+            color: var(--cta-outline-text);
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta-outline:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            transform: translateY(-1px);
+        }
+
+        .dynamic-topbar {
+            background-color: var(--topbar-bg);
+            color: var(--topbar-text);
+            transition: all 0.3s ease;
+        }
+
+        .dynamic-badge {
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            transition: all 0.3s ease;
+        }
+
+        .nav-active-indicator {
+            color: #000000 !important;
+            border-bottom: 2px solid var(--cta-bg);
+            padding-bottom: 4px;
+        }
+
+        /* Editorial Mountain Texture Background */
+        .nevado-hero-bg {
+            background-color: #08090B;
+            background-image: 
+                radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.08) 0%, rgba(0, 0, 0, 0.92) 80%),
+                repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
+        }
+
+        /* Micro-caption styling like the Instagram posts */
+        .micro-caption {
+            letter-spacing: 0.18em;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000000;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Page Transition Animation */
+        .page-view {
+            animation: fadeInPage 0.24s ease-out;
+        }
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom subtle scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFFFFF;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #B5B5B5;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-black selection:text-white min-h-screen flex flex-col">
+
+    <!-- ==========================================
+         REUSABLE OFFICIAL LONVI LOGO & GARMENT SYMBOLS
+    =========================================== -->
+    <svg class="hidden" aria-hidden="true">
+        <!-- Official Nevado Longaví Mountain + River Meander + LONVI Wordmark -->
+        <symbol id="lonvi-official-logo" viewBox="0 0 200 135">
+            <path d="M14 94 L82 22 L90 30 L26 94 Z" fill="currentColor"/>
+            <path d="M34 94 L76 50 C81 45 86 49 82 55 L46 94 Z" fill="currentColor"/>
+            <path d="M82 22 L106 46 L117 33 L168 94 L157 94 L115 44 L109 51 L126 30 L182 94 L173 94 L124 36 L118 42 L95 94 L64 94 L88 60 C92 53 84 44 76 52 L69 45 L86 27 Z" fill="currentColor"/>
+            <text x="100" y="125" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="33" letter-spacing="2.5" fill="currentColor">LONVI</text>
+        </symbol>
+
+        <!-- Organic River Meander Script "Lonvi" (Polerón Ocaso & Polera Senda) -->
+        <symbol id="lonvi-meander-script" viewBox="0 0 85 36">
+            <path d="M4,4 C1,16 0,26 5,28 C10,30 15,26 18,22 M26,16 C20,16 17,22 20,27 C23,31 30,29 32,23 C33,18 29,16 26,16 Z M34,22 C37,17 41,17 43,23 C45,28 48,28 52,21 C55,17 57,24 61,27 C64,29 68,24 71,16 M73,15 L73,29" 
+                  stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </symbol>
+    </svg>
+
+    <!-- ==========================================
+         NOTIFICATION TOAST
+    =========================================== -->
+    <div id="toast-notification" class="fixed top-20 right-6 z-50 transform translate-x-full opacity-0 transition-all duration-300 pointer-events-none bg-black text-white px-5 py-3.5 rounded shadow-2xl flex items-center gap-3 border border-neutral-800">
+        <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+        <span id="toast-message" class="text-xs font-semibold tracking-wide uppercase">Producto añadido al carrito</span>
+    </div>
+
+    <!-- ==========================================
+         TOP ANNOUNCEMENT BAR
+    =========================================== -->
+    <div class="dynamic-topbar h-8 px-4 flex items-center justify-between text-[10px] sm:text-[11px] font-semibold tracking-[0.16em] uppercase">
+        <div class="hidden lg:flex items-center gap-2 opacity-80">
+            <span>LONGAVÍ, REGIÓN DEL MAULE</span>
+            <span>//</span>
+            <span>CHILE</span>
+        </div>
+        <div class="mx-auto flex items-center gap-3">
+            <span>ENVÍOS A TODO CHILE</span>
+            <span class="opacity-50">·</span>
+            <button onclick="navigateTo('novedades')" class="underline hover:opacity-80 uppercase tracking-[0.16em]">COLECCIÓN RÍO LONGAVÍ DISPONIBLE</button>
+        </div>
+        <div class="hidden lg:flex items-center gap-3">
+            <button onclick="openFolderGuideModal()" class="underline hover:opacity-80 transition">Guía de Archivos JPG</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MULTI-PAGE STICKY HEADER
+         Every link switches to a dedicated page view!
+    =========================================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -> Navigates to INICIO (Home Page) -->
+            <button onclick="navigateTo('inicio')" class="flex items-center gap-3 group focus:outline-none text-left" title="Ir a Inicio">
+                <svg class="w-16 h-11 text-black transition-transform duration-300 group-hover:scale-105">
+                    <use href="#lonvi-official-logo"></use>
+                </svg>
+            </button>
+
+            <!-- True Multi-Page Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-7 lg:space-x-9 text-xs font-bold uppercase tracking-[0.12em] text-neutral-500">
+                <button onclick="navigateTo('inicio')" data-route="inicio" class="nav-link transition-colors hover:text-black">Inicio</button>
+                <button onclick="navigateTo('novedades')" data-route="novedades" class="nav-link transition-colors hover:text-black">Novedades</button>
+                <button onclick="navigateTo('hombre')" data-route="hombre" class="nav-link transition-colors hover:text-black">Hombre</button>
+                <button onclick="navigateTo('mujer')" data-route="mujer" class="nav-link transition-colors hover:text-black">Mujer</button>
+                <button onclick="navigateTo('deporte')" data-route="deporte" class="nav-link transition-colors hover:text-black">Deporte</button>
+                <button onclick="navigateTo('materiales')" data-route="materiales" class="nav-link transition-colors hover:text-black">Materiales</button>
+                <button onclick="navigateTo('sale')" data-route="sale" class="nav-link px-2.5 py-1 bg-neutral-100 text-black rounded transition-colors hover:bg-black hover:text-white">SALE</button>
+            </nav>
+
+            <!-- Right Icons: Search & Cart -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button onclick="toggleSearchModal()" class="p-2 text-neutral-800 hover:text-black rounded-full hover:bg-neutral-100 transition" title="Buscar productos">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path stroke-linecap="round" d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                </button>
+
+                <button onclick="toggleCartDrawer()" class="relative p-2 text-neutral-800 hover:text-black rounded-full hover:bg-neutral-100 transition flex items-center gap-1.5" title="Ver Carrito">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span id="cart-badge" class="dynamic-badge text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">1</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-black rounded-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Multi-Page Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-neutral-200 px-6 py-4 space-y-2.5 text-xs font-bold uppercase tracking-wider">
+            <button onclick="navigateTo('inicio'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-black">Inicio</button>
+            <button onclick="navigateTo('novedades'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-neutral-600">Novedades</button>
+            <button onclick="navigateTo('hombre'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-neutral-600">Hombre</button>
+            <button onclick="navigateTo('mujer'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-neutral-600">Mujer</button>
+            <button onclick="navigateTo('deporte'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-neutral-600">Deporte</button>
+            <button onclick="navigateTo('materiales'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-neutral-600">Materiales</button>
+            <button onclick="navigateTo('sale'); toggleMobileMenu()" class="block w-full text-left py-1.5 text-black underline">SALE</button>
+        </div>
+    </header>
+
+    <!-- ============================================================================
+         MAIN ROUTER CONTAINER — ONLY ONE PAGE IS VISIBLE AT A TIME
+    ============================================================================= -->
+    <main class="flex-1 bg-white">
+
+        <!-- ========================================================================
+             PAGE 1: INICIO (HOME PAGE)
+             Matches Captura 10.35.37.jpg + 10.35.53.jpg
+        ========================================================================= -->
+        <div id="page-inicio" class="page-view">
+            <!-- Hero Banner Nevado Longaví -->
+            <section class="relative nevado-hero-bg text-white overflow-hidden">
+                <div class="absolute inset-0 opacity-45 pointer-events-none">
+                    <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice" class="w-full h-full">
+                        <defs>
+                            <linearGradient id="ridgeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#374151" stop-opacity="0.55"/>
+                                <stop offset="50%" stop-color="#1F2937" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+                            </linearGradient>
+                            <linearGradient id="ridgeGrad2" x1="50%" y1="0%" x2="50%" y2="100%">
+                                <stop offset="0%" stop-color="#8C9298" stop-opacity="0.3"/>
+                                <stop offset="100%" stop-color="#000000" stop-opacity="0.98"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M0,450 L180,310 L340,370 L540,140 L730,280 L940,95 L1180,270 L1320,190 L1440,310 L1440,600 L0,600 Z" fill="url(#ridgeGrad1)"/>
+                        <path d="M0,520 L240,340 L450,420 L690,180 L890,350 L1110,160 L1440,390 L1440,600 L0,600 Z" fill="url(#ridgeGrad2)"/>
+                        <path d="M540,140 C560,260 490,380 520,520" stroke="rgba(255,255,255,0.14)" stroke-width="2" fill="none"/>
+                        <path d="M940,95 C910,220 980,340 930,540" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
+
+                <div class="relative max-w-6xl mx-auto px-6 py-24 sm:py-32 md:py-36 flex flex-col md:items-end">
+                    <div class="max-w-xl md:mr-8 text-center">
+                        <h1 class="font-display text-5xl sm:text-6xl font-bold tracking-[0.08em] uppercase mb-5">LONVI</h1>
+                        <p class="text-base sm:text-lg text-neutral-200 font-light leading-relaxed mb-8">
+                            Nacida en Longaví, Chile.<br>
+                            Inspirada en la fuerza del Nevado Longaví y en la identidad de quienes llevan con orgullo sus raíces.
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <button onclick="navigateTo('novedades')" class="px-8 py-3.5 bg-transparent hover:bg-white hover:text-black text-white border border-white/80 text-xs font-semibold tracking-[0.14em] transition duration-300">
+                                Descubre Lonvi
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Home Destacados (3 Products Row from Home Screenshot) -->
+            <section class="py-16 sm:py-20 bg-white border-b border-neutral-200">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-black tracking-tight mb-10">Destacados</h2>
+                    <div id="home-featured-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
+                        <!-- Populated dynamically with Polera Basalto, Polera Piqué Escarcha, Jockey Nevado -->
+                    </div>
+                    <button onclick="navigateTo('hombre')" class="inline-flex items-center gap-2 text-base font-medium text-black hover:translate-x-1 transition-transform">
+                        <span>Explorar Productos</span>
+                        <span class="text-lg">→</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Home Featured Product Spotlight: Cintillo Deportivo Lonvi -->
+            <section class="py-16 sm:py-24 bg-white">
+                <div class="max-w-5xl mx-auto px-4 sm:px-8" id="home-cintillo-spotlight">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 2: NOVEDADES (NEW COLLECTION LAUNCH PAGE)
+             Matches Captura 10.36.27.jpg & 10.36.56.jpg with Seamless White BG
+        ========================================================================= -->
+        <div id="page-novedades" class="page-view hidden">
+            <section class="bg-white border-b border-neutral-200 py-10">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                    <div>
+                        <span class="text-[11px] font-bold uppercase tracking-[0.22em] text-neutral-400 block mb-2">LANZAMIENTO OFICIAL // EDICIÓN RÍO LONGAVÍ &amp; ELIGE EL SENDERO</span>
+                        <h1 class="text-3xl sm:text-4xl font-bold text-black tracking-tight">Novedades</h1>
+                    </div>
+                    <button onclick="openFolderGuideModal()" class="text-xs font-semibold underline text-neutral-600 hover:text-black">
+                        ¿Cómo conectar tus fotos JPG locales? →
+                    </button>
+                </div>
+            </section>
+
+            <section class="py-14 sm:py-20 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8 space-y-28" id="novedades-editorial-list">
+                    <!-- Populated dynamically with alternating seamless editorial blocks:
+                         1. Polerón Ocaso ($19.990)
+                         2. Polera Senda ($7.990)
+                         3. Polera Cauce ($10.990)
+                         4. Jockey Sendero ($6.990) -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 3: HOMBRE (MEN'S DEDICATED CATALOG PAGE - 8 PRODUCTS)
+             Matches Captura 10.36.01.jpg
+        ========================================================================= -->
+        <div id="page-hombre" class="page-view hidden">
+            <section class="py-14 sm:py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                    <!-- Page Header & Sub-filters -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-neutral-200 gap-6">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-neutral-400 mb-2">
+                                <button onclick="navigateTo('inicio')" class="hover:text-black">Inicio</button>
+                                <span>/</span>
+                                <span class="text-black font-semibold">Hombre</span>
+                            </div>
+                            <h1 class="text-4xl sm:text-5xl font-bold text-black tracking-tight">Destacados Hombre</h1>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="filterGenderCatalog('hombre', 'todos')" data-subfilter="hombre-todos" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white transition">Todos (8)</button>
+                            <button onclick="filterGenderCatalog('hombre', 'poleras')" data-subfilter="hombre-poleras" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Poleras</button>
+                            <button onclick="filterGenderCatalog('hombre', 'polerones')" data-subfilter="hombre-polerones" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Polerones</button>
+                            <button onclick="filterGenderCatalog('hombre', 'accesorios')" data-subfilter="hombre-accesorios" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Jockeys &amp; Accesorios</button>
+                        </div>
+                    </div>
+
+                    <!-- 4-Column Grid matching Screenshot 10.36.01.jpg -->
+                    <div id="hombre-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 4: MUJER (WOMEN'S DEDICATED CATALOG PAGE - 6 PRODUCTS)
+             Matches Captura 10.36.07.jpg
+        ========================================================================= -->
+        <div id="page-mujer" class="page-view hidden">
+            <section class="py-14 sm:py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-neutral-200 gap-6">
+                        <div>
+                            <div class="flex items-center gap-2 text-xs text-neutral-400 mb-2">
+                                <button onclick="navigateTo('inicio')" class="hover:text-black">Inicio</button>
+                                <span>/</span>
+                                <span class="text-black font-semibold">Mujer</span>
+                            </div>
+                            <h1 class="text-4xl sm:text-5xl font-bold text-black tracking-tight">Destacados Mujer</h1>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button onclick="filterGenderCatalog('mujer', 'todos')" data-subfilter="mujer-todos" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white transition">Todos (6)</button>
+                            <button onclick="filterGenderCatalog('mujer', 'poleras')" data-subfilter="mujer-poleras" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Poleras</button>
+                            <button onclick="filterGenderCatalog('mujer', 'polerones')" data-subfilter="mujer-polerones" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Polerones</button>
+                            <button onclick="filterGenderCatalog('mujer', 'accesorios')" data-subfilter="mujer-accesorios" class="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition">Jockeys &amp; Accesorios</button>
+                        </div>
+                    </div>
+
+                    <!-- 4-Column Grid matching Screenshot 10.36.07.jpg -->
+                    <div id="mujer-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 5: DEPORTE (DEDICATED TENNIS & SPORT PAGE)
+             Matches Captura 10.36.17.jpg
+        ========================================================================= -->
+        <div id="page-deporte" class="page-view hidden">
+            <!-- Top Sport Banner -->
+            <section class="bg-[#EEEDE8] py-14 sm:py-16 border-b border-neutral-200">
+                <div class="max-w-5xl mx-auto px-4 sm:px-8">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-neutral-500 block mb-2">LONVI COURT &amp; OUTDOOR DIVISION</span>
+                    <h1 class="text-4xl sm:text-5xl font-bold text-black tracking-tight mb-3">Tu equipo ideal</h1>
+                    <p class="text-sm sm:text-base text-neutral-700">Estamos para acompañarte en tu deporte, en la cancha y en cada entrenamiento.</p>
+                </div>
+            </section>
+
+            <!-- Básicos del Tenis Module (From Screenshot 10.36.17.jpg) -->
+            <section class="py-14 sm:py-16 bg-white border-b border-neutral-200">
+                <div class="max-w-5xl mx-auto px-4 sm:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                        <div class="lg:col-span-6 space-y-4">
+                            <span class="inline-block text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 bg-[#064269] text-[#F4ED1F]">
+                                COURT STUDIES // CLÍNICA TÉCNICA
+                            </span>
+                            <h2 class="text-3xl font-bold text-black">Básicos del Tenis</h2>
+                            <p class="text-xs font-semibold text-neutral-600">Lecciones Básicas de tenis con R.S.</p>
+                            <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                                Recuerda que la raqueta no es todo, el peso, tamaño y otros factores suelen ir con tu estilo de juego. Pero si no juegas con la técnica correcta, no habrá raqueta que te sea cómoda.
+                            </p>
+                            <div class="pt-2">
+                                <button onclick="openTennisModal()" class="px-6 py-3 text-xs font-bold uppercase tracking-[0.14em] btn-cta-solid">
+                                    Ver Lección de Tenis
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-6">
+                            <div onclick="openTennisModal()" class="relative group cursor-pointer bg-[#E5E5E5] hover:bg-[#064269] transition-colors duration-300 aspect-video flex flex-col items-center justify-center border border-neutral-200 overflow-hidden">
+                                <!-- Subtle Court Lines -->
+                                <svg viewBox="0 0 400 225" class="absolute inset-0 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity">
+                                    <line x1="50" y1="0" x2="50" y2="225" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="350" y1="0" x2="350" y2="225" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="50" y1="112" x2="350" y2="112" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="200" y1="35" x2="200" y2="190" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                                <div class="relative z-10 w-14 h-14 bg-black group-hover:bg-[#F4ED1F] text-white group-hover:text-[#064269] flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                                    <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <span class="relative z-10 mt-3 text-[11px] font-mono uppercase tracking-widest text-neutral-700 group-hover:text-white">Reproducir Cápsula con R.S.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Sport Product: Cintillo Deportivo Lonvi -->
+            <section class="py-16 bg-white border-b border-neutral-200">
+                <div class="max-w-5xl mx-auto px-4 sm:px-8" id="deporte-cintillo-showcase">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Other Sport Products Grid -->
+            <section class="py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <h3 class="text-2xl font-bold text-black mb-8">Indumentaria Técnica de Cancha &amp; Outdoor</h3>
+                    <div id="deporte-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 6: MATERIALES (FABRIC ENGINEERING, ORIGIN & 9-COLOR PALETTE)
+        ========================================================================= -->
+        <div id="page-materiales" class="page-view hidden">
+            <section class="nevado-hero-bg text-white py-20">
+                <div class="max-w-5xl mx-auto px-6 text-center">
+                    <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-neutral-300 block mb-3">INGENIERÍA TEXTIL &amp; ORIGEN TERRITORIAL</span>
+                    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight mb-4">Materiales &amp; Identidad Lonvi</h1>
+                    <p class="text-sm sm:text-base text-neutral-300 max-w-2xl mx-auto leading-relaxed">
+                        Cada prenda Lonvi se diseña pensando en la transición real entre el deporte activo, la vida al aire libre y la rutina diaria, inspirada en la geografía del Nevado y el Río Longaví.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Dual Logo Identity: Nevado Peak vs. Río Longaví Meander -->
+            <section class="py-16 bg-white border-b border-neutral-200">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="p-8 border border-neutral-200 bg-white flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block mb-2">IDENTIDAD 01 // LA CUMBRE</span>
+                                <h3 class="text-2xl font-bold text-black mb-3">Símbolo Nevado Longaví</h3>
+                                <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-6">
+                                    Presente en nuestra línea técnica de cancha y montaña (Polera Basalto, Polera Cauce, Jockey Sendero y Cintillo Deportivo). Representa las aristas rocosas y glaciares del estratovolcán Nevado Longaví en la Región del Maule.
+                                </p>
+                            </div>
+                            <div class="h-32 bg-neutral-950 text-white flex items-center justify-center">
+                                <svg class="w-24 h-16"><use href="#lonvi-official-logo"></use></svg>
+                            </div>
+                        </div>
+
+                        <div class="p-8 border border-neutral-200 bg-white flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block mb-2">IDENTIDAD 02 // EL CAUCE</span>
+                                <h3 class="text-2xl font-bold text-black mb-3">Trazo Meandro Río Longaví</h3>
+                                <p class="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-6">
+                                    Presente en la cápsula casual-outdoor (Polerón Ocaso y Polera Senda). Una tipografía orgánica dibujada a partir de las curvas y meandros naturales que traza el Río Longaví en su descenso hacia el valle.
+                                </p>
+                            </div>
+                            <div class="h-32 bg-[#0B2246] text-white flex flex-col items-center justify-center gap-2">
+                                <svg class="w-28 h-12 text-white"><use href="#lonvi-meander-script"></use></svg>
+                                <span class="text-[9px] font-mono uppercase tracking-[0.2em] text-white/70">EDICIÓN RÍO LONGAVÍ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3 Fabric Pillars -->
+            <section class="py-16 bg-white border-b border-neutral-200">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <h2 class="text-3xl font-bold text-black mb-10">Nuestras 3 Construcciones Textiles</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="border border-neutral-200 p-6 space-y-3">
+                            <span class="inline-block text-[10px] font-mono font-bold uppercase px-2.5 py-1 bg-[#0B2246] text-white">80% ALGODÓN / 20% POLIÉSTER</span>
+                            <h3 class="text-xl font-bold text-black">Franela Ocaso de Alto Gramaje</h3>
+                            <p class="text-xs text-neutral-600 leading-relaxed">
+                                Combina la suavidad térmica y respirabilidad del algodón natural en contacto con la piel con una estructura de 20% poliéster que evita que el cuello o los puños pierdan su forma tras los lavados.
+                            </p>
+                            <button onclick="openProductDetail('poleron-ocaso', 'materiales')" class="text-xs font-bold underline text-black pt-2 inline-block">Ver en Polerón Ocaso →</button>
+                        </div>
+
+                        <div class="border border-neutral-200 p-6 space-y-3">
+                            <span class="inline-block text-[10px] font-mono font-bold uppercase px-2.5 py-1 bg-[#D2B48C] text-[#3E3124]">100% ALGODÓN PEINADO</span>
+                            <h3 class="text-xl font-bold text-black">Jersey Orgánico Senda &amp; Basalto</h3>
+                            <p class="text-xs text-neutral-600 leading-relaxed">
+                                Tejido de punto simple 100% algodón seleccionado para un tacto fresco, hipoalergénico y liviano. Pensado para acompañarte todo el día en la ciudad o después de entrenar.
+                            </p>
+                            <button onclick="openProductDetail('polera-senda', 'materiales')" class="text-xs font-bold underline text-black pt-2 inline-block">Ver en Polera Senda →</button>
+                        </div>
+
+                        <div class="border border-neutral-200 p-6 space-y-3">
+                            <span class="inline-block text-[10px] font-mono font-bold uppercase px-2.5 py-1 bg-[#064269] text-[#F4ED1F]">100% POLIÉSTER TÉCNICO</span>
+                            <h3 class="text-xl font-bold text-black">Microfibra &amp; Sarga de Cancha</h3>
+                            <p class="text-xs text-neutral-600 leading-relaxed">
+                                Rápida evaporación del sudor, ligereza extrema y alta resistencia a la radiación solar. Aplicado en nuestra Polera Cauce, Cintillo Deportivo y la corona estructurada del Jockey Sendero.
+                            </p>
+                            <button onclick="openProductDetail('jockey-sendero', 'materiales')" class="text-xs font-bold underline text-black pt-2 inline-block">Ver en Jockey Sendero →</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive 9-Color Brand Palette Matrix (From Portada.png) -->
+            <section class="py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-widest text-neutral-400 block mb-1">PALETA CROMÁTICA OFICIAL LONVI</span>
+                            <h2 class="text-2xl font-bold text-black">Prueba los 9 Bloques de Color en la Tienda</h2>
+                        </div>
+                        <span id="active-palette-label" class="text-xs font-mono text-neutral-500">
+                            Activo: Principal Negro / Blanco (#000000 / #FFFFFF)
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-3 sm:grid-cols-9 border border-black overflow-hidden shadow-sm">
+                        <button onclick="applyBrandSwatch('ocaso')" class="h-28 bg-[#0B2246] text-white flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Ocaso</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('sendero')" class="h-28 bg-[#05502A] text-white flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Sendero</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('tenis')" class="h-28 bg-[#064269] text-[#F4ED1F] flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Tenis</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('negro-blanco')" class="relative h-28 bg-[#000000] text-white flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <span class="absolute top-1 right-1 text-[8px] font-mono bg-white text-black px-1 font-bold">PRINCIPAL</span>
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Negro/Blanco</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('blanco-negro')" class="relative h-28 bg-[#FFFFFF] text-[#000000] border-x border-neutral-200 flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <span class="absolute top-1 right-1 text-[8px] font-mono bg-black text-white px-1 font-bold">PRINCIPAL</span>
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Blanco/Negro</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('roca')" class="h-28 bg-[#B5B5B5] text-[#000000] flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Roca</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('pizarra')" class="h-28 bg-[#8C9298] text-white flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Pizarra</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('escarcha')" class="h-28 bg-[#B6C0D2] text-white flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Escarcha</span>
+                        </button>
+                        <button onclick="applyBrandSwatch('senda')" class="h-28 bg-[#D2B48C] text-[#3E3124] flex flex-col items-center justify-center p-2 hover:scale-[1.02] transition">
+                            <svg class="w-16 h-11"><use href="#lonvi-official-logo"></use></svg>
+                            <span class="text-[9px] font-mono uppercase mt-1">Senda</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 7: SALE (DEDICATED DISCOUNT / OUTLET PAGE)
+        ========================================================================= -->
+        <div id="page-sale" class="page-view hidden">
+            <section class="py-14 sm:py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-neutral-200 gap-6">
+                        <div>
+                            <span class="inline-block text-[10px] font-mono font-bold uppercase tracking-widest px-2.5 py-1 bg-[#D9824B] text-white mb-2">
+                                OPORTUNIDADES DE LANZAMIENTO
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl font-bold text-black tracking-tight">SALE — Precios Especiales</h1>
+                        </div>
+                        <p class="text-xs text-neutral-500">7 productos seleccionados con descuento activo.</p>
+                    </div>
+
+                    <div id="sale-catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-14">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========================================================================
+             PAGE 8: DEDICATED PRODUCT DETAIL PAGE (PDP - #producto/{id})
+             Seamless #FFFFFF floating layout matching Captura 11.06.26.jpg
+        ========================================================================= -->
+        <div id="page-producto" class="page-view hidden">
+            <section class="py-10 sm:py-16 bg-white">
+                <div class="max-w-6xl mx-auto px-4 sm:px-8">
+                    <!-- Breadcrumb & Back Navigation -->
+                    <div class="flex items-center justify-between mb-10 pb-4 border-b border-neutral-200">
+                        <div class="flex items-center gap-2 text-xs text-neutral-500">
+                            <button onclick="navigateTo('inicio')" class="hover:text-black">Inicio</button>
+                            <span>/</span>
+                            <button id="pdp-breadcrumb-Origin" onclick="goBackPage()" class="hover:text-black capitalize">Catálogo</button>
+                            <span>/</span>
+                            <span id="pdp-breadcrumb-name" class="text-black font-bold">Producto</span>
+                        </div>
+                        <button onclick="goBackPage()" class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-black hover:underline">
+                            <span>← Volver</span>
+                        </button>
+                    </div>
+
+                    <!-- Dynamic Seamless Product Detail Content -->
+                    <div id="pdp-content-container"></div>
+
+                    <!-- Related Products Row at bottom of PDP -->
+                    <div class="mt-24 pt-12 border-t border-neutral-200">
+                        <h3 class="text-2xl font-bold text-black mb-8">También te puede interesar</h3>
+                        <div id="pdp-related-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-8"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- ==========================================
+         SHARED NEWSLETTER & FOOTER
+    =========================================== -->
+    <section class="py-16 bg-[#EEEDE8] border-t border-neutral-200">
+        <div class="max-w-xl mx-auto px-6 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-black uppercase mb-2">
+                ÚNETE A NUESTRO NEWSLETTER
+            </h2>
+            <p class="text-xs sm:text-sm text-neutral-600 mb-6">
+                Recibe correos informativos, de productos, promociones, eventos e información de la marca.
+            </p>
+
+            <form onsubmit="handleNewsletterSubmit(event)" class="text-left space-y-3">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-600 mb-1">
+                        DIRECCIÓN DE CORREO ELECTRÓNICO
+                    </label>
+                    <input type="email" required placeholder="Ingresar correo electrónico" class="w-full px-4 py-2.5 bg-white border border-neutral-300 text-sm text-black focus:outline-none focus:border-black">
+                </div>
+
+                <p class="text-[11px] text-neutral-600 leading-relaxed">
+                    Al registrarme, acepto que LONVI procese mis datos personales con fines de marketing. Estoy informado de que mis datos están sujetos a la <button type="button" onclick="navigateTo('materiales')" class="text-[#D4A528] font-semibold underline">Política de Privacidad</button>.
+                </p>
+
+                <div class="flex justify-end pt-1">
+                    <button type="submit" class="px-7 py-2.5 text-xs font-bold uppercase tracking-[0.15em] btn-cta-solid">
+                        SUSCRIBIR
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-[#E5E4DF] text-neutral-800 py-10 text-center text-xs border-t border-neutral-300">
+        <div class="max-w-4xl mx-auto px-6 space-y-5">
+            <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 font-medium text-neutral-700">
+                <button onclick="navigateTo('inicio')" class="hover:text-black transition">Inicio</button>
+                <button onclick="navigateTo('novedades')" class="hover:text-black transition">Novedades</button>
+                <button onclick="navigateTo('hombre')" class="hover:text-black transition">Hombre</button>
+                <button onclick="navigateTo('mujer')" class="hover:text-black transition">Mujer</button>
+                <button onclick="navigateTo('deporte')" class="hover:text-black transition">Deporte</button>
+                <button onclick="navigateTo('materiales')" class="hover:text-black transition">Materiales</button>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="flex items-center justify-center gap-4 text-black">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-1.5 hover:opacity-70" title="Instagram Lonvi">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+            </div>
+
+            <p class="text-[11px] text-neutral-500">
+                LONVI — Nacida en Longaví, Chile. Arquitectura multipágina para <span class="font-semibold text-black">lonvi.store</span>.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         FLOATING PALETTE & ROUTE TESTER BAR
+    =========================================== -->
+    <div id="design-tester-bar" class="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:w-[460px] z-50 bg-black/95 backdrop-blur-md text-white p-4 shadow-2xl border border-neutral-700">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-neutral-800">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+                <span class="text-[11px] font-mono uppercase tracking-wider font-bold text-white">Estudio Lonvi — Paleta &amp; Botones</span>
+            </div>
+            <button onclick="toggleTesterBar()" class="text-[11px] text-neutral-400 hover:text-white">Minimizar</button>
+        </div>
+
+        <div class="space-y-3 text-xs">
+            <div>
+                <label class="block text-[10px] uppercase tracking-wider text-neutral-400 mb-1.5">
+                    Principales (Blanco/Negro) + Colores de Colección y Botones:
+                </label>
+                <div class="grid grid-cols-3 gap-1.5">
+                    <button onclick="applyBrandSwatch('negro-blanco')" class="px-2 py-1.5 bg-black text-white border border-white/40 font-bold text-[10px] uppercase tracking-wider hover:border-white">
+                        Negro / Blanco
+                    </button>
+                    <button onclick="applyBrandSwatch('turquesa')" class="px-2 py-1.5 bg-[#3CA6A0] text-black font-bold text-[10px] uppercase tracking-wider">
+                        Turquesa (Captura)
+                    </button>
+                    <button onclick="applyBrandSwatch('mostaza')" class="px-2 py-1.5 bg-[#D4A528] text-black font-bold text-[10px] uppercase tracking-wider">
+                        Mostaza (Captura)
+                    </button>
+                    <button onclick="applyBrandSwatch('ocaso')" class="px-2 py-1.5 bg-[#0B2246] text-white font-bold text-[10px] uppercase tracking-wider border border-white/20">
+                        Azul Ocaso
+                    </button>
+                    <button onclick="applyBrandSwatch('sendero')" class="px-2 py-1.5 bg-[#05502A] text-white font-bold text-[10px] uppercase tracking-wider">
+                        Verde Sendero
+                    </button>
+                    <button onclick="applyBrandSwatch('tenis')" class="px-2 py-1.5 bg-[#064269] text-[#F4ED1F] font-bold text-[10px] uppercase tracking-wider">
+                        Tenis / Cancha
+                    </button>
+                    <button onclick="applyBrandSwatch('senda')" class="px-2 py-1.5 bg-[#D2B48C] text-[#3E3124] font-bold text-[10px] uppercase tracking-wider">
+                        Senda Arena
+                    </button>
+                    <button onclick="applyBrandSwatch('pizarra')" class="px-2 py-1.5 bg-[#8C9298] text-white font-bold text-[10px] uppercase tracking-wider">
+                        Gris Pizarra
+                    </button>
+                    <button onclick="applyBrandSwatch('escarcha')" class="px-2 py-1.5 bg-[#B6C0D2] text-black font-bold text-[10px] uppercase tracking-wider">
+                        Escarcha
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="tester-pill" onclick="toggleTesterBar()" class="hidden fixed bottom-5 right-5 z-50 bg-black text-white px-4 py-2.5 shadow-2xl border border-neutral-700 text-xs font-mono flex items-center gap-2 hover:scale-105 transition">
+        <span class="w-2 h-2 rounded-full bg-[#F4ED1F]"></span>
+        <span>Colores Lonvi</span>
+    </button>
+
+    <!-- ==========================================
+         SLIDE-OVER SHOPPING CART DRAWER
+    =========================================== -->
+    <div id="cart-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/50 backdrop-blur-xs z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b border-neutral-200 flex items-center justify-between">
+            <div>
+                <h3 class="text-lg font-bold text-black uppercase tracking-wide">Tu Carrito Lonvi</h3>
+                <p class="text-xs text-neutral-500">Envíos a todo Chile desde Longaví</p>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-2 text-neutral-400 hover:text-black">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+
+        <div class="p-6 border-t border-neutral-200 bg-neutral-50 space-y-4">
+            <div class="flex items-center justify-between text-base font-bold text-black">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0</span>
+            </div>
+            <button onclick="simulateCheckout()" class="w-full py-3.5 px-6 text-xs font-bold uppercase tracking-[0.16em] btn-cta-solid">
+                Finalizar Compra
+            </button>
+        </div>
+    </aside>
+
+    <!-- ==========================================
+         MODALS (FOLDER GUIDE, TENNIS CLINIC, SEARCH)
+    =========================================== -->
+    <div id="folder-guide-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white text-black max-w-lg w-full border border-black p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-neutral-200">
+                <span class="text-xs font-mono font-bold uppercase tracking-widest text-black">ESTRUCTURA DE ARCHIVOS PARA LONVI.STORE</span>
+                <button onclick="closeFolderGuideModal()" class="text-neutral-500 hover:text-black font-bold">✕</button>
+            </div>
+            <h4 class="text-xl font-bold mb-2">Carga automática o manual de tus JPG</h4>
+            <p class="text-xs text-neutral-600 leading-relaxed mb-4">
+                Puedes probar tus fotografías reales en cualquier ficha de producto con el botón <strong>"Probar tu JPG"</strong>, o guardarlas en tu carpeta junto al <code class="bg-neutral-100 px-1 font-mono">index.html</code> con estos nombres:
+            </p>
+            <div class="bg-neutral-950 text-neutral-200 p-4 font-mono text-xs space-y-1.5 mb-5">
+                <p class="text-[#F4ED1F]">📁 lonvi-web/</p>
+                <p> ├── 📄 index.html</p>
+                <p> ├── 🖼️ poleron-ocaso.jpg</p>
+                <p> ├── 🖼️ polera-senda.jpg</p>
+                <p> ├── 🖼️ jockey-azul.jpg</p>
+                <p> ├── 🖼️ jockey-verde.jpg</p>
+                <p> └── 🖼️ jockey-blanco.jpg</p>
+            </div>
+            <button onclick="closeFolderGuideModal()" class="w-full py-3 text-xs font-bold uppercase tracking-widest btn-cta-solid">
+                Entendido
+            </button>
+        </div>
+    </div>
+
+    <div id="tennis-modal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-[#064269] text-white max-w-lg w-full border border-[#F4ED1F] p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-mono uppercase tracking-widest text-[#F4ED1F]">BÁSICOS DEL TENIS CON R.S.</span>
+                <button onclick="closeTennisModal()" class="text-white/70 hover:text-white">✕</button>
+            </div>
+            <h4 class="text-2xl font-bold mb-3">Cómo elegir tu raqueta según tu estilo de juego</h4>
+            <div class="space-y-3 text-sm text-white/90 leading-relaxed mb-6">
+                <p><strong class="text-[#F4ED1F]">1. Peso y Balance:</strong> El peso, tamaño del aro y balance deben acompañar tu mecánica de swing. Una raqueta demasiado pesada fatiga el antebrazo si no preparas el golpe con anticipación.</p>
+                <p><strong class="text-[#F4ED1F]">2. Técnica antes que Marco:</strong> Como señala R.S., si no juegas con la técnica correcta y apoyos estables, no habrá raqueta que te resulte cómoda.</p>
+                <p><strong class="text-[#F4ED1F]">3. Equipamiento en Cancha:</strong> Combina tu entrenamiento con el <em>Cintillo Deportivo Lonvi</em> ($3.990) y la <em>Polera Cauce</em> ($10.990). </p>
+            </div>
+            <button onclick="closeTennisModal()" class="w-full py-3 bg-[#F4ED1F] text-[#064269] font-bold uppercase tracking-wider text-xs">
+                Cerrar Cápsula
+            </button>
+        </div>
+    </div>
+
+    <div id="search-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-xs flex items-start justify-center pt-24 p-4">
+        <div class="bg-white max-w-lg w-full p-5 shadow-2xl border border-black">
+            <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-wider text-neutral-400">Buscar en Lonvi</span>
+                <button onclick="toggleSearchModal()" class="text-neutral-400 hover:text-black">✕</button>
+            </div>
+            <input id="search-input" type="text" oninput="runSearch(this.value)" placeholder="Escribe 'Ocaso', 'Senda', 'Jockey', 'Cintillo'..." class="w-full px-4 py-3 border border-neutral-300 text-sm focus:outline-none focus:border-black mb-4">
+            <div id="search-results" class="space-y-2 max-h-60 overflow-y-auto text-sm"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================================
+         MULTI-PAGE ROUTER & PRODUCT DATABASE JAVASCRIPT
+    ============================================================================= -->
+    <script>
+        // Complete Product Database with exact texts & technical details from the user's screenshots
+        const PRODUCTS = {
+            'poleron-ocaso': {
+                id: 'poleron-ocaso',
+                name: 'Polerón Ocaso',
+                price: 19990,
+                oldPrice: null,
+                onSale: false,
+                sections: ['novedades', 'hombre', 'mujer'],
+                subcat: 'polerones',
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                sizes: ['S', 'M', 'L', 'XL'],
+                defaultSize: 'M',
+                variants: ['Azul Marino'],
+                defaultVariant: 'Azul Marino',
+                subtitle: 'Un clásico para acompañarte cuando baja la temperatura.',
+                paragraphs: [
+                    'Ocaso nace desde una idea simple: tener un polerón cómodo y fácil de usar, de esos que terminan formando parte de tus días. Para salir, descansar, recorrer la ciudad o disfrutar una tarde tranquila. Un diseño de cuello redondo que busca hacer de lo simple algo que quieras usar una y otra vez.',
+                    'Confeccionado en 80% algodón y 20% poliéster, combina la suavidad del algodón con la resistencia y practicidad del poliéster. Una composición pensada para entregar comodidad y abrigo en el día a día, manteniendo una prenda versátil y fácil de llevar.',
+                    'Un polerón simple, hecho para quedarse contigo.'
+                ],
+                specs: ['80% algodón', '20% poliéster', 'Cuello redondo', 'Cómodo y abrigador', 'Ideal para uso diario', 'Diseñado en Chile'],
+                svgType: 'sweatshirt-navy',
+                localFile: 'poleron-ocaso.jpg',
+                crossSell: ['polera-senda', 'jockey-sendero']
+            },
+            'polera-senda': {
+                id: 'polera-senda',
+                name: 'Polera Senda',
+                price: 7990,
+                oldPrice: null,
+                onSale: false,
+                sections: ['novedades', 'hombre', 'mujer'],
+                subcat: 'poleras',
+                caption: 'EDICIÓN RÍO LONGAVÍ',
+                sizes: ['S', 'M', 'L', 'XL'],
+                defaultSize: 'M',
+                variants: ['Beige Arena'],
+                defaultVariant: 'Beige Arena',
+                subtitle: 'Una polera simple para acompañarte todos los días.',
+                paragraphs: [
+                    'Senda nace de esa idea de tener una prenda que puedas usar sin pensarlo demasiado. Para salir, recorrer la ciudad, descansar o simplemente disfrutar el día. Su tono beige y diseño limpio buscan transmitir una sensación tranquila y natural, manteniendo la esencia de Lonvi.',
+                    'Confeccionada en 100% algodón, entrega una sensación suave y cómoda al contacto con la piel. Su composición y diseño la convierten en una prenda fácil de combinar y pensada para formar parte de tu día a día.',
+                    'Una polera simple, hecha para seguir tu propia senda.'
+                ],
+                specs: ['100% algodón', 'Cuello redondo', 'Suave y respirable', 'Ideal para uso diario', 'Diseñado en Chile'],
+                svgType: 'tshirt-sand',
+                localFile: 'polera-senda.jpg',
+                crossSell: ['poleron-ocaso', 'jockey-sendero']
+            },
+            'jockey-sendero': {
+                id: 'jockey-sendero',
+                name: 'Jockey Sendero',
+                price: 6990,
+                oldPrice: 7990,
+                onSale: true,
+                sections: ['novedades', 'hombre', 'mujer', 'deporte', 'sale'],
+                subcat: 'accesorios',
+                caption: 'ELIGE EL SENDERO',
+                sizes: ['Única Ajustable'],
+                defaultSize: 'Única Ajustable',
+                variants: ['Azul Marino', 'Blanco Escarcha', 'Verde Sendero'],
+                defaultVariant: 'Azul Marino',
+                subtitle: 'Un jockey pensado para acompañarte todos los días.',
+                paragraphs: [
+                    'Sendero nace desde una idea simple: tener una prenda que puedas llevar contigo sin importar el momento, ya sea para salir, recorrer la ciudad, hacer deporte o simplemente disfrutar el día. Un compañero de vida, hecho para seguir tu ritmo.',
+                    'Confeccionado en 100% poliéster, es liviano, resistente y cómodo. Su diseño simple y versátil combina con distintos estilos y momentos, mientras que su construcción permite mantenerlo como parte de tu día a día durante todo el año.'
+                ],
+                specs: ['100% poliéster', 'Bordado Lonvi', 'Ideal para uso diario', 'Diseñado en Chile'],
+                svgType: 'cap-navy',
+                localFile: 'jockey-azul.jpg',
+                crossSell: ['poleron-ocaso', 'polera-senda']
+            },
+            'polera-cauce': {
+                id: 'polera-cauce',
+                name: 'Polera Cauce',
+                price: 10990,
+                oldPrice: 14990,
+                onSale: true,
+                sections: ['novedades', 'hombre', 'deporte', 'sale'],
+                subcat: 'poleras',
+                caption: 'LONVI COURT & OUTDOOR',
+                sizes: ['S', 'M', 'L', 'XL'],
+                defaultSize: 'S',
+                variants: ['Azul Marino'],
+                defaultVariant: 'Azul Marino',
+                subtitle: 'Rendimiento técnico y frescura en movimiento.',
+                paragraphs: [
+                    'Diseñada para responder en entrenamientos exigentes, partidos de tenis o rutas de montaña. Su tejido técnico ligero facilita la rápida evaporación de la humedad manteniendo el cuerpo seco.',
+                    'Calce deportivo limpio con el logotipo LONVI en el pecho izquierdo.'
+                ],
+                specs: ['100% poliéster técnico', 'Secado rápido', 'Ultraliviana', 'Ideal para tenis y deporte', 'Diseñado en Chile'],
+                svgType: 'tshirt-cauce',
+                localFile: 'polera-cauce.jpg',
+                crossSell: ['cintillo-deportivo', 'jockey-sendero']
+            },
+            'cintillo-deportivo': {
+                id: 'cintillo-deportivo',
+                name: 'Cintillo deportivo Lonvi',
+                price: 3990,
+                oldPrice: 4990,
+                onSale: true,
+                sections: ['inicio', 'hombre', 'mujer', 'deporte', 'sale'],
+                subcat: 'accesorios',
+                caption: 'LONVI COURT LAB',
+                sizes: ['Pequeña', 'Estándar Ajustable'],
+                defaultSize: 'Pequeña',
+                variants: ['Negro'],
+                defaultVariant: 'Negro',
+                subtitle: 'Una pieza simple para acompañarte en movimiento.',
+                paragraphs: [
+                    'El Cintillo Deportivo está pensado para esos momentos en que quieres moverte con comodidad. Para entrenar, jugar, salir a correr o simplemente llevarlo durante el día. Su diseño ajustable permite adaptarlo fácilmente y usarlo de la forma que mejor se sienta.',
+                    'Confeccionado en 100% poliéster, es liviano y cómodo, pensado para acompañarte durante la actividad sin complicaciones. Una pieza sencilla que cumple su función y se integra naturalmente a tu rutina.',
+                    'Hecho en Longaví, Chile.'
+                ],
+                specs: ['100% poliéster', 'Diseño ajustable', 'Liviano y cómodo', 'Ideal para deporte y uso diario', 'Hecho en Longaví, Chile'],
+                svgType: 'headband-black',
+                localFile: 'cintillo-lonvi.jpg',
+                crossSell: ['polera-cauce', 'jockey-sendero']
+            },
+            'polera-basalto': {
+                id: 'polera-basalto',
+                name: 'Polera Basalto',
+                price: 7990,
+                oldPrice: 8990,
+                onSale: true,
+                sections: ['inicio', 'hombre', 'mujer', 'sale'],
+                subcat: 'poleras',
+                caption: 'SERIE NEVADO LONGAVÍ',
+                sizes: ['S', 'M', 'L', 'XL'],
+                defaultSize: 'M',
+                variants: ['Negro Basalto'],
+                defaultVariant: 'Negro Basalto',
+                subtitle: 'Sobriedad y carácter inspirados en la roca volcánica del Nevado.',
+                paragraphs: [
+                    'La Polera Basalto lleva el isotipo de la cumbre del Nevado Longaví en el pecho sobre un tejido negro profundo. Pensada para quienes buscan un básico versátil que funcione tanto en la ciudad como en escapadas outdoor.'
+                ],
+                specs: ['100% algodón', 'Logo cumbre Lonvi en pecho', 'Calce cómodo regular', 'Diseñado en Chile'],
+                svgType: 'tshirt-basalto',
+                localFile: 'polera-basalto.jpg',
+                crossSell: ['jockey-sendero', 'poleron-ocaso']
+            },
+            'polera-pique-escarcha': {
+                id: 'polera-pique-escarcha',
+                name: 'Polera Piqué Escarcha',
+                price: 9990,
+                oldPrice: 11990,
+                onSale: true,
+                sections: ['inicio', 'hombre', 'deporte', 'sale'],
+                subcat: 'poleras',
+                caption: 'LONVI COURT CLASSICS',
+                sizes: ['S', 'M', 'L', 'XL'],
+                defaultSize: 'M',
+                variants: ['Blanco Escarcha'],
+                defaultVariant: 'Blanco Escarcha',
+                subtitle: 'Elegancia deportiva dentro y fuera de la cancha de tenis.',
+                paragraphs: [
+                    'Con cuello polo clásico y tejido piqué respirable, la Polera Piqué Escarcha une la estética limpia del tenis tradicional con la comodidad cotidiana de Lonvi.'
+                ],
+                specs: ['Tejido Piqué respirable', 'Cuello polo estructurado', 'Blanco Escarcha', 'Ideal para tenis y casual', 'Diseñado en Chile'],
+                svgType: 'polo-white',
+                localFile: 'polera-pique.jpg',
+                crossSell: ['cintillo-deportivo', 'jockey-nevado']
+            },
+            'jockey-nevado': {
+                id: 'jockey-nevado',
+                name: 'Jockey Nevado',
+                price: 6990,
+                oldPrice: 7990,
+                onSale: true,
+                sections: ['inicio', 'deporte', 'sale'],
+                subcat: 'accesorios',
+                caption: 'SERIE NEVADO',
+                sizes: ['Única Ajustable'],
+                defaultSize: 'Única Ajustable',
+                variants: ['Blanco Nieve'],
+                defaultVariant: 'Blanco Nieve',
+                subtitle: 'Minimalismo tonal inspirado en las cumbres invernales.',
+                paragraphs: [
+                    'Bordado LONVI blanco sobre blanco para una estética limpia, luminosa y deportiva. Ideal para protegerse del sol en cancha o en días de verano.'
+                ],
+                specs: ['100% poliéster', 'Bordado tonal 3D', 'Visera curva', 'Diseñado en Chile'],
+                svgType: 'cap-white',
+                localFile: 'jockey-nevado.jpg',
+                crossSell: ['polera-pique-escarcha', 'cintillo-deportivo']
+            },
+            'jockey-trigal': {
+                id: 'jockey-trigal',
+                name: 'Jockey Trigal',
+                price: 7990,
+                oldPrice: 9990,
+                onSale: true,
+                sections: ['hombre', 'mujer', 'sale'],
+                subcat: 'accesorios',
+                caption: 'ELIGE EL SENDERO',
+                sizes: ['Única Ajustable'],
+                defaultSize: 'Única Ajustable',
+                variants: ['Arena Trigal'],
+                defaultVariant: 'Arena Trigal',
+                subtitle: 'Tono tierra cálido con bordado lateral LONVI.',
+                paragraphs: [
+                    'Inspirado en los tonos dorados del valle de Longaví. Su bordado desplazado hacia el costado le da un sello distintivo y relajado que combina a la perfección con la Polera Senda y el Polerón Ocaso.'
+                ],
+                specs: ['Sarga estructurada', 'Bordado lateral blanco', 'Ajuste trasero metálico', 'Diseñado en Chile'],
+                svgType: 'cap-sand',
+                localFile: 'jockey-trigal.jpg',
+                crossSell: ['polera-senda', 'poleron-ocaso']
+            }
+        };
+
+        // Store uploaded local DataURLs per product so user uploads persist across page changes
+        const uploadedPhotos = {};
+
+        let currentRoute = 'inicio';
+        let previousRoute = 'hombre';
+        let currentProductId = 'poleron-ocaso';
+        let cart = [
+            { name: 'Polerón Ocaso', price: 19990, size: 'M', variant: 'Azul Marino', qty: 1 }
+        ];
+
+        function formatCLP(amount) {
+            return '$' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        // High-Resolution Studio Garment SVG Generator (Seamless #FFFFFF background)
+        function getLargeGarmentSVG(type, variant = '') {
+            if (type === 'cap-navy') {
+                let c1 = '#14325C', c2 = '#0B2246', c3 = '#051124', b1 = '#091C3B', b2 = '#112C54';
+                if (variant.includes('Escarcha') || variant.includes('Blanco')) {
+                    c1 = '#CDD5E3'; c2 = '#B6C0D2'; c3 = '#9BA7BE'; b1 = '#A8B3C8'; b2 = '#C2CBE0';
+                } else if (variant.includes('Verde')) {
+                    c1 = '#096B39'; c2 = '#05502A'; c3 = '#03361C'; b1 = '#044222'; b2 = '#075E32';
+                }
+                return `<svg viewBox="0 0 500 470" class="w-full max-w-[420px] h-auto mx-auto">
+                    <defs>
+                        <radialGradient id="capGrad-${variant.replace(/\s+/g,'')}" cx="50%" cy="35%" r="60%">
+                            <stop offset="0%" stop-color="${c1}"/>
+                            <stop offset="65%" stop-color="${c2}"/>
+                            <stop offset="100%" stop-color="${c3}"/>
+                        </radialGradient>
+                        <linearGradient id="brimGrad-${variant.replace(/\s+/g,'')}" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="${b1}"/>
+                            <stop offset="55%" stop-color="${b2}"/>
+                            <stop offset="100%" stop-color="${c3}"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="250" cy="400" rx="145" ry="20" fill="rgba(0,0,0,0.20)"/>
+                    <ellipse cx="250" cy="65" rx="18" ry="8" fill="${c2}"/>
+                    <path d="M92,265 C88,145 145,68 250,68 C355,68 412,145 408,265 C350,285 150,285 92,265 Z" fill="url(#capGrad-${variant.replace(/\s+/g,'')})"/>
+                    <line x1="250" y1="73" x2="250" y2="275" stroke="${c3}" stroke-width="2" opacity="0.45"/>
+                    <circle cx="185" cy="128" r="5" fill="${c3}"/>
+                    <circle cx="315" cy="128" r="5" fill="${c3}"/>
+                    <path d="M104,258 C165,282 335,282 396,258 C406,315 398,370 368,392 C295,368 205,368 132,392 C102,370 94,315 104,258 Z" fill="url(#brimGrad-${variant.replace(/\s+/g,'')})"/>
+                    <text x="250" y="218" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="36" letter-spacing="2" fill="#FFFFFF">LONVI</text>
+                </svg>`;
+            }
+
+            switch (type) {
+                case 'sweatshirt-navy':
+                    return `<svg viewBox="0 0 500 540" class="w-full max-w-[440px] h-auto mx-auto">
+                        <defs>
+                            <radialGradient id="ocasoGradLarge" cx="45%" cy="35%" r="65%">
+                                <stop offset="0%" stop-color="#14325C"/>
+                                <stop offset="55%" stop-color="#0B2246"/>
+                                <stop offset="100%" stop-color="#06142B"/>
+                            </radialGradient>
+                        </defs>
+                        <ellipse cx="250" cy="88" rx="60" ry="22" fill="#061326"/>
+                        <path d="M194,84 Q250,98 306,84" stroke="#D2B48C" stroke-width="6" fill="none" stroke-linecap="round"/>
+                        <path d="M135,122 C102,145 78,245 66,355 C60,410 62,455 65,478 L118,480 C125,415 136,320 148,235 Z" fill="#0B2246"/>
+                        <path d="M65,476 L118,478 L115,508 L68,506 Z" fill="#081A36"/>
+                        <path d="M365,122 C398,145 422,245 434,355 C440,410 438,455 435,478 L382,480 C375,415 364,320 352,235 Z" fill="#0B2246"/>
+                        <path d="M435,476 L382,478 L385,508 L432,506 Z" fill="#081A36"/>
+                        <path d="M188,78 C165,92 145,108 135,122 C142,185 144,250 140,468 L360,468 C356,250 358,185 365,122 C355,108 335,92 312,78 C295,112 205,112 188,78 Z" fill="url(#ocasoGradLarge)"/>
+                        <path d="M226,116 L250,154 L274,116" fill="#081A36" stroke="#14325C" stroke-width="1.5"/>
+                        <path d="M140,466 L360,466 L357,498 L143,498 Z" fill="#081A36"/>
+                        <g transform="translate(285, 198) scale(0.85)" class="text-white">
+                            <use href="#lonvi-meander-script" width="85" height="36"></use>
+                        </g>
+                    </svg>`;
+                case 'tshirt-sand':
+                    return `<svg viewBox="0 0 500 520" class="w-full max-w-[430px] h-auto mx-auto">
+                        <ellipse cx="250" cy="92" rx="58" ry="20" fill="#B6956C"/>
+                        <path d="M142,115 L52,215 L108,262 L148,215 Z" fill="#CBB08A"/>
+                        <path d="M358,115 L448,215 L392,262 L352,215 Z" fill="#CBB08A"/>
+                        <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,122 208,122 188,82 Z" fill="#D2B48C"/>
+                        <g transform="translate(212, 224) scale(0.95)" class="text-[#3E3124]">
+                            <use href="#lonvi-meander-script" width="85" height="36"></use>
+                        </g>
+                    </svg>`;
+                case 'tshirt-cauce':
+                    return `<svg viewBox="0 0 500 520" class="w-full max-w-[420px] h-auto mx-auto">
+                        <ellipse cx="250" cy="90" rx="58" ry="18" fill="#0c1f3d"/>
+                        <path d="M142,115 L58,212 L112,254 L148,208 Z" fill="#173766"/>
+                        <path d="M358,115 L442,212 L388,254 L352,208 Z" fill="#173766"/>
+                        <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,116 208,116 188,82 Z" fill="#1B3F73"/>
+                        <text x="305" y="195" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="14" fill="#FFFFFF" letter-spacing="1.5">LONVI</text>
+                    </svg>`;
+                case 'headband-black':
+                    return `<svg viewBox="0 0 440 360" class="w-full max-w-[380px] h-auto mx-auto">
+                        <path d="M90,135 C90,95 350,95 350,135 C350,155 90,155 90,135 Z" fill="#1D1F22"/>
+                        <path d="M210,165 L145,285 L195,305 L235,185 Z" fill="#000000"/>
+                        <path d="M235,165 L295,320 L335,295 L265,175 Z" fill="#111315"/>
+                        <path d="M202,152 C220,145 245,148 258,165 C255,188 230,195 208,185 Z" fill="#000000"/>
+                        <path d="M85,125 C155,105 285,105 355,125 L350,175 C280,158 160,158 90,175 Z" fill="#000000"/>
+                        <text x="220" y="146" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="20" letter-spacing="1.5" fill="#FFFFFF">LONVI</text>
+                    </svg>`;
+                case 'tshirt-basalto':
+                    return `<svg viewBox="0 0 500 520" class="w-full max-w-[420px] h-auto mx-auto">
+                        <ellipse cx="250" cy="90" rx="58" ry="18" fill="#000000"/>
+                        <path d="M142,115 L58,212 L112,254 L148,208 Z" fill="#141414"/>
+                        <path d="M358,115 L442,212 L388,254 L352,208 Z" fill="#141414"/>
+                        <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,116 208,116 188,82 Z" fill="#0B0B0B"/>
+                        <use href="#lonvi-official-logo" x="282" y="168" width="42" height="30" class="text-white"/>
+                    </svg>`;
+                case 'polo-white':
+                    return `<svg viewBox="0 0 500 520" class="w-full max-w-[420px] h-auto mx-auto">
+                        <path d="M142,115 L58,212 L112,254 L148,208 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <path d="M358,115 L442,212 L388,254 L352,208 Z" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <path d="M188,82 C168,94 152,105 142,115 L146,478 L354,478 L358,115 C348,105 332,94 312,82 C292,116 208,116 188,82 Z" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <line x1="250" y1="112" x2="250" y2="175" stroke="#CBD5E1" stroke-width="3"/>
+                        <text x="305" y="195" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="13" fill="#94A3B8" letter-spacing="1.5">LONVI</text>
+                    </svg>`;
+                case 'cap-white':
+                    return getLargeGarmentSVG('cap-navy', 'Blanco Escarcha');
+                case 'cap-sand':
+                    return `<svg viewBox="0 0 500 470" class="w-full max-w-[420px] h-auto mx-auto">
+                        <ellipse cx="250" cy="400" rx="145" ry="20" fill="rgba(0,0,0,0.16)"/>
+                        <ellipse cx="250" cy="65" rx="18" ry="8" fill="#C4A47C"/>
+                        <path d="M92,265 C88,145 145,68 250,68 C355,68 412,145 408,265 C350,285 150,285 92,265 Z" fill="#D2B48C"/>
+                        <line x1="250" y1="73" x2="250" y2="275" stroke="#A68963" stroke-width="2"/>
+                        <path d="M104,258 C165,282 335,282 396,258 C406,315 398,370 368,392 C295,368 205,368 132,392 C102,370 94,315 104,258 Z" fill="#C4A47C"/>
+                        <text x="328" y="242" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="800" font-size="22" letter-spacing="1.5" fill="#FFFFFF">LONVI</text>
+                    </svg>`;
+            }
+        }
+
+        // Card Thumbnail SVG for Grids
+        function getCardGarmentSVG(type) {
+            return `<div class="w-full h-64 flex items-center justify-center p-2">${getLargeGarmentSVG(type)}</div>`;
+        }
+
+        // Render Product Card (Matches User's Screenshots: % badge on sale items, price comparison, MÁS VARIANTES DISPONIBLES)
+        function createCatalogCardHTML(product, originRoute) {
+            const customPhoto = uploadedPhotos[product.id];
+            return `
+                <div onclick="openProductDetail('${product.id}', '${originRoute}')" class="group cursor-pointer flex flex-col bg-white transition">
+                    <div class="relative bg-white flex flex-col items-center justify-center overflow-hidden mb-3">
+                        ${product.onSale ? `<span class="absolute top-0 left-0 z-10 bg-[#D9824B] text-white font-bold text-xs w-8 h-8 flex items-center justify-center">%</span>` : ''}
+                        <div class="w-full transition-transform duration-500 group-hover:scale-105">
+                            ${customPhoto 
+                                ? `<img src="${customPhoto}" alt="${product.name}" class="w-full h-64 object-contain mx-auto">`
+                                : getCardGarmentSVG(product.svgType)
+                            }
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <h3 class="text-sm sm:text-base font-normal text-black group-hover:underline mb-1">${product.name}</h3>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-sm sm:text-base font-medium ${product.onSale ? 'text-[#D9824B]' : 'text-black'}">${formatCLP(product.price)}</span>
+                            ${product.oldPrice ? `<span class="text-xs sm:text-sm text-neutral-400 line-through">${formatCLP(product.oldPrice)}</span>` : ''}
+                        </div>
+                        <span class="text-[10px] uppercase tracking-wider text-neutral-400 mt-1">MÁS VARIANTES DISPONIBLES</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render full inline showcase block (used in Novedades, Home Cintillo, and Deporte Cintillo)
+        function createFullShowcaseHTML(productId, imagePosition = 'right', originRoute = 'novedades') {
+            const p = PRODUCTS[productId];
+            const uid = `${productId}-${originRoute}`;
+            const customPhoto = uploadedPhotos[productId];
+
+            const infoCol = `
+                <div class="lg:col-span-6 ${imagePosition === 'left' ? 'order-2' : 'order-2 lg:order-1'}">
+                    <h2 onclick="openProductDetail('${p.id}', '${originRoute}')" class="text-3xl sm:text-4xl font-bold text-black hover:underline cursor-pointer mb-2">${p.name}</h2>
+                    <div class="flex items-baseline gap-3 mb-6">
+                        <span class="text-2xl sm:text-3xl font-bold ${p.onSale ? 'text-[#D9824B]' : 'text-black'}">${formatCLP(p.price)}</span>
+                        ${p.oldPrice ? `<span class="text-xl sm:text-2xl font-bold text-neutral-400 line-through">${formatCLP(p.oldPrice)}</span>` : ''}
+                    </div>
+
+                    <div class="grid grid-cols-12 gap-3 mb-4">
+                        <div class="col-span-8">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">TALLA / VARIANTE</label>
+                            <select id="sel-${uid}" onchange="if('${p.id}'==='jockey-sendero') updateInlineCapColor('${uid}', this.value)" class="w-full bg-white border border-neutral-300 px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-black focus:outline-none focus:border-black">
+                                ${(p.variants.length > 1 ? p.variants : p.sizes).map(opt => `<option value="${opt}">${opt}</option>`).join('')}
+                            </select>
+                        </div>
+                        <div class="col-span-4">
+                            <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">CANTIDAD</label>
+                            <div class="flex items-center border border-neutral-300 bg-white h-[40px]">
+                                <button onclick="updateQty('qty-${uid}', -1)" class="w-8 h-full flex items-center justify-center text-neutral-500 hover:text-black">−</button>
+                                <input id="qty-${uid}" type="text" value="1" readonly class="w-full text-center text-xs sm:text-sm font-bold text-black bg-transparent">
+                                <button onclick="updateQty('qty-${uid}', 1)" class="w-8 h-full flex items-center justify-center text-neutral-500 hover:text-black">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2.5 mb-6">
+                        <button onclick="handleBuyNow('${p.name}', ${p.price}, document.getElementById('sel-${uid}').value, '${p.defaultVariant}', 'qty-${uid}')" class="w-full py-3 px-6 text-xs font-semibold tracking-wide btn-cta-solid">
+                            Comprar ahora
+                        </button>
+                        <button onclick="handleAddToCart('${p.name}', ${p.price}, document.getElementById('sel-${uid}').value, '${p.defaultVariant}', 'qty-${uid}')" class="w-full py-3 px-6 text-xs font-semibold tracking-wide btn-cta-outline flex items-center justify-center gap-2">
+                            <span>Añadir al carrito</span>
+                            <span>🛒</span>
+                        </button>
+                    </div>
+
+                    <div class="space-y-3 text-xs leading-relaxed text-neutral-700">
+                        <p class="font-bold text-black">${p.name} — Lonvi</p>
+                        <p>${p.subtitle}</p>
+                        ${p.paragraphs.map(para => `<p>${para}</p>`).join('')}
+                        <p class="font-bold text-black pt-1">Detalles técnicos</p>
+                        <ul class="space-y-1 pl-3">
+                            ${p.specs.map(s => `<li>• ${s}</li>`).join('')}
+                        </ul>
+                        <p class="font-bold text-black pt-1">Lonvi — Longvibe</p>
+                        <div class="pt-2">
+                            <button onclick="openProductDetail('${p.id}', '${originRoute}')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-black hover:underline">
+                                <span>Ver detalles</span>
+                                <span>→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const imgCol = `
+                <div class="lg:col-span-6 ${imagePosition === 'left' ? 'order-1' : 'order-1 lg:order-2'} flex flex-col items-center">
+                    <div class="relative w-full bg-white flex flex-col items-center justify-center p-2">
+                        ${p.onSale ? `<span class="absolute top-2 left-2 z-10 bg-[#D9824B] text-white font-bold text-xs w-8 h-8 flex items-center justify-center">%</span>` : ''}
+                        <div id="visual-${uid}" class="w-full flex flex-col items-center">
+                            ${customPhoto 
+                                ? `<img src="${customPhoto}" alt="${p.name}" class="w-full max-h-[480px] object-contain mx-auto">`
+                                : getLargeGarmentSVG(p.svgType, p.defaultVariant)
+                            }
+                            <p class="micro-caption mt-2">${p.caption}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-2.5 mt-4">
+                        ${p.id === 'jockey-sendero' ? `
+                            <button onclick="updateInlineCapColor('${uid}', 'Azul Marino')" class="w-11 h-11 border border-black p-1 bg-white"><span class="block w-full h-full bg-[#0B2246]"></span></button>
+                            <button onclick="updateInlineCapColor('${uid}', 'Blanco Escarcha')" class="w-11 h-11 border border-neutral-300 p-1 bg-white"><span class="block w-full h-full bg-[#B6C0D2]"></span></button>
+                            <button onclick="updateInlineCapColor('${uid}', 'Verde Sendero')" class="w-11 h-11 border border-neutral-300 p-1 bg-white"><span class="block w-full h-full bg-[#05502A]"></span></button>
+                        ` : ''}
+                        <label class="cursor-pointer px-3 py-2 border border-dashed border-neutral-400 hover:border-black text-[11px] font-medium text-neutral-600 hover:text-black transition flex items-center gap-1.5">
+                            <span>📷 Probar tu JPG en ${p.name}</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="uploadProductPhoto(event, '${p.id}')">
+                        </label>
+                    </div>
+                </div>
+            `;
+
+            return `<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">${imagePosition === 'left' ? imgCol + infoCol : infoCol + imgCol}</div>`;
+        }
+
+        function updateInlineCapColor(uid, variant) {
+            const container = document.getElementById(`visual-${uid}`);
+            const sel = document.getElementById(`sel-${uid}`);
+            if (sel && sel.value !== variant) sel.value = variant;
+            if (container) {
+                container.innerHTML = `${getLargeGarmentSVG('cap-navy', variant)}<p class="micro-caption mt-2">ELIGE EL SENDERO</p>`;
+            }
+        }
+
+        // Upload Local JPG for any product and refresh active views
+        function uploadProductPhoto(event, productId) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedPhotos[productId] = e.target.result;
+                renderAllViews();
+                if (currentRoute === 'producto' && currentProductId === productId) {
+                    renderPDP(productId);
+                }
+                showToast(`Fotografía cargada en ${PRODUCTS[productId].name}`);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Open Standalone Product Detail Page (#producto/{id})
+        function openProductDetail(productId, fromRoute = null) {
+            if (fromRoute) previousRoute = fromRoute;
+            currentProductId = productId;
+            renderPDP(productId);
+            navigateTo('producto', productId);
+        }
+
+        function goBackPage() {
+            navigateTo(previousRoute || 'hombre');
+        }
+
+        function renderPDP(productId) {
+            const p = PRODUCTS[productId] || PRODUCTS['poleron-ocaso'];
+            document.getElementById('pdp-breadcrumb-Origin').textContent = previousRoute;
+            document.getElementById('pdp-breadcrumb-name').textContent = p.name;
+
+            const container = document.getElementById('pdp-content-container');
+            container.innerHTML = createFullShowcaseHTML(p.id, 'right', 'pdp');
+
+            // Render Related Products
+            const relatedGrid = document.getElementById('pdp-related-grid');
+            const relatedIds = p.crossSell.concat(['polera-basalto', 'jockey-trigal']).slice(0, 3);
+            relatedGrid.innerHTML = relatedIds.map(rid => createCatalogCardHTML(PRODUCTS[rid], currentRoute)).join('');
+        }
+
+        // Filter Men's or Women's Dedicated Catalog Pages
+        function filterGenderCatalog(gender, subcat) {
+            document.querySelectorAll(`[data-subfilter^="${gender}-"]`).forEach(btn => {
+                btn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-wider bg-neutral-100 text-neutral-700 hover:bg-neutral-200 transition';
+            });
+            const activeBtn = document.querySelector(`[data-subfilter="${gender}-${subcat}"]`);
+            if (activeBtn) {
+                activeBtn.className = 'px-4 py-2 text-xs font-bold uppercase tracking-wider bg-black text-white transition';
+            }
+
+            const orderHombre = ['polera-basalto', 'polera-pique-escarcha', 'polera-cauce', 'cintillo-deportivo', 'polera-senda', 'jockey-sendero', 'poleron-ocaso', 'jockey-trigal'];
+            const orderMujer = ['polera-basalto', 'cintillo-deportivo', 'jockey-sendero', 'poleron-ocaso', 'jockey-trigal', 'polera-senda'];
+            const baseIds = gender === 'hombre' ? orderHombre : orderMujer;
+
+            const filtered = baseIds
+                .map(id => PRODUCTS[id])
+                .filter(p => subcat === 'todos' ? true : p.subcat === subcat);
+
+            const gridEl = document.getElementById(`${gender}-catalog-grid`);
+            gridEl.innerHTML = filtered.map(p => createCatalogCardHTML(p, gender)).join('');
+        }
+
+        // Populate all page views
+        function renderAllViews() {
+            // 1. INICIO: 3 Featured cards + Cintillo Spotlight
+            const homeGrid = document.getElementById('home-featured-grid');
+            homeGrid.innerHTML = ['polera-basalto', 'polera-pique-escarcha', 'jockey-nevado']
+                .map(id => createCatalogCardHTML(PRODUCTS[id], 'inicio')).join('');
+            document.getElementById('home-cintillo-spotlight').innerHTML = createFullShowcaseHTML('cintillo-deportivo', 'left', 'inicio');
+
+            // 2. NOVEDADES: Alternating Full Showcases (Ocaso, Senda, Cauce, Jockey Sendero)
+            document.getElementById('novedades-editorial-list').innerHTML = [
+                createFullShowcaseHTML('poleron-ocaso', 'right', 'novedades'),
+                `<div class="pt-16 border-t border-neutral-200">${createFullShowcaseHTML('polera-senda', 'left', 'novedades')}</div>`,
+                `<div class="pt-16 border-t border-neutral-200">${createFullShowcaseHTML('polera-cauce', 'right', 'novedades')}</div>`,
+                `<div class="pt-16 border-t border-neutral-200">${createFullShowcaseHTML('jockey-sendero', 'left', 'novedades')}</div>`
+            ].join('');
+
+            // 3. HOMBRE (8 products) & 4. MUJER (6 products)
+            filterGenderCatalog('hombre', 'todos');
+            filterGenderCatalog('mujer', 'todos');
+
+            // 5. DEPORTE: Cintillo showcase + Sport Grid
+            document.getElementById('deporte-cintillo-showcase').innerHTML = createFullShowcaseHTML('cintillo-deportivo', 'left', 'deporte');
+            document.getElementById('deporte-products-grid').innerHTML = ['polera-cauce', 'jockey-sendero', 'polera-pique-escarcha', 'jockey-nevado']
+                .map(id => createCatalogCardHTML(PRODUCTS[id], 'deporte')).join('');
+
+            // 7. SALE: All 7 discounted products
+            const saleIds = ['polera-basalto', 'polera-pique-escarcha', 'polera-cauce', 'cintillo-deportivo', 'jockey-sendero', 'jockey-trigal', 'jockey-nevado'];
+            document.getElementById('sale-catalog-grid').innerHTML = saleIds
+                .map(id => createCatalogCardHTML(PRODUCTS[id], 'sale')).join('');
+        }
+
+        // CORE MULTI-PAGE ROUTER (Switches independent views & scrolls to top)
+        function navigateTo(route, productId = null) {
+            const validRoutes = ['inicio', 'novedades', 'hombre', 'mujer', 'deporte', 'materiales', 'sale', 'producto'];
+            const targetRoute = validRoutes.includes(route) ? route : 'inicio';
+
+            if (targetRoute !== 'producto') {
+                previousRoute = targetRoute;
+            }
+            currentRoute = targetRoute;
+
+            // Hide all pages, show only the active page
+            validRoutes.forEach(r => {
+                const pageEl = document.getElementById(`page-${r}`);
+                if (pageEl) {
+                    if (r === targetRoute) {
+                        pageEl.classList.remove('hidden');
+                    } else {
+                        pageEl.classList.add('hidden');
+                    }
+                }
+            });
+
+            // Update active state in top navigation bar
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                const btnRoute = btn.getAttribute('data-route');
+                if (btnRoute === targetRoute) {
+                    btn.classList.add('nav-active-indicator');
+                } else {
+                    btn.classList.remove('nav-active-indicator');
+                }
+            });
+
+            // Update URL hash cleanly without jumping
+            const newHash = targetRoute === 'producto' && productId ? `#producto/${productId}` : `#${targetRoute}`;
+            if (window.location.hash !== newHash) {
+                history.pushState(null, '', newHash);
+            }
+
+            // Always scroll to top of the new page
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+
+        // Listen for Browser Back/Forward hash changes
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash.startsWith('producto/')) {
+                const pid = hash.split('/')[1];
+                if (PRODUCTS[pid]) {
+                    renderPDP(pid);
+                    navigateTo('producto', pid);
+                }
+            } else if (hash) {
+                navigateTo(hash);
+            } else {
+                navigateTo('inicio');
+            }
+        });
+
+        // Official 9-Color Brand Palette + Screenshot Button Accents
+        function applyBrandSwatch(swatchKey) {
+            const root = document.documentElement;
+            const label = document.getElementById('active-palette-label');
+
+            const swatches = {
+                'negro-blanco': {
+                    name: 'Principal Negro / Blanco (#000000)',
+                    ctaBg: '#000000', ctaHover: '#222222', ctaText: '#FFFFFF',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#000000', topText: '#FFFFFF'
+                },
+                'turquesa': {
+                    name: 'Turquesa Captura Ocaso (#3CA6A0)',
+                    ctaBg: '#3CA6A0', ctaHover: '#318D88', ctaText: '#000000',
+                    outline: '#3CA6A0', outlineText: '#3CA6A0',
+                    topBg: '#0B2246', topText: '#FFFFFF'
+                },
+                'mostaza': {
+                    name: 'Mostaza Original (#D4A528)',
+                    ctaBg: '#D4A528', ctaHover: '#BC901F', ctaText: '#000000',
+                    outline: '#D4A528', outlineText: '#D4A528',
+                    topBg: '#000000', topText: '#FFFFFF'
+                },
+                'blanco-negro': {
+                    name: 'Principal Blanco / Negro (#FFFFFF)',
+                    ctaBg: '#000000', ctaHover: '#222222', ctaText: '#FFFFFF',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#F3F4F6', topText: '#000000'
+                },
+                'ocaso': {
+                    name: 'Azul Ocaso / Blanco (#0B2246)',
+                    ctaBg: '#0B2246', ctaHover: '#143566', ctaText: '#FFFFFF',
+                    outline: '#0B2246', outlineText: '#0B2246',
+                    topBg: '#0B2246', topText: '#FFFFFF'
+                },
+                'sendero': {
+                    name: 'Verde Sendero / Blanco (#05502A)',
+                    ctaBg: '#05502A', ctaHover: '#086B39', ctaText: '#FFFFFF',
+                    outline: '#05502A', outlineText: '#05502A',
+                    topBg: '#05502A', topText: '#FFFFFF'
+                },
+                'tenis': {
+                    name: 'Azul Cancha / Amarillo Tenis (#064269)',
+                    ctaBg: '#064269', ctaHover: '#085687', ctaText: '#F4ED1F',
+                    outline: '#064269', outlineText: '#064269',
+                    topBg: '#064269', topText: '#F4ED1F'
+                },
+                'roca': {
+                    name: 'Gris Roca / Negro (#B5B5B5)',
+                    ctaBg: '#B5B5B5', ctaHover: '#9E9E9E', ctaText: '#000000',
+                    outline: '#000000', outlineText: '#000000',
+                    topBg: '#B5B5B5', topText: '#000000'
+                },
+                'pizarra': {
+                    name: 'Gris Pizarra / Blanco (#8C9298)',
+                    ctaBg: '#8C9298', ctaHover: '#73797F', ctaText: '#FFFFFF',
+                    outline: '#8C9298', outlineText: '#000000',
+                    topBg: '#8C9298', topText: '#FFFFFF'
+                },
+                'escarcha': {
+                    name: 'Escarcha / Blanco (#B6C0D2)',
+                    ctaBg: '#B6C0D2', ctaHover: '#9FAAC0', ctaText: '#000000',
+                    outline: '#8C9298', outlineText: '#000000',
+                    topBg: '#B6C0D2', topText: '#000000'
+                },
+                'senda': {
+                    name: 'Senda Arena / Café Tierra (#D2B48C)',
+                    ctaBg: '#D2B48C', ctaHover: '#C4A377', ctaText: '#3E3124',
+                    outline: '#3E3124', outlineText: '#3E3124',
+                    topBg: '#3E3124', topText: '#D2B48C'
+                }
+            };
+
+            const s = swatches[swatchKey] || swatches['negro-blanco'];
+            root.style.setProperty('--cta-bg', s.ctaBg);
+            root.style.setProperty('--cta-hover', s.ctaHover);
+            root.style.setProperty('--cta-text', s.ctaText);
+            root.style.setProperty('--cta-outline', s.outline);
+            root.style.setProperty('--cta-outline-text', s.outlineText);
+            root.style.setProperty('--topbar-bg', s.topBg);
+            root.style.setProperty('--topbar-text', s.topText);
+
+            if (label) label.textContent = 'Activo: ' + s.name;
+            showToast('Estilo aplicado: ' + s.name);
+        }
+
+        // Cart & Quantity Helpers
+        function updateQty(inputId, delta) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            let current = parseInt(input.value, 10) || 1;
+            input.value = Math.max(1, current + delta);
+        }
+
+        function handleAddToCart(name, price, size, variant, qtyInputId) {
+            const qtyEl = document.getElementById(qtyInputId);
+            const qty = qtyEl ? (parseInt(qtyEl.value, 10) || 1) : 1;
+            addItemToCartState(name, price, size, variant, qty);
+            showToast(`${qty}x ${name} añadido al carrito`);
+        }
+
+        function handleBuyNow(name, price, size, variant, qtyInputId) {
+            const qtyEl = document.getElementById(qtyInputId);
+            const qty = qtyEl ? (parseInt(qtyEl.value, 10) || 1) : 1;
+            addItemToCartState(name, price, size, variant, qty);
+            toggleCartDrawer(true);
+        }
+
+        function addItemToCartState(name, price, size, variant, qty) {
+            const existing = cart.find(i => i.name === name && i.size === size && i.variant === variant);
+            if (existing) {
+                existing.qty += qty;
+            } else {
+                cart.push({ name, price, size, variant, qty });
+            }
+            renderCart();
+        }
+
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const badge = document.getElementById('cart-badge');
+            const list = document.getElementById('cart-items-list');
+            const subtotalEl = document.getElementById('cart-subtotal');
+
+            const totalCount = cart.reduce((acc, item) => acc + item.qty, 0);
+            const totalPrice = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+
+            badge.textContent = totalCount;
+            subtotalEl.textContent = formatCLP(totalPrice);
+
+            if (cart.length === 0) {
+                list.innerHTML = `<div class="text-center py-12 text-neutral-400 text-xs uppercase tracking-wider">Tu carrito está vacío.</div>`;
+                return;
+            }
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="flex items-center justify-between p-3.5 border border-neutral-200 bg-white">
+                    <div>
+                        <p class="text-sm font-bold text-black">${item.name}</p>
+                        <p class="text-xs text-neutral-500">Opción: ${item.size} · Cant: ${item.qty}</p>
+                        <p class="text-xs font-bold text-black mt-1">${formatCLP(item.price * item.qty)}</p>
+                    </div>
+                    <button onclick="removeCartItem(${idx})" class="text-xs text-neutral-400 hover:text-black underline p-1">Quitar</button>
+                </div>
+            `).join('');
+        }
+
+        function toggleCartDrawer(forceOpen = false) {
+            const overlay = document.getElementById('cart-overlay');
+            const drawer = document.getElementById('cart-drawer');
+            const isOpen = !drawer.classList.contains('translate-x-full');
+
+            if (forceOpen || !isOpen) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+                drawer.classList.remove('translate-x-full');
+            } else {
+                overlay.classList.add('opacity-0');
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function simulateCheckout() {
+            if (cart.length === 0) {
+                showToast('Agrega una prenda antes de continuar');
+                return;
+            }
+            toggleCartDrawer();
+            showToast('Redirigiendo a pago seguro en lonvi.store...');
+        }
+
+        function toggleTesterBar() {
+            document.getElementById('design-tester-bar').classList.toggle('hidden');
+            document.getElementById('tester-pill').classList.toggle('hidden');
+        }
+
+        function openFolderGuideModal() {
+            document.getElementById('folder-guide-modal').classList.remove('hidden');
+        }
+        function closeFolderGuideModal() {
+            document.getElementById('folder-guide-modal').classList.add('hidden');
+        }
+        function openTennisModal() {
+            document.getElementById('tennis-modal').classList.remove('hidden');
+        }
+        function closeTennisModal() {
+            document.getElementById('tennis-modal').classList.add('hidden');
+        }
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('search-input').focus();
+                runSearch('');
+            }
+        }
+        function runSearch(query) {
+            const container = document.getElementById('search-results');
+            const q = query.toLowerCase().trim();
+            const matches = Object.values(PRODUCTS).filter(p => p.name.toLowerCase().includes(q) || p.caption.toLowerCase().includes(q));
+            container.innerHTML = matches.map(p => `
+                <div onclick="openProductDetail('${p.id}', currentRoute); toggleSearchModal();" class="cursor-pointer flex items-center justify-between p-2.5 hover:bg-neutral-50 border border-neutral-200">
+                    <div>
+                        <p class="font-bold text-black">${p.name}</p>
+                        <p class="text-[11px] text-neutral-500">${p.caption}</p>
+                    </div>
+                    <span class="font-bold text-black">${formatCLP(p.price)} →</span>
+                </div>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            showToast('¡Suscripción registrada en Lonvi!');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('translate-x-full', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-x-full', 'opacity-0');
+            }, 2800);
+        }
+
+        // Initialize All Pages & Route on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderAllViews();
+            renderCart();
+            navigateTo('inicio');
+        });
+    </script>
+</body>
+</html>
