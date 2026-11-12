@@ -1,0 +1,585 @@
+{
+ "version": 1,
+ "settings": {
+  "topbar": "Envíos a todo Chile",
+  "shipping": 5000,
+  "shippingDays": "3 a 5 días",
+  "pickup": true,
+  "email": "contactolonvi@gmail.com",
+  "instagram": "lonvi.cl",
+  "facebook": "Lonvi.cl",
+  "twitter": "lonvicl"
+ },
+ "home": {
+  "featured": [
+   "polera-senda",
+   "jockey-sendero",
+   "poleron-ocaso"
+  ],
+  "rack": [
+   [
+    "jockey-trigal",
+    0
+   ],
+   [
+    "polera-basalto",
+    0
+   ],
+   [
+    "jockey-sendero",
+    2
+   ],
+   [
+    "poleron-ocaso",
+    0
+   ],
+   [
+    "polera-senda",
+    0
+   ],
+   [
+    "jockey-sendero",
+    0
+   ],
+   [
+    "jockey-sendero",
+    1
+   ],
+   [
+    "cintillo-lonvi",
+    0
+   ]
+  ],
+  "lens": "jockey-sendero"
+ },
+ "sections": {
+  "hombre": {
+   "title": "Hombre",
+   "lead": "Poleras, polerones y accesorios para todos los días."
+  },
+  "mujer": {
+   "title": "Mujer",
+   "lead": "Poleras, polerones y accesorios para todos los días."
+  },
+  "deporte": {
+   "title": "Deporte",
+   "lead": "Para la cancha, el sendero y cada entrenamiento."
+  },
+  "oferta": {
+   "title": "Oferta",
+   "lead": "Prendas con precio rebajado, mientras dure el stock."
+  }
+ },
+ "fits": {
+  "euro": {
+   "title": "Poleras de algodón",
+   "note": "Medidas de la prenda en estiramiento plano. Margen de tolerancia ±1,2 cm.",
+   "rows": [
+    [
+     "S",
+     46,
+     69
+    ],
+    [
+     "M",
+     51,
+     71
+    ],
+    [
+     "L",
+     56,
+     74
+    ],
+    [
+     "XL",
+     61,
+     76
+    ]
+   ]
+  },
+  "roly": {
+   "title": "Poleras técnicas de poliéster",
+   "note": "Medidas de la prenda en estiramiento plano.",
+   "rows": [
+    [
+     "S",
+     49,
+     68
+    ],
+    [
+     "M",
+     52,
+     70
+    ],
+    [
+     "L",
+     55,
+     72
+    ],
+    [
+     "XL",
+     59,
+     74
+    ]
+   ]
+  }
+ },
+ "products": [
+  {
+   "id": "poleron-ocaso",
+   "fit": "poleron",
+   "logo": [
+    62,
+    21
+   ],
+   "name": "Polerón Ocaso",
+   "price": 19990,
+   "cat": "Polerones",
+   "family": "Río Longaví",
+   "style": "LNV-001",
+   "caption": "Edición Río Longaví",
+   "isNew": true,
+   "sub": "Un clásico para acompañarte cuando baja la temperatura.",
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+   ],
+   "variants": [
+    {
+     "name": "Azul Ocaso",
+     "code": "LNV-001-AZ",
+     "imgs": [
+      "poleron-ocaso-1",
+      "poleron-ocaso-2"
+     ],
+     "block": [
+      "#0B2246",
+      "#FFFFFF"
+     ],
+     "stock": {
+      "S": 0,
+      "M": 2,
+      "L": 0,
+      "XL": 3
+     }
+    }
+   ],
+   "text": [
+    "Ocaso nace desde una idea simple: tener un polerón cómodo y fácil de usar, de esos que terminan formando parte de tus días. Para salir, descansar, recorrer la ciudad o disfrutar una tarde tranquila. Un diseño de cuello redondo que busca hacer de lo simple algo que quieras usar una y otra vez.",
+    "Confeccionado en 80% algodón y 20% poliéster, combina la suavidad del algodón con la resistencia y practicidad del poliéster. Una composición pensada para entregar comodidad y abrigo en el día a día."
+   ],
+   "tags": [
+    "Casual diario",
+    "Outdoor cotidiano"
+   ],
+   "specs": [
+    "Cuello redondo",
+    "Logo meandro bordado en blanco en el pecho",
+    "Cómodo y abrigador",
+    "Diseñado en Chile"
+   ],
+   "materials": "80% algodón, 20% poliéster.",
+   "big": "Un polerón simple, hecho para quedarse contigo.",
+   "team": [
+    "polera-senda",
+    "jockey-sendero"
+   ],
+   "sections": [
+    "hombre",
+    "mujer"
+   ],
+   "hidden": false,
+   "was": null
+  },
+  {
+   "id": "polera-senda",
+   "fit": "euro",
+   "logo": [
+    50,
+    44
+   ],
+   "name": "Polera Senda",
+   "price": 7990,
+   "cat": "Poleras",
+   "family": "Río Longaví",
+   "style": "LNV-002",
+   "caption": "Edición Río Longaví",
+   "isNew": true,
+   "sub": "Una polera simple para acompañarte todos los días.",
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+   ],
+   "variants": [
+    {
+     "name": "Arena Senda",
+     "code": "LNV-002-AR",
+     "imgs": [
+      "polera-senda-1",
+      "polera-senda-2"
+     ],
+     "block": [
+      "#D2B48C",
+      "#3E3124"
+     ],
+     "stock": {
+      "S": 0,
+      "M": 3,
+      "L": 3,
+      "XL": 0
+     }
+    }
+   ],
+   "text": [
+    "Senda nace de esa idea de tener una prenda que puedas usar sin pensarlo demasiado. Para salir, recorrer la ciudad, descansar o simplemente disfrutar el día. Su tono arena y diseño limpio buscan transmitir una sensación tranquila y natural, manteniendo la esencia de Lonvi.",
+    "Confeccionada en 100% algodón, entrega una sensación suave y cómoda al contacto con la piel. Fácil de combinar y pensada para formar parte de tu día a día."
+   ],
+   "tags": [
+    "Casual diario",
+    "Outdoor cotidiano"
+   ],
+   "specs": [
+    "Cuello redondo",
+    "Logo meandro bordado en café en el pecho",
+    "Suave y respirable",
+    "Diseñado en Chile"
+   ],
+   "materials": "100% algodón.",
+   "big": "Una polera simple, hecha para seguir tu propia senda.",
+   "team": [
+    "poleron-ocaso",
+    "jockey-trigal"
+   ],
+   "sections": [
+    "hombre",
+    "mujer"
+   ],
+   "hidden": false,
+   "was": null
+  },
+  {
+   "id": "jockey-sendero",
+   "fit": "unica",
+   "was": 7990,
+   "logo": [
+    50,
+    43
+   ],
+   "name": "Jockey Sendero",
+   "price": 6990,
+   "cat": "Jockeys",
+   "family": "Elige el Sendero",
+   "style": "LNV-003",
+   "caption": "Elige el Sendero",
+   "isNew": true,
+   "sub": "Un jockey pensado para acompañarte todos los días.",
+   "sizes": [
+    "Única ajustable"
+   ],
+   "variants": [
+    {
+     "name": "Azul Marino",
+     "code": "LNV-003-AZ",
+     "imgs": [
+      "jockey-sendero-azul-1",
+      "jockey-sendero-azul-2"
+     ],
+     "block": [
+      "#0B2246",
+      "#FFFFFF"
+     ],
+     "stock": 7
+    },
+    {
+     "name": "Verde Sendero",
+     "code": "LNV-003-VE",
+     "imgs": [
+      "jockey-sendero-verde-1",
+      "jockey-sendero-verde-2"
+     ],
+     "block": [
+      "#05502A",
+      "#FFFFFF"
+     ],
+     "stock": 3
+    },
+    {
+     "name": "Escarcha Lavanda",
+     "code": "LNV-003-ES",
+     "imgs": [
+      "jockey-sendero-escarcha-1",
+      "jockey-sendero-escarcha-2"
+     ],
+     "block": [
+      "#C9C6EC",
+      "#1D1B3A"
+     ],
+     "stock": 5
+    }
+   ],
+   "text": [
+    "Sendero nace desde una idea simple: tener una prenda que puedas llevar contigo sin importar el momento, ya sea para salir, recorrer la ciudad, hacer deporte o simplemente disfrutar el día.",
+    "Confeccionado en 100% poliéster, es liviano, resistente y cómodo. Su diseño simple y versátil combina con distintos estilos y momentos, durante todo el año."
+   ],
+   "tags": [
+    "Casual diario",
+    "Outdoor cotidiano",
+    "Tenis / cancha"
+   ],
+   "specs": [
+    "Bordado frontal LONVI",
+    "Visera curva",
+    "Liviano y resistente",
+    "Diseñado en Chile"
+   ],
+   "materials": "100% poliéster.",
+   "big": "Un compañero de vida, hecho para seguir tu ritmo.",
+   "team": [
+    "poleron-ocaso",
+    "polera-senda"
+   ],
+   "sections": [
+    "hombre",
+    "mujer",
+    "deporte"
+   ],
+   "hidden": false
+  },
+  {
+   "id": "polera-basalto",
+   "fit": "euro",
+   "was": 8990,
+   "logo": [
+    61,
+    38
+   ],
+   "name": "Polera Basalto",
+   "price": 7990,
+   "cat": "Poleras",
+   "family": "Nevado Longaví",
+   "style": "LNV-006",
+   "caption": "Edición Río Longaví",
+   "sub": "Una polera simple, cómoda y hecha para todos los días.",
+   "sizes": [
+    "S",
+    "M",
+    "L",
+    "XL"
+   ],
+   "variants": [
+    {
+     "name": "Negro Basalto",
+     "code": "LNV-006-NE",
+     "imgs": [
+      "polera-basalto-1"
+     ],
+     "block": [
+      "#000000",
+      "#FFFFFF"
+     ],
+     "stock": {
+      "S": 1,
+      "M": 4,
+      "L": 1,
+      "XL": 2
+     }
+    }
+   ],
+   "text": [
+    "Basalto representa la idea con la que nace Lonvi: crear prendas que puedas usar una y otra vez, sin complicaciones. Una polera para salir, trabajar, descansar o simplemente disfrutar el día. Simple por fuera, pero pensada para quedarse.",
+    "Confeccionada en 100% algodón premium, entrega una sensación suave y cómoda al contacto con la piel. Su construcción sin costuras laterales aporta un calce más limpio, mientras que el logo de la cumbre mantiene la identidad de Lonvi de una forma sutil."
+   ],
+   "tags": [
+    "Casual diario",
+    "Outdoor cotidiano"
+   ],
+   "specs": [
+    "Sin costuras laterales",
+    "Logo cumbre Lonvi en el pecho",
+    "Ideal para uso diario",
+    "Diseñada en Chile"
+   ],
+   "materials": "100% algodón premium.",
+   "big": "Una prenda esencial, hecha para acompañarte por mucho tiempo.",
+   "team": [
+    "jockey-sendero",
+    "poleron-ocaso"
+   ],
+   "sections": [
+    "hombre",
+    "mujer"
+   ],
+   "hidden": false,
+   "isNew": false
+  },
+  {
+   "id": "jockey-trigal",
+   "fit": "unica",
+   "was": 9990,
+   "logo": [
+    69,
+    57
+   ],
+   "name": "Jockey Trigal",
+   "price": 7990,
+   "cat": "Jockeys",
+   "family": "Elige el Sendero",
+   "style": "LNV-007",
+   "caption": "Elige el Sendero",
+   "sub": "Un jockey pensado para salir del camino habitual.",
+   "sizes": [
+    "Única ajustable"
+   ],
+   "variants": [
+    {
+     "name": "Arena Trigal",
+     "code": "LNV-007-AR",
+     "imgs": [
+      "jockey-trigal-1",
+      "jockey-trigal-2"
+     ],
+     "block": [
+      "#D2B48C",
+      "#3E3124"
+     ],
+     "stock": null
+    }
+   ],
+   "text": [
+    "Trigal nace para acompañarte cuando el día pide un poco más. Para recorrer senderos, salir a explorar, pasar tiempo al aire libre o simplemente disfrutar de esos lugares que nos llevan más lejos.",
+    "Confeccionado en 100% poliéster, es liviano, resistente y cómodo. Su material está pensado para acompañarte en actividades al aire libre, mientras que su diseño simple mantiene la versatilidad para usarlo también en el día a día."
+   ],
+   "tags": [
+    "Trekking",
+    "Outdoor cotidiano",
+    "Casual diario"
+   ],
+   "specs": [
+    "Logo LONVI estampado al costado",
+    "Liviano y resistente",
+    "Visera curva",
+    "Diseñado en Chile"
+   ],
+   "materials": "100% poliéster.",
+   "big": "Hecho para explorar, descubrir y seguir avanzando.",
+   "team": [
+    "polera-senda",
+    "poleron-ocaso"
+   ],
+   "sections": [
+    "hombre",
+    "mujer",
+    "deporte"
+   ],
+   "hidden": false,
+   "isNew": false
+  },
+  {
+   "id": "cintillo-lonvi",
+   "was": 4990,
+   "logo": [
+    50,
+    32
+   ],
+   "name": "Cintillo Deportivo Lonvi",
+   "price": 3990,
+   "cat": "Deporte / Tenis",
+   "family": "Court",
+   "style": "LNV-009",
+   "caption": "Elige el Sendero",
+   "sub": "Una pieza simple para acompañarte en movimiento.",
+   "sizes": [
+    "Niño",
+    "Adulto"
+   ],
+   "fit": "band",
+   "variants": [
+    {
+     "name": "Negro",
+     "code": "LNV-009-NE",
+     "imgs": [
+      "cintillo-lonvi-1",
+      "cintillo-lonvi-2"
+     ],
+     "dot": "#111111",
+     "block": [
+      "#064269",
+      "#F4ED1F"
+     ],
+     "stock": null
+    }
+   ],
+   "text": [
+    "El Cintillo Deportivo está pensado para esos momentos en que quieres moverte con comodidad. Para entrenar, jugar, salir a correr o simplemente llevarlo durante el día. Su diseño ajustable permite adaptarlo fácilmente y usarlo de la forma que mejor se sienta.",
+    "Confeccionado en 100% poliéster, es liviano y cómodo, pensado para acompañarte durante la actividad sin complicaciones."
+   ],
+   "tags": [
+    "Tenis / cancha",
+    "Running",
+    "Entrenamiento"
+   ],
+   "specs": [
+    "Diseño ajustable",
+    "Liviano y cómodo",
+    "Logo LONVI al frente",
+    "Hecho en Longaví, Chile"
+   ],
+   "materials": "100% poliéster.",
+   "big": "Hecho en Longaví, Chile.",
+   "team": [
+    "jockey-sendero",
+    "polera-basalto"
+   ],
+   "sections": [
+    "hombre",
+    "mujer",
+    "deporte"
+   ],
+   "hidden": false,
+   "isNew": false
+  }
+ ],
+ "pages": [
+  {
+   "key": "cambios",
+   "title": "Cambios y devoluciones",
+   "upd": "2026-11-12",
+   "body": "Queremos que tu prenda Lonvi te acompañe por mucho tiempo. Si algo no resultó como esperabas, aquí te contamos cómo cambiarla o devolverla.\n\n## Plazo\nAceptamos cambios y devoluciones dentro de 14 días desde que recibes tu pedido.\n\n## Condiciones\n- La prenda no debe haber sido usada, modificada, lavada ni manipulada de ninguna otra manera.\n- Debe venir en su embalaje original.\n- Antes de enviarla, escríbenos a {{correo}} para coordinar el cambio o la devolución.\n\n## Cómo solicitarlo\nEscríbenos a {{correo}} con tu nombre, el número o detalle de tu pedido y la prenda que quieres cambiar o devolver. Te responderemos con los pasos para enviarla.\n\n## Costos de envío\n- **Devolución:** Lonvi cubre el envío de la prenda de vuelta a nosotros.\n- **Cambio:** Lonvi cubre el envío de vuelta; el despacho de la prenda nueva hacia ti corre por tu cuenta ({{envio}}), o puedes retirarla en persona sin costo, a coordinar.\n- **Productos con fallas:** Lonvi cubre todos los envíos.\n\n[pendiente: plazo del reembolso.]\n\n## Productos con fallas\nSi una prenda llega con una falla de fabricación, tienes derecho a la garantía legal que establece la Ley N° 19.496 sobre Protección de los Derechos de los Consumidores: puedes elegir entre su cambio, reparación o la devolución de lo pagado."
+  },
+  {
+   "key": "tallas",
+   "title": "Guía de tallas",
+   "upd": "2026-11-12",
+   "body": "Las medidas son de la prenda extendida sobre una superficie plana. Para elegir, compáralas con una prenda tuya que te quede bien.\n\n{{tabla:euro}}\n\nPolera Senda y Polera Basalto.\n\n{{tabla:roly}}\n\nPrendas técnicas de poliéster, como la Polera Cauce.\n\n{{como-medir}}\n\n### Polerones\n[pendiente: tabla de medidas del Polerón Ocaso.]\n\n### Jockeys\nTalla única ajustable: tamaño estándar para cabeza mediana y grande.\n\n### Cintillos\nDos tamaños ajustables: niño y adulto.\n\n## Cuidado de tus prendas\n{{cuidado}}"
+  },
+  {
+   "key": "preguntas",
+   "title": "Preguntas frecuentes",
+   "upd": "2026-11-12",
+   "faq": true,
+   "body": "### ¿Hacen envíos a todo Chile?\nSí. El despacho cuesta {{envio}} a cualquier parte de Chile y se suma al total en el carrito.\n\n### ¿Puedo retirar en persona?\nSí, sin costo. Elige “Retiro en persona” en el carrito y coordinamos el lugar y la hora por correo.\n\n### ¿Cuánto demora mi pedido?\nEntre {{plazo}} desde que se confirma tu pago.\n\n### ¿Puedo cambiar la talla?\nSí, dentro de 14 días desde que recibes tu pedido, si la prenda no se ha usado ni lavado y viene en su embalaje original. Revisa [Cambios y devoluciones](#cambios).\n\n### ¿Cómo elijo mi talla?\nRevisa la [Guía de tallas](#tallas). Los jockeys son talla única ajustable y el cintillo viene en tamaño niño y adulto.\n\n### ¿Qué medios de pago aceptan?\n[pendiente: medios de pago.]\n\n### ¿Cómo los contacto?\nEscríbenos a {{correo}} o por Instagram a {{instagram}}."
+  },
+  {
+   "key": "terminos",
+   "title": "Términos y condiciones",
+   "upd": "2026-11-12",
+   "body": "Estos son nuestros términos y condiciones para el uso del sitio web lonvi.cl y para la compra de productos a través de él.\n\nSi tienes alguna consulta sobre estos términos, escríbenos a {{correo}}.\n\nLos términos y condiciones aquí recogidos, junto con cualquier aviso o condición en otras áreas de este sitio web, rigen el uso del sitio por parte de los clientes. Rodrigo Jaque González puede realizar cambios o eliminar parte de este sitio web en cualquier momento sin responsabilidad alguna para con los clientes por dichos cambios. Rodrigo Jaque González se reserva el derecho a cambiar estos términos y condiciones en el futuro; el uso continuado del sitio web o la realización de pedidos después de aplicar dichos cambios se considera tu aceptación.\n\nEntre el cliente (tú) y nosotros entrará en vigor un contrato únicamente después de que tu pedido se haya procesado y enviado.\n\nCuando realizas un pedido a través de este sitio web, certificas que:\n- No eres menor de edad ni estás legalmente incapacitado para celebrar un contrato vinculante.\n- Los datos personales que nos proporcionas son completos y precisos.\n- No usas un nombre falso ni el nombre de ninguna otra persona u organismo que no estés autorizado a utilizar.\n\n## Realización de un pedido\nAl realizar tu pedido, aceptas estos términos y condiciones. Es importante que los hayas leído antes de hacer el pedido.\n\n## Cancelación de un pedido\nComo cliente, puedes cancelar un pedido en un plazo de 14 días, y te reembolsaremos el monto de tu pedido en la cuenta desde la cual pagaste originalmente.\n\n## Aceptación de un pedido\nCuando realices un pedido, recibirás en el correo electrónico indicado durante el pago una confirmación con el detalle de su contenido y su precio.\n\n## Entrega\nHacemos envíos a todo Chile. El costo de despacho es de {{envio}} y se informa en el carrito antes de pagar. El plazo de entrega es de {{plazo}} desde que se confirma el pago. También puedes retirar tu pedido en persona sin costo, en un lugar y horario a coordinar por correo.\n\nRodrigo Jaque González no asume responsabilidad por daños producidos durante el transporte o por demoras fuera de su control.\n\n## Política de devoluciones\nRodrigo Jaque González acepta devoluciones durante 14 días si los productos no se han usado, modificado, lavado ni manipulado de ninguna otra manera. Los productos deben devolverse en su embalaje original. Para coordinar una devolución, escríbenos primero a {{correo}}. Revisa el detalle en [Cambios y devoluciones](#cambios).\n\n## Responsabilidad\nIntentamos que la información en este sitio web sea lo más precisa posible, pero no ofrecemos garantías, ya sean explícitas o implícitas, con respecto a su precisión. Tampoco ofrecemos ninguna garantía con respecto a la utilización de este sitio web, y es tu responsabilidad asegurarte de que tu propio equipo esté protegido contra virus u otros factores externos.\n\nTus derechos como consumidor están protegidos por la Ley N° 19.496 sobre Protección de los Derechos de los Consumidores. Nada en este sitio web afectará los derechos que te otorga la ley.\n\n## Divisibilidad\nSi alguno de estos términos y condiciones resultara nulo, ilegal o inaplicable por cualquier motivo, se considerará separado de los términos restantes, que seguirán siendo válidos y exigibles."
+  },
+  {
+   "key": "privacidad",
+   "title": "Política de privacidad",
+   "upd": "2026-11-12",
+   "body": "En Lonvi respetamos tu privacidad. Esta política describe cómo recopilamos, usamos y compartimos tu información personal cuando visitas lonvi.cl (el “Sitio”) o haces un pedido.\n\nEl responsable de tus datos personales es Rodrigo Jaque González. Puedes contactarlo en {{correo}}.\n\n## Datos personales que recopilamos\nCuando haces una compra o intentas hacerla, recopilamos tu nombre, dirección de envío, correo electrónico y número de teléfono. Nos referimos a esta información como “Información del Pedido”. Los datos de tu tarjeta o medio de pago los procesa directamente la plataforma de pago; Lonvi no los almacena.\n\nSi te suscribes al newsletter, guardamos tu correo electrónico para enviarte novedades, lanzamientos y promociones.\n\n[pendiente: nombre de la plataforma de pago (por ejemplo, Mercado Pago) cuando esté conectada.]\n\n## ¿Cómo usamos tu información personal?\nUsamos la Información del Pedido para completar los pedidos realizados en el Sitio, incluyendo la coordinación del envío y la entrega de confirmaciones. Además, la usamos para:\n- comunicarnos contigo;\n- revisar los pedidos en busca de posibles riesgos o fraudes; y\n- enviarte información y publicidad sobre nuestros productos, solo si lo autorizaste.\n\n## Cómo compartimos tu información personal\nCompartimos tu información solo con quienes nos ayudan a operar la tienda, como la plataforma de pago y la empresa de despacho, y únicamente para los fines descritos. Estos proveedores deben usar tu información solo en relación con los servicios que realizan para nosotros.\n\nEs posible que compartamos tu información para cumplir con las leyes y regulaciones aplicables, para responder a una solicitud legal de información o para proteger nuestros derechos.\n\n## Tus derechos\nDe acuerdo con la Ley N° 19.628 sobre Protección de la Vida Privada y sus modificaciones, tienes derecho a acceder a tus datos personales y a solicitar que se rectifiquen, eliminen o dejen de usarse. También puedes retirar en cualquier momento tu consentimiento para recibir correos de Lonvi. Para ejercer estos derechos, escríbenos a {{correo}}.\n\n## Retención de datos\nMantendremos tu Información del Pedido durante el tiempo necesario para brindarte nuestros servicios o por el tiempo que exijan las leyes correspondientes. Después de este periodo, tu información personal se eliminará.\n\n## Cambios\nEs posible que actualicemos esta política periódicamente para reflejar cambios en nuestras prácticas o por otras razones operacionales, jurídicas o normativas."
+  },
+  {
+   "key": "cookies",
+   "title": "Política de cookies",
+   "upd": "2026-11-12",
+   "body": "Esta página explica qué son las cookies y cómo se usan en lonvi.cl.\n\n## ¿Qué son las cookies?\nLas cookies son pequeños archivos de texto que un sitio web guarda en tu computador, tablet o celular cuando lo visitas. Permiten que el sitio reconozca tu navegador. Las de sesión se borran al cerrar el navegador; las persistentes se mantienen entre visitas. Las de primera mano las crea el sitio que visitas y las de terceros, otro sitio distinto.\n\nLas cookies se pueden desactivar o eliminar desde la configuración de la mayoría de los navegadores.\n\n## Cookies usadas en este sitio\nActualmente lonvi.cl no usa cookies de publicidad ni de medición de visitas. El carrito se mantiene solo mientras tienes la página abierta.\n\nPara mostrar las tipografías, el sitio las carga desde Google Fonts, un servicio de Google que recibe la dirección IP de tu dispositivo al descargarlas.\n\n## Acerca de esta política\nSi en el futuro incorporamos herramientas de medición o publicidad, actualizaremos esta política y te pediremos tu consentimiento cuando corresponda. Si tienes preguntas, escríbenos a {{correo}}."
+  }
+ ]
+}

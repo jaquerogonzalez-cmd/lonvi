@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Lonvi — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF; --ink:#000; --mute:#63676B; --line:#E3E3DF; --mist:#F4F4F2; --soft:#FAFAF8;
+  --cta:#3CA6A0; --cta-hover:#35958F; --cta-ink:#04211F; --warn:#B8860B; --bad:#B3261E; --ok:#1F7A45;
+  --display:'Montserrat','Avenir Next','Helvetica Neue',Arial,sans-serif;
+  --body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+  box-sizing:border-box;
+}
+*,*::before,*::after{box-sizing:inherit}
+html,body{margin:0;background:var(--soft);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0;padding:0}
+h1,h2,h3,p{margin:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+[hidden]{display:none!important}
+
+/* ---------- conexión ---------- */
+.login{min-height:100vh;display:grid;place-items:center;padding:32px 16px}
+.login .card{width:min(460px,100%);background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:32px}
+.login h1{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.01em}
+.login p.lead{color:var(--mute);margin:6px 0 24px}
+.help{background:var(--mist);border-radius:12px;padding:14px 16px;font-size:13.5px;color:#333;margin-top:18px}
+.help ol{margin:6px 0 0;padding-left:18px}
+.help a{color:inherit}
+
+/* ---------- estructura ---------- */
+.app{display:grid;grid-template-columns:220px minmax(0,1fr);min-height:100vh}
+@media(max-width:860px){.app{grid-template-columns:1fr}}
+.side{background:var(--ink);color:#fff;padding:22px 14px;display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh}
+@media(max-width:860px){.side{position:static;height:auto;flex-direction:row;overflow-x:auto;padding:10px;gap:6px}}
+.side .logo{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.04em;padding:4px 10px 18px}
+.side .logo small{display:block;font-family:var(--body);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.6}
+@media(max-width:860px){.side .logo{display:none}}
+.side button{text-align:left;padding:10px 12px;border-radius:10px;font-weight:500;white-space:nowrap;color:#D6D8DA}
+.side button:hover{background:#1c1c1c;color:#fff}
+.side button[aria-current="true"]{background:#fff;color:#000}
+.side .grow{flex:1}
+@media(max-width:860px){.side .grow{display:none}}
+.main{min-width:0}
+.bar{position:sticky;top:0;z-index:20;background:rgba(250,250,248,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:12px 28px;flex-wrap:wrap}
+@media(max-width:860px){.bar{padding:10px 16px}}
+.bar .status{font-size:13.5px;color:var(--mute);margin-right:auto;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
+.dot.dirty{background:var(--warn)}
+.content{padding:28px;max-width:1080px}
+@media(max-width:860px){.content{padding:18px 16px 80px}}
+.content h1{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.01em;margin-bottom:6px}
+.content .lead{color:var(--mute);margin-bottom:24px;max-width:70ch}
+
+/* ---------- controles ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 20px;font-weight:600;font-size:14px;border:1px solid var(--line);background:var(--paper);transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--cta);border-color:var(--cta);color:var(--cta-ink)}
+.btn.primary:hover{background:var(--cta-hover)}
+.btn.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.danger{color:var(--bad);border-color:#EBC9C6}
+.btn.danger:hover{border-color:var(--bad)}
+.btn.small{padding:6px 12px;font-size:13px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.icon{width:32px;height:32px;border-radius:8px;display:inline-grid;place-items:center;border:1px solid var(--line);background:var(--paper);font-size:15px}
+.icon:hover{border-color:var(--ink)}
+.icon:disabled{opacity:.35;cursor:not-allowed}
+label.f{display:block;margin-bottom:14px}
+label.f>span{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+label.f>small{display:block;font-size:12.5px;color:var(--mute);margin-top:5px}
+input[type=text],input[type=number],input[type=email],input[type=password],select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink)}
+textarea{resize:vertical;min-height:90px;line-height:1.5}
+textarea.tall{min-height:420px;font-size:14px}
+input[type=color]{width:44px;height:36px;border:1px solid var(--line);border-radius:8px;padding:2px;background:var(--paper)}
+.check{display:flex;align-items:center;gap:10px;font-size:14.5px;margin-bottom:10px;cursor:pointer}
+.check input{width:18px;height:18px;accent-color:var(--ink)}
+.row{display:grid;gap:14px}
+@media(min-width:640px){.row.c2{grid-template-columns:1fr 1fr}.row.c3{grid-template-columns:1fr 1fr 1fr}.row.c4{grid-template-columns:repeat(4,1fr)}}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.panel>h2{font-family:var(--display);font-weight:700;font-size:17px;margin-bottom:4px}
+.panel>p.sub{color:var(--mute);font-size:13.5px;margin-bottom:16px}
+.note{font-size:13px;color:var(--mute)}
+.warnbox{background:#FFF7E6;border:1px solid #F1D9A6;border-radius:12px;padding:12px 14px;font-size:13.5px;margin-bottom:16px}
+
+/* ---------- lista de prendas ---------- */
+.plist{display:grid;gap:10px}
+.prow{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.prow:hover{border-color:#bbb}
+.prow .th{width:64px;height:80px;border-radius:8px;background:var(--mist);overflow:hidden}
+.prow .th img{width:100%;height:100%;object-fit:contain}
+.prow .nm{font-weight:600;font-size:15.5px;text-align:left}
+.prow .meta{font-size:13px;color:var(--mute)}
+.prow .acts{display:flex;gap:6px;align-items:center}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--mist);margin-left:6px;vertical-align:2px}
+.badge.hid{background:#EEE;color:#777}
+.badge.new{background:var(--ink);color:#fff}
+.badge.sale{background:#FDEBDD;color:#8A3F0E}
+.badge.low{background:#FFF1CC;color:#7A5A00}
+.badge.out{background:#FBE1DF;color:var(--bad)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+
+/* ---------- editor de prenda ---------- */
+.back{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:var(--mute);margin-bottom:12px}
+.back:hover{color:var(--ink)}
+.variant{border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;background:var(--soft)}
+.variant header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.variant header b{font-size:15px}
+.variant header .sp{flex:1}
+.photos{display:flex;gap:10px;flex-wrap:wrap}
+.ph{position:relative;width:110px}
+.ph .box{width:110px;height:138px;border-radius:10px;border:1px solid var(--line);background:var(--paper);overflow:hidden;display:grid;place-items:center}
+.ph .box img{width:100%;height:100%;object-fit:contain}
+.ph .cap{font-size:11.5px;color:var(--mute);margin-top:4px;text-align:center}
+.ph .rm{position:absolute;top:4px;right:4px;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.65);color:#fff;font-size:13px;line-height:1}
+.ph.add .box{border-style:dashed;color:var(--mute);font-size:13px;text-align:center;padding:8px;cursor:pointer}
+.ph.add .box:hover{border-color:var(--ink);color:var(--ink)}
+.stock{display:flex;gap:10px;flex-wrap:wrap}
+.stock label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;font-weight:600;width:76px}
+.stock input{text-align:center}
+.colors{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end}
+.colors label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;font-weight:600}
+.logopick{position:relative;width:min(300px,100%);aspect-ratio:3/4;border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:crosshair;background:var(--paper)}
+.logopick img{width:100%;height:100%;object-fit:contain;pointer-events:none}
+.logopick .mk{position:absolute;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;border:2px solid var(--cta);box-shadow:0 0 0 2px #fff;pointer-events:none}
+
+/* ---------- inicio ---------- */
+.rackrow{display:grid;grid-template-columns:28px minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:center;margin-bottom:8px}
+.rackrow .n{font-size:13px;color:var(--mute);text-align:center}
+.rackrow .acts{display:flex;gap:4px}
+@media(max-width:600px){.rackrow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.rackrow .n{display:none}.rackrow .acts{grid-column:1/-1}}
+
+/* ---------- páginas y tallas ---------- */
+.pages{display:grid;gap:18px}
+@media(min-width:960px){.pages{grid-template-columns:220px minmax(0,1fr)}}
+.pagelist{display:flex;flex-direction:column;gap:4px}
+@media(max-width:959px){.pagelist{flex-direction:row;overflow-x:auto}}
+.pagelist button{text-align:left;padding:9px 12px;border-radius:10px;white-space:nowrap}
+.pagelist button:hover{background:var(--mist)}
+.pagelist button[aria-current="true"]{background:var(--ink);color:#fff}
+.syntax{font-size:13px;background:var(--mist);border-radius:12px;padding:12px 16px;margin-top:12px}
+.syntax code{background:#fff;border:1px solid var(--line);border-radius:5px;padding:0 5px;font-size:12.5px}
+.syntax ul{margin:6px 0 0;padding-left:18px}
+.fitrow{display:grid;grid-template-columns:90px 1fr 1fr 32px;gap:8px;margin-bottom:8px;align-items:center}
+.fithead{font-size:12.5px;font-weight:600;color:var(--mute)}
+
+/* ---------- avisos ---------- */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:var(--ink);color:#fff;border-radius:999px;padding:11px 22px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:100;max-width:calc(100% - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:var(--bad)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:grid;place-items:center;z-index:90;padding:16px}
+.modal .card{background:var(--paper);border-radius:16px;padding:24px;width:min(480px,100%)}
+.modal h2{font-family:var(--display);font-weight:800;font-size:20px;margin-bottom:8px}
+.modal p{color:#333;margin-bottom:18px}
+.modal .acts{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- ============ CONEXIÓN ============ -->
+<section class="login" id="login" hidden>
+  <div class="card">
+    <h1>Lonvi · Admin</h1>
+    <p class="lead">Conecta tu repositorio de GitHub para editar la tienda.</p>
+    <div class="row c2">
+      <label class="f"><span>Usuario de GitHub</span><input type="text" id="cOwner" autocomplete="username" placeholder="tu-usuario"></label>
+      <label class="f"><span>Repositorio</span><input type="text" id="cRepo" placeholder="lonvi"></label>
+    </div>
+    <div class="row c2">
+      <label class="f"><span>Rama</span><input type="text" id="cBranch" value="main"></label>
+      <label class="f"><span>Carpeta del sitio</span><input type="text" id="cDir" placeholder="(vacío = raíz)"></label>
+    </div>
+    <label class="f"><span>Token de acceso</span><input type="password" id="cToken" autocomplete="current-password" placeholder="github_pat_…"><small>Se guarda solo en este navegador.</small></label>
+    <button class="btn primary" id="connect" style="width:100%;justify-content:center">Conectar</button>
+    <p class="note" id="loginMsg" style="margin-top:12px;min-height:1.4em"></p>
+    <div class="help">
+      <b>Cómo crear el token (una sola vez)</b>
+      <ol>
+        <li>Entra a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → Settings → Fine-grained tokens</a>.</li>
+        <li>En <i>Repository access</i> elige <b>Only select repositories</b> y marca el repositorio de Lonvi.</li>
+        <li>En <i>Permissions → Repository permissions</i>, pon <b>Contents</b> en <b>Read and write</b>.</li>
+        <li>Ponle una fecha de vencimiento, créalo y pégalo aquí.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL ============ -->
+<div class="app" id="app" hidden>
+  <nav class="side" aria-label="Secciones">
+    <div class="logo">LONVI<small>Admin</small></div>
+    <button data-tab="prendas">Prendas</button>
+    <button data-tab="inicio">Inicio</button>
+    <button data-tab="envio">Envío y contacto</button>
+    <button data-tab="paginas">Páginas</button>
+    <button data-tab="tallas">Tablas de tallas</button>
+    <div class="grow"></div>
+    <button data-tab="conexion">Conexión</button>
+  </nav>
+  <div class="main">
+    <div class="bar">
+      <span class="status"><span class="dot" id="dot"></span><span id="statusTxt">Sin cambios</span></span>
+      <button class="btn" id="preview">Vista previa</button>
+      <button class="btn primary" id="publish" disabled>Publicar</button>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN Y ESTADO
+   ============================================================ */
+const API = localStorage.getItem('lonvi-api') || 'https://api.github.com';   // se puede cambiar solo para pruebas
+const CFG_KEY = 'lonvi-admin', DRAFT_KEY = 'lonvi-draft';
+let cfg = JSON.parse(localStorage.getItem(CFG_KEY) || 'null');
+let data = null, base = '', remote = {head: '', dataSha: ''};
+let previews = {};          // fotos nuevas aún sin publicar: clave → dataURL
+let tab = 'prendas', editing = null, pageKey = null;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const clp = n => '$' + String(Math.round(Number(n) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+const slug = s => String(s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'item';
+const today = () => new Date().toISOString().slice(0, 10);
+const dir = () => { const d = (cfg.dir || '').trim().replace(/^\/+|\/+$/g, ''); return d ? d + '/' : ''; };
+const imgSrc = k => previews[k] || `../img/${k}.jpg`;
+const CATS = ['Poleras', 'Polerones', 'Jockeys', 'Deporte / Tenis'];
+const SECTIONS = [['hombre', 'Hombre'], ['mujer', 'Mujer'], ['deporte', 'Deporte']];
+
+let toastT;
+function toast(msg, bad){
+  const t = $('#toast'); t.textContent = msg; t.classList.toggle('bad', !!bad); t.classList.add('on');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), bad ? 6000 : 3200);
+}
+function ask(title, text, okLabel, danger){
+  return new Promise(res => {
+    const m = document.createElement('div'); m.className = 'modal';
+    m.innerHTML = `<div class="card" role="dialog" aria-modal="true"><h2>${esc(title)}</h2><p>${esc(text)}</p><div class="acts"><button class="btn" data-r="0">Cancelar</button><button class="btn ${danger ? 'danger' : 'dark'}" data-r="1">${esc(okLabel)}</button></div></div>`;
+    m.addEventListener('click', e => { const b = e.target.closest('[data-r]'); if (b || e.target === m){ m.remove(); res(b && b.dataset.r === '1'); } });
+    document.body.appendChild(m); m.querySelector('[data-r="1"]').focus();
+  });
+}
+
+/* ============================================================
+   GITHUB
+   ============================================================ */
+async function gh(path, opts = {}){
+  const r = await fetch(API + path, {...opts, headers: {
+    Authorization: 'Bearer ' + cfg.token, Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28',
+    ...(opts.body ? {'Content-Type': 'application/json'} : {})}});
+  if (!r.ok){
+    let msg = ''; try { msg = (await r.json()).message || ''; } catch(e) {}
+    const err = new Error(msg || ('Error ' + r.status)); err.status = r.status; throw err;
+  }
+  return r.status === 204 ? null : r.json();
+}
+const repoPath = () => `/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}`;
+const b64ToText = b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g, '')), c => c.charCodeAt(0)));
+function textToB64(s){
+  const bytes = new TextEncoder().encode(s); let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+function explain(e){
+  if (e.status === 401) return 'El token no es válido o venció. Revísalo en Conexión.';
+  if (e.status === 403) return 'El token no tiene permiso de escritura. Dale "Contents: Read and write".';
+  if (e.status === 404) return 'No encontré el repositorio, la rama o data/productos.json. Revisa los datos de conexión.';
+  if (e instanceof TypeError) return 'No hay conexión con GitHub. Revisa tu internet.';
+  return e.message || 'Algo falló.';
+}
+async function loadRemote(){
+  const ref = await gh(`${repoPath()}/git/ref/heads/${encodeURIComponent(cfg.branch)}`);
+  const file = await gh(`${repoPath()}/contents/${dir()}data/productos.json?ref=${encodeURIComponent(cfg.branch)}`);
+  remote = {head: ref.object.sha, dataSha: file.sha};
+  return b64ToText(file.content);
+}
+
+/* ============================================================
+   BORRADOR (sobrevive a recargar la página y alimenta la vista previa)
+   ============================================================ */
+let saveT;
+function saveDraft(){
+  clearTimeout(saveT);
+  saveT = setTimeout(() => {
+    try { localStorage.setItem(DRAFT_KEY, JSON.stringify({data, imgs: previews, dataSha: remote.dataSha})); }
+    catch(e){ try { localStorage.setItem(DRAFT_KEY, JSON.stringify({data, imgs: {}, dataSha: remote.dataSha})); } catch(_) {} }
+  }, 250);
+}
+function dirty(){ return JSON.stringify(data) !== base || Object.keys(previews).length > 0; }
+function changed(){
+  const d = dirty(), n = Object.keys(previews).length;
+  $('#dot').classList.toggle('dirty', d);
+  $('#statusTxt').textContent = d ? `Cambios sin publicar${n ? ` · ${n} foto${n > 1 ? 's' : ''} nueva${n > 1 ? 's' : ''}` : ''}` : 'Todo publicado';
+  $('#publish').disabled = !d;
+  if (d) saveDraft(); else localStorage.removeItem(DRAFT_KEY);
+}
+window.addEventListener('beforeunload', e => { if (data && dirty()){ e.preventDefault(); e.returnValue = ''; } });
+
+/* ============================================================
+   PUBLICAR: un solo commit con los datos y las fotos nuevas
+   ============================================================ */
+function problems(){
+  const out = [];
+  data.products.forEach(p => {
+    if (!p.name.trim()) out.push('Hay una prenda sin nombre.');
+    if (!(p.price > 0)) out.push(`${p.name || 'Una prenda'}: falta el precio.`);
+    if (p.was && p.was <= p.price) out.push(`${p.name}: el precio anterior debe ser mayor que el precio actual.`);
+    if (!p.variants.length) out.push(`${p.name}: necesita al menos un color.`);
+    p.variants.forEach(v => { if (!v.imgs.length) out.push(`${p.name} ${v.name}: falta la foto de frente.`); });
+  });
+  return out;
+}
+async function publish(){
+  const pr = problems();
+  if (pr.length){ toast(pr[0], true); return; }
+  const btn = $('#publish'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Publicando…';
+  try {
+    const ref = await gh(`${repoPath()}/git/ref/heads/${encodeURIComponent(cfg.branch)}`);
+    let parent = ref.object.sha;
+    if (parent !== remote.head){            // alguien más cambió el repositorio desde que cargamos
+      const f = await gh(`${repoPath()}/contents/${dir()}data/productos.json?ref=${encodeURIComponent(cfg.branch)}`);
+      if (f.sha !== remote.dataSha){
+        await ask('Hay cambios más nuevos en GitHub', 'Los datos de la tienda cambiaron en GitHub desde que abriste el panel (quizás desde otra pestaña o computador). Para no borrarlos, recarga desde Conexión y vuelve a hacer tus cambios. Tu borrador queda guardado como respaldo descargable.', 'Entendido');
+        return;
+      }
+    }
+    const commit = await gh(`${repoPath()}/git/commits/${parent}`);
+    const json = JSON.stringify(data, null, 1) + '\n';
+    const files = [{path: `${dir()}data/productos.json`, b64: textToB64(json)}]
+      .concat(Object.entries(previews).map(([k, url]) => ({path: `${dir()}img/${k}.jpg`, b64: url.split(',')[1]})));
+    const tree = [];
+    for (const f of files){
+      const blob = await gh(`${repoPath()}/git/blobs`, {method: 'POST', body: JSON.stringify({content: f.b64, encoding: 'base64'})});
+      tree.push({path: f.path, mode: '100644', type: 'blob', sha: blob.sha});
+      if (f.path.endsWith('productos.json')) remote.dataSha = blob.sha;
+    }
+    const t = await gh(`${repoPath()}/git/trees`, {method: 'POST', body: JSON.stringify({base_tree: commit.tree.sha, tree})});
+    const n = Object.keys(previews).length;
+    const c = await gh(`${repoPath()}/git/commits`, {method: 'POST', body: JSON.stringify({
+      message: `Admin: actualiza la tienda${n ? ` y ${n} foto${n > 1 ? 's' : ''}` : ''}`, tree: t.sha, parents: [parent]})});
+    await gh(`${repoPath()}/git/refs/heads/${encodeURIComponent(cfg.branch)}`, {method: 'PATCH', body: JSON.stringify({sha: c.sha})});
+    remote.head = c.sha; base = JSON.stringify(data); previews = {};
+    localStorage.removeItem(DRAFT_KEY);
+    toast('Publicado. El sitio se actualiza en uno o dos minutos.');
+    render();
+  } catch(e){
+    toast('No se pudo publicar: ' + explain(e), true);
+  } finally {
+    btn.textContent = 'Publicar'; changed();
+  }
+}
+
+/* ============================================================
+   FOTOS: se achican en el navegador antes de subirlas
+   ============================================================ */
+function pickImage(){
+  return new Promise(res => {
+    const i = document.createElement('input'); i.type = 'file'; i.accept = 'image/*';
+    i.onchange = () => res(i.files[0] || null); i.click();
+  });
+}
+async function shrink(file){
+  const img = await new Promise((ok, no) => { const im = new Image(); im.onload = () => ok(im); im.onerror = no; im.src = URL.createObjectURL(file); });
+  const s = Math.min(1, 960 / img.naturalWidth, 1280 / img.naturalHeight);
+  const c = document.createElement('canvas'); c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+  const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(img, 0, 0, c.width, c.height);
+  URL.revokeObjectURL(img.src);
+  return c.toDataURL('image/jpeg', .84);
+}
+
+/* ============================================================
+   UTILIDADES DE DATOS
+   ============================================================ */
+const P = id => data.products.find(p => p.id === id);
+const units = v => v.stock == null ? Infinity : typeof v.stock === 'number' ? v.stock : Object.values(v.stock).reduce((a, b) => a + (Number(b) || 0), 0);
+function syncStock(p){                       // al cambiar las tallas, el stock sigue a las tallas
+  p.variants.forEach(v => {
+    if (v.stock == null) return;
+    if (p.sizes.length <= 1){ if (typeof v.stock === 'object') v.stock = units(v); }
+    else {
+      const old = typeof v.stock === 'object' ? v.stock : {}; const n = {};
+      p.sizes.forEach(s => n[s] = Number(old[s]) || 0); v.stock = n;
+    }
+  });
+}
+function removeRefs(id){
+  const h = data.home;
+  h.featured = h.featured.map(x => x === id ? '' : x);
+  h.rack = h.rack.filter(r => r[0] !== id);
+  if (h.lens === id) h.lens = '';
+  data.products.forEach(p => { p.team = (p.team || []).filter(x => x !== id); });
+}
+function newProduct(name){
+  let id = slug(name), n = 2; while (P(id)) id = slug(name) + '-' + n++;
+  const p = {id, name, cat: 'Poleras', price: 0, was: null, isNew: true, hidden: true, sections: ['hombre', 'mujer'],
+    sub: '', text: [], specs: [], materials: '', tags: [], big: '', caption: '', family: '', style: '',
+    sizes: ['S', 'M', 'L', 'XL'], fit: Object.keys(data.fits)[0] || '', logo: [50, 40], team: [],
+    variants: [{name: 'Color 1', code: '', imgs: [], block: ['#0B2246', '#FFFFFF'], stock: {S: 0, M: 0, L: 0, XL: 0}}]};
+  data.products.unshift(p);
+  return p;
+}
+
+/* ============================================================
+   VISTAS
+   ============================================================ */
+function render(){
+  document.querySelectorAll('[data-tab]').forEach(b => b.setAttribute('aria-current', String(b.dataset.tab === tab)));
+  const c = $('#content');
+  c.innerHTML = tab === 'prendas' ? (editing ? viewProduct(P(editing)) : viewList())
+    : tab === 'inicio' ? viewHome() : tab === 'envio' ? viewShipping()
+    : tab === 'paginas' ? viewPages() : tab === 'tallas' ? viewFits() : viewConn();
+  changed();
+}
+
+/* ---------- Prendas ---------- */
+function viewList(){
+  return `<h1>Prendas</h1><p class="lead">Las prendas nuevas se crean ocultas: complétalas, súbeles fotos y márcalas como visibles. El orden de esta lista es el orden en los catálogos.</p>
+  <div class="toolbar"><button class="btn dark" data-act="new">+ Nueva prenda</button></div>
+  <div class="plist">${data.products.map((p, i) => {
+    const v = p.variants[0] || {imgs: []}, tot = p.variants.reduce((a, v) => a + units(v), 0);
+    const st = tot === Infinity ? 'Stock sin control' : `${tot} en stock`;
+    return `<div class="prow">
+      <div class="th">${v.imgs[0] ? `<img src="${imgSrc(v.imgs[0])}" alt="">` : ''}</div>
+      <div><button class="nm" data-edit="${p.id}">${esc(p.name)}</button>${p.hidden ? '<span class="badge hid">Oculta</span>' : ''}${p.isNew ? '<span class="badge new">Nuevo</span>' : ''}${p.was > p.price ? '<span class="badge sale">Oferta</span>' : ''}${tot === 0 ? '<span class="badge out">Agotada</span>' : tot <= 3 ? '<span class="badge low">Poco stock</span>' : ''}
+        <div class="meta">${esc(p.cat)} · ${clp(p.price)}${p.was ? ` <s>${clp(p.was)}</s>` : ''} · ${p.variants.length} color${p.variants.length === 1 ? '' : 'es'} · ${st}</div></div>
+      <div class="acts"><button class="icon" data-move="${i}" data-d="-1" aria-label="Subir" ${i === 0 ? 'disabled' : ''}>↑</button><button class="icon" data-move="${i}" data-d="1" aria-label="Bajar" ${i === data.products.length - 1 ? 'disabled' : ''}>↓</button><button class="btn small" data-edit="${p.id}">Editar</button></div>
+    </div>`;
+  }).join('')}</div>`;
+}
+function fitOptions(sel){
+  const o = [...Object.entries(data.fits).map(([k, f]) => [k, 'Tabla: ' + f.title]), ['unica', 'Talla única (jockeys)'], ['band', 'Niño y adulto (cintillos)'], ['', 'Sin tabla todavía']];
+  return o.map(([k, t]) => `<option value="${k}" ${k === (sel || '') ? 'selected' : ''}>${esc(t)}</option>`).join('');
+}
+function viewProduct(p){
+  if (!p){ editing = null; return viewList(); }
+  const opts = (sel, skip) => `<option value="">— Ninguna —</option>` + data.products.filter(x => x.id !== skip).map(x => `<option value="${x.id}" ${x.id === sel ? 'selected' : ''}>${esc(x.name)}</option>`).join('');
+  const lv = p.variants[0], li = lv && lv.imgs[0];
+  return `<button class="back" data-act="back">← Todas las prendas</button>
+  <h1>${esc(p.name || 'Prenda sin nombre')}</h1><p class="lead">Los cambios se guardan aquí al instante. Se ven en la tienda cuando apretas <b>Publicar</b>.</p>
+
+  <div class="panel"><h2>Lo básico</h2><p class="sub">Nombre, precio y dónde aparece.</p>
+    <div class="row c2">
+      <label class="f"><span>Nombre</span><input type="text" data-p="name" value="${esc(p.name)}"></label>
+      <label class="f"><span>Categoría</span><select data-p="cat">${CATS.concat(CATS.includes(p.cat) ? [] : [p.cat]).map(c => `<option ${c === p.cat ? 'selected' : ''}>${esc(c)}</option>`).join('')}</select></label>
+    </div>
+    <div class="row c2">
+      <label class="f"><span>Precio</span><input type="number" min="0" step="10" data-p="price" data-num value="${p.price || ''}"></label>
+      <label class="f"><span>Precio anterior (oferta)</span><input type="number" min="0" step="10" data-p="was" data-num value="${p.was || ''}"><small>Déjalo vacío si no está en oferta. Si lo llenas, aparece tachado y la prenda entra a Oferta.</small></label>
+    </div>
+    <label class="check"><input type="checkbox" data-p="hidden" data-inv ${p.hidden ? '' : 'checked'}> Visible en la tienda</label>
+    <label class="check"><input type="checkbox" data-p="isNew" ${p.isNew ? 'checked' : ''}> Marcar como “Nuevo”</label>
+    <p class="note" style="margin:8px 0 6px">Aparece en:</p>
+    ${SECTIONS.map(([k, t]) => `<label class="check"><input type="checkbox" data-sec="${k}" ${(p.sections || []).includes(k) ? 'checked' : ''}> ${t}</label>`).join('')}
+  </div>
+
+  <div class="panel"><h2>Colores, fotos y stock</h2><p class="sub">Cada color tiene sus fotos (frente y detalle) y su stock por talla.</p>
+    ${p.variants.map((v, vi) => `<div class="variant">
+      <header><b>${esc(v.name || 'Color ' + (vi + 1))}</b><span class="sp"></span>
+        <button class="icon" data-vmove="${vi}" data-d="-1" aria-label="Subir color" ${vi === 0 ? 'disabled' : ''}>↑</button><button class="icon" data-vmove="${vi}" data-d="1" aria-label="Bajar color" ${vi === p.variants.length - 1 ? 'disabled' : ''}>↓</button>
+        <button class="btn small danger" data-vdel="${vi}" ${p.variants.length === 1 ? 'disabled' : ''}>Quitar color</button></header>
+      <div class="row c2">
+        <label class="f"><span>Nombre del color</span><input type="text" data-v="${vi}" data-vk="name" value="${esc(v.name)}"></label>
+        <label class="f"><span>Código</span><input type="text" data-v="${vi}" data-vk="code" value="${esc(v.code || '')}" placeholder="LNV-000-XX"></label>
+      </div>
+      <div class="photos" style="margin-bottom:16px">
+        ${v.imgs.map((k, ii) => `<div class="ph"><div class="box"><img src="${imgSrc(k)}" alt=""></div><button class="rm" data-imgdel="${vi}" data-i="${ii}" aria-label="Quitar foto">✕</button><p class="cap">${ii === 0 ? 'Frente' : ii === 1 ? 'Detalle' : 'Foto ' + (ii + 1)}</p></div>`).join('')}
+        <div class="ph add"><button class="box" data-imgadd="${vi}">+ Subir foto${v.imgs.length === 0 ? '<br>de frente' : v.imgs.length === 1 ? '<br>de detalle' : ''}</button></div>
+      </div>
+      <div class="colors" style="margin-bottom:16px">
+        <label>Punto de color<input type="color" data-v="${vi}" data-vk="dot" value="${v.dot || v.block[0]}"></label>
+        <label>Fondo del bloque<input type="color" data-v="${vi}" data-vk="block0" value="${v.block[0]}"></label>
+        <label>Texto del bloque<input type="color" data-v="${vi}" data-vk="block1" value="${v.block[1]}"></label>
+      </div>
+      <label class="check"><input type="checkbox" data-vstock="${vi}" ${v.stock != null ? 'checked' : ''}> Controlar stock</label>
+      ${v.stock == null ? '<p class="note">Sin control: siempre aparece disponible.</p>' : p.sizes.length > 1
+        ? `<div class="stock">${p.sizes.map(s => `<label>${esc(s)}<input type="number" min="0" data-st="${vi}" data-size="${esc(s)}" value="${Number(v.stock[s]) || 0}"></label>`).join('')}</div>`
+        : `<div class="stock"><label>Unidades<input type="number" min="0" data-st="${vi}" value="${units(v)}"></label></div>`}
+    </div>`).join('')}
+    <button class="btn" data-act="vadd">+ Agregar color</button>
+  </div>
+
+  <div class="panel"><h2>Tallas</h2>
+    <label class="f"><span>Tallas a la venta</span><input type="text" data-p="sizes" data-list="," value="${esc(p.sizes.join(', '))}"><small>Separadas por coma. Ejemplo: S, M, L, XL. Para jockeys: Única ajustable.</small></label>
+    <label class="f"><span>Guía de tallas que se muestra</span><select data-p="fit">${fitOptions(p.fit)}</select></label>
+  </div>
+
+  <div class="panel"><h2>Textos de la ficha</h2>
+    <label class="f"><span>Frase corta bajo el nombre</span><input type="text" data-p="sub" value="${esc(p.sub)}"></label>
+    <label class="f"><span>Descripción</span><textarea data-p="text" data-list="para">${esc((p.text || []).join('\n\n'))}</textarea><small>Deja una línea en blanco entre párrafos.</small></label>
+    <label class="f"><span>Características</span><textarea data-p="specs" data-list="line">${esc((p.specs || []).join('\n'))}</textarea><small>Una por línea.</small></label>
+    <div class="row c2">
+      <label class="f"><span>Materiales</span><input type="text" data-p="materials" value="${esc(p.materials || '')}" placeholder="100% algodón."></label>
+      <label class="f"><span>Actividades</span><input type="text" data-p="tags" data-list="," value="${esc((p.tags || []).join(', '))}"><small>Separadas por coma.</small></label>
+    </div>
+    <label class="f"><span>Frase grande del bloque de color</span><input type="text" data-p="big" value="${esc(p.big || '')}"></label>
+    <div class="row c3">
+      <label class="f"><span>Texto bajo la foto</span><input type="text" data-p="caption" value="${esc(p.caption || '')}"></label>
+      <label class="f"><span>Familia</span><input type="text" data-p="family" value="${esc(p.family || '')}"></label>
+      <label class="f"><span>Nro. de estilo</span><input type="text" data-p="style" value="${esc(p.style || '')}"></label>
+    </div>
+  </div>
+
+  <div class="panel"><h2>Punto del logo</h2><p class="sub">Haz clic sobre el logo en la foto: ahí apunta el zoom al pasar el cursor y al entrar a la ficha.</p>
+    ${li ? `<div class="logopick" data-logo><img src="${imgSrc(li)}" alt=""><span class="mk" style="left:${p.logo[0]}%;top:${p.logo[1]}%"></span></div>` : '<p class="note">Sube primero la foto de frente.</p>'}
+  </div>
+
+  <div class="panel"><h2>Completa el equipo</h2><p class="sub">Dos prendas que se sugieren al final de la ficha.</p>
+    <div class="row c2">
+      <label class="f"><span>Sugerencia 1</span><select data-team="0">${opts((p.team || [])[0], p.id)}</select></label>
+      <label class="f"><span>Sugerencia 2</span><select data-team="1">${opts((p.team || [])[1], p.id)}</select></label>
+    </div>
+  </div>
+
+  <div class="panel"><h2>Eliminar</h2><p class="sub">Si solo quieres sacarla de la tienda por un tiempo, desmarca “Visible en la tienda”.</p>
+    <button class="btn danger" data-act="pdel">Eliminar esta prenda</button>
+  </div>`;
+}
+
+/* ---------- Inicio ---------- */
+function viewHome(){
+  const h = data.home, vis = data.products;
+  const sel = (val, attr) => `<select ${attr}><option value="">— Ninguna —</option>${vis.map(p => `<option value="${p.id}" ${p.id === val ? 'selected' : ''}>${esc(p.name)}${p.hidden ? ' (oculta)' : ''}</option>`).join('')}</select>`;
+  return `<h1>Inicio</h1><p class="lead">Qué se muestra en la página principal.</p>
+  <div class="panel"><h2>Barra superior</h2>
+    <label class="f"><span>Texto que corre arriba</span><input type="text" data-set="topbar" value="${esc(data.settings.topbar)}"></label></div>
+  <div class="panel"><h2>Destacados</h2><p class="sub">Las tres tarjetas bajo la portada.</p>
+    <div class="row c3">${[0, 1, 2].map(i => `<label class="f"><span>Tarjeta ${i + 1}</span>${sel(h.featured[i], `data-feat="${i}"`)}</label>`).join('')}</div></div>
+  <div class="panel"><h2>Colgador de Novedades</h2><p class="sub">Prendas colgadas en la barra 3D, de izquierda a derecha. Las prendas nuevas aparecen como foto plana hasta que se genere su modelo 3D.</p>
+    ${h.rack.map(([id, vi], i) => { const p = P(id); return `<div class="rackrow"><span class="n">${i + 1}</span>
+      ${sel(id, `data-rack="${i}"`)}
+      <select data-rackv="${i}">${p ? p.variants.map((v, k) => `<option value="${k}" ${k === vi ? 'selected' : ''}>${esc(v.name)}</option>`).join('') : ''}</select>
+      <span class="acts"><button class="icon" data-rmove="${i}" data-d="-1" aria-label="Mover a la izquierda" ${i === 0 ? 'disabled' : ''}>↑</button><button class="icon" data-rmove="${i}" data-d="1" aria-label="Mover a la derecha" ${i === h.rack.length - 1 ? 'disabled' : ''}>↓</button><button class="icon" data-rdel="${i}" aria-label="Quitar">✕</button></span></div>`; }).join('')}
+    <button class="btn" data-act="radd">+ Colgar otra prenda</button></div>
+  <div class="panel"><h2>Vitrina con lupa</h2><p class="sub">La prenda que se muestra con el detalle ampliado.</p>
+    <label class="f"><span>Prenda</span>${sel(h.lens, 'data-lens')}</label></div>
+  <div class="panel"><h2>Catálogos</h2><p class="sub">Título y frase de cada sección del menú.</p>
+    ${Object.entries(data.sections).map(([k, s]) => `<div class="row c2"><label class="f"><span>Título</span><input type="text" data-secv="${k}" data-sk="title" value="${esc(s.title)}"></label><label class="f"><span>Frase</span><input type="text" data-secv="${k}" data-sk="lead" value="${esc(s.lead)}"></label></div>`).join('')}
+  </div>`;
+}
+
+/* ---------- Envío y contacto ---------- */
+function viewShipping(){
+  const s = data.settings;
+  return `<h1>Envío y contacto</h1><p class="lead">Estos datos se usan en el carrito, las fichas, las páginas de información y el footer.</p>
+  <div class="panel"><h2>Despacho</h2>
+    <div class="row c2">
+      <label class="f"><span>Costo de envío a todo Chile</span><input type="number" min="0" step="100" data-set="shipping" data-num value="${s.shipping}"></label>
+      <label class="f"><span>Plazo de entrega</span><input type="text" data-set="shippingDays" value="${esc(s.shippingDays)}"><small>Se lee como “Llega en …”. Ejemplo: 3 a 5 días.</small></label>
+    </div>
+    <label class="check"><input type="checkbox" data-set="pickup" ${s.pickup ? 'checked' : ''}> Ofrecer retiro en persona (gratis, a coordinar)</label></div>
+  <div class="panel"><h2>Contacto y redes</h2>
+    <label class="f"><span>Correo de contacto</span><input type="email" data-set="email" value="${esc(s.email)}"></label>
+    <div class="row c3">
+      <label class="f"><span>Instagram</span><input type="text" data-set="instagram" value="${esc(s.instagram)}" placeholder="usuario"></label>
+      <label class="f"><span>Facebook</span><input type="text" data-set="facebook" value="${esc(s.facebook)}" placeholder="usuario"></label>
+      <label class="f"><span>X (Twitter)</span><input type="text" data-set="twitter" value="${esc(s.twitter)}" placeholder="usuario"></label>
+    </div><p class="note">Solo el nombre de usuario, sin @. Deja vacío para ocultar el ícono.</p></div>`;
+}
+
+/* ---------- Páginas ---------- */
+function viewPages(){
+  const pg = data.pages.find(p => p.key === pageKey) || data.pages[0]; pageKey = pg.key;
+  return `<h1>Páginas de información</h1><p class="lead">Cambios y devoluciones, guía de tallas, preguntas frecuentes y textos legales.</p>
+  <div class="pages">
+    <div class="pagelist">${data.pages.map(p => `<button data-page="${p.key}" aria-current="${p.key === pg.key}">${esc(p.title)}</button>`).join('')}</div>
+    <div class="panel" style="margin:0">
+      <label class="f"><span>Título</span><input type="text" data-pg="title" value="${esc(pg.title)}"></label>
+      <label class="f"><span>Contenido</span><textarea class="tall" data-pg="body">${esc(pg.body)}</textarea></label>
+      ${pg.faq ? '<p class="note">Esta página usa formato de preguntas: cada <code>### </code> es una pregunta desplegable.</p>' : ''}
+      <div class="syntax"><b>Cómo escribir</b>
+        <ul>
+          <li><code>## Título</code> y <code>### Subtítulo</code></li>
+          <li><code>- texto</code> para una lista</li>
+          <li><code>**texto**</code> para negrita</li>
+          <li><code>[texto](#cambios)</code> enlaza a otra página (#cambios, #tallas, #preguntas, #terminos, #privacidad, #cookies)</li>
+          <li><code>{{correo}}</code>, <code>{{envio}}</code>, <code>{{plazo}}</code> e <code>{{instagram}}</code> se reemplazan por tus datos de Envío y contacto</li>
+          <li><code>{{tabla:euro}}</code>, <code>{{como-medir}}</code> y <code>{{cuidado}}</code> insertan tablas de tallas e íconos de cuidado</li>
+          <li><code>[pendiente: algo]</code> marca un texto que falta</li>
+        </ul></div>
+      <p class="note" style="margin-top:10px">La fecha de actualización se pone sola al editar.</p>
+    </div>
+  </div>`;
+}
+
+/* ---------- Tablas de tallas ---------- */
+function viewFits(){
+  return `<h1>Tablas de tallas</h1><p class="lead">Medidas en centímetros, de la prenda extendida. Cada prenda elige su tabla en su ficha.</p>
+  ${Object.entries(data.fits).map(([k, f]) => `<div class="panel"><h2>${esc(f.title)}</h2><p class="sub">Código para las páginas: <code>{{tabla:${esc(k)}}}</code></p>
+    <div class="row c2"><label class="f"><span>Nombre</span><input type="text" data-fit="${k}" data-fk="title" value="${esc(f.title)}"></label><label class="f"><span>Nota</span><input type="text" data-fit="${k}" data-fk="note" value="${esc(f.note)}"></label></div>
+    <div class="fitrow fithead"><span>Talla</span><span>Ancho (A)</span><span>Largo (B)</span><span></span></div>
+    ${f.rows.map((r, i) => `<div class="fitrow"><input type="text" data-fr="${k}" data-i="${i}" data-c="0" value="${esc(r[0])}"><input type="number" data-fr="${k}" data-i="${i}" data-c="1" value="${r[1]}"><input type="number" data-fr="${k}" data-i="${i}" data-c="2" value="${r[2]}"><button class="icon" data-frdel="${k}" data-i="${i}" aria-label="Quitar fila">✕</button></div>`).join('')}
+    <div class="toolbar" style="margin:10px 0 0"><button class="btn small" data-fradd="${k}">+ Agregar talla</button><button class="btn small danger" data-fitdel="${k}">Eliminar tabla</button></div>
+  </div>`).join('')}
+  <button class="btn dark" data-act="fitnew">+ Nueva tabla</button>`;
+}
+
+/* ---------- Conexión ---------- */
+function viewConn(){
+  return `<h1>Conexión</h1><p class="lead">Repositorio: <b>${esc(cfg.owner)}/${esc(cfg.repo)}</b> · rama <b>${esc(cfg.branch)}</b>${cfg.dir ? ` · carpeta <b>${esc(cfg.dir)}</b>` : ''}</p>
+  <div class="panel"><h2>Datos</h2>
+    <div class="toolbar" style="margin:0">
+      <button class="btn" data-act="reload">Recargar desde GitHub</button>
+      <button class="btn" data-act="download">Descargar respaldo</button>
+      <button class="btn danger" data-act="discard" ${dirty() ? '' : 'disabled'}>Descartar cambios sin publicar</button>
+    </div></div>
+  <div class="panel"><h2>Sesión</h2><p class="sub">Desconectar borra el token de este navegador.</p>
+    <button class="btn danger" data-act="logout">Desconectar</button></div>`;
+}
+
+/* ============================================================
+   EVENTOS
+   ============================================================ */
+function setDeep(e){
+  const el = e.target, d = el.dataset, p = editing && P(editing);
+  const val = el.type === 'checkbox' ? el.checked : d.num !== undefined ? (el.value === '' ? null : Number(el.value)) : el.value;
+  if (d.p && p){
+    if (d.list === ',') p[d.p] = el.value.split(',').map(s => s.trim()).filter(Boolean);
+    else if (d.list === 'line') p[d.p] = el.value.split('\n').map(s => s.trim()).filter(Boolean);
+    else if (d.list === 'para') p[d.p] = el.value.split(/\n\s*\n/).map(s => s.replace(/\s*\n\s*/g, ' ').trim()).filter(Boolean);
+    else p[d.p] = d.inv !== undefined ? !val : val;
+    if (d.p === 'sizes'){ syncStock(p); if (e.type === 'change') render(); }
+    if (d.p === 'name' && e.type === 'change') render();
+    return true;
+  }
+  if (d.sec && p){ const s = new Set(p.sections || []); el.checked ? s.add(d.sec) : s.delete(d.sec); p.sections = SECTIONS.map(x => x[0]).filter(k => s.has(k)); return true; }
+  if (d.v !== undefined && p){
+    const v = p.variants[+d.v];
+    if (d.vk === 'block0') v.block[0] = el.value; else if (d.vk === 'block1') v.block[1] = el.value; else v[d.vk] = el.value;
+    if (d.vk === 'name' && e.type === 'change') render();
+    return true;
+  }
+  if (d.st !== undefined && p){
+    const v = p.variants[+d.st], n = Math.max(0, Math.round(Number(el.value) || 0));
+    if (d.size) v.stock[d.size] = n; else v.stock = n;
+    return true;
+  }
+  if (d.team !== undefined && p){ const t = (p.team || []).slice(0, 2); t[+d.team] = el.value; p.team = t.filter(Boolean); return true; }
+  if (d.set){ data.settings[d.set] = val; return true; }
+  if (d.feat !== undefined){ data.home.featured[+d.feat] = el.value; return true; }
+  if (d.lens !== undefined){ data.home.lens = el.value; return true; }
+  if (d.rack !== undefined){ if (el.value) data.home.rack[+d.rack] = [el.value, 0]; render(); return true; }
+  if (d.rackv !== undefined){ data.home.rack[+d.rackv][1] = Number(el.value); return true; }
+  if (d.secv){ data.sections[d.secv][d.sk] = el.value; return true; }
+  if (d.pg){ const pg = data.pages.find(x => x.key === pageKey); pg[d.pg] = el.value; pg.upd = today(); return true; }
+  if (d.fit){ data.fits[d.fit][d.fk] = el.value; return true; }
+  if (d.fr){ const r = data.fits[d.fr].rows[+d.i]; r[+d.c] = +d.c === 0 ? el.value : Number(el.value) || 0; return true; }
+  return false;
+}
+document.addEventListener('input', e => { if (data && setDeep(e)) changed(); });
+document.addEventListener('change', e => {
+  if (!data) return;
+  const d = e.target.dataset, p = editing && P(editing);
+  if (d.vstock !== undefined && p){
+    const v = p.variants[+d.vstock];
+    v.stock = e.target.checked ? (p.sizes.length > 1 ? Object.fromEntries(p.sizes.map(s => [s, 0])) : 0) : null;
+    render(); return;
+  }
+  if (setDeep(e)) changed();
+});
+
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button, [data-logo]'); if (!b || !data) return;
+  const d = b.dataset, p = editing && P(editing);
+  if (d.tab){ tab = d.tab; editing = null; render(); window.scrollTo(0, 0); return; }
+  if (d.edit){ editing = d.edit; render(); window.scrollTo(0, 0); return; }
+  if (d.logo !== undefined && p){
+    const r = b.getBoundingClientRect();
+    p.logo = [Math.round((e.clientX - r.left) / r.width * 100), Math.round((e.clientY - r.top) / r.height * 100)];
+    b.querySelector('.mk').style.cssText = `left:${p.logo[0]}%;top:${p.logo[1]}%`; changed(); return;
+  }
+  if (d.move !== undefined){ const i = +d.move, j = i + +d.d, a = data.products; [a[i], a[j]] = [a[j], a[i]]; render(); return; }
+  if (d.vmove !== undefined && p){ const i = +d.vmove, j = i + +d.d, a = p.variants; [a[i], a[j]] = [a[j], a[i]]; render(); return; }
+  if (d.vdel !== undefined && p){
+    if (!(await ask('Quitar color', `¿Quitar el color “${p.variants[+d.vdel].name}” de ${p.name}?`, 'Quitar', true))) return;
+    p.variants.splice(+d.vdel, 1);
+    data.home.rack.forEach(r => { if (r[0] === p.id && r[1] >= p.variants.length) r[1] = 0; });
+    render(); return;
+  }
+  if (d.imgadd !== undefined && p){
+    const f = await pickImage(); if (!f) return;
+    try {
+      const url = await shrink(f), v = p.variants[+d.imgadd];
+      const key = `${p.id}-${slug(v.name)}-${v.imgs.length + 1}-${Date.now().toString(36)}`;
+      previews[key] = url; v.imgs.push(key); render();
+    } catch(err){ toast('No pude leer esa imagen. Prueba con un JPG o PNG.', true); }
+    return;
+  }
+  if (d.imgdel !== undefined && p){
+    const v = p.variants[+d.imgdel], k = v.imgs[+d.i];
+    v.imgs.splice(+d.i, 1); delete previews[k]; render(); return;
+  }
+  if (d.team !== undefined) return;
+  if (d.page){ pageKey = d.page; render(); return; }
+  if (d.rmove !== undefined){ const i = +d.rmove, j = i + +d.d, a = data.home.rack; [a[i], a[j]] = [a[j], a[i]]; render(); return; }
+  if (d.rdel !== undefined){ data.home.rack.splice(+d.rdel, 1); render(); return; }
+  if (d.fradd){ data.fits[d.fradd].rows.push(['', 0, 0]); render(); return; }
+  if (d.frdel){ data.fits[d.frdel].rows.splice(+d.i, 1); render(); return; }
+  if (d.fitdel){
+    if (!(await ask('Eliminar tabla', `¿Eliminar la tabla “${data.fits[d.fitdel].title}”? Las prendas que la usan quedarán sin tabla.`, 'Eliminar', true))) return;
+    data.products.forEach(x => { if (x.fit === d.fitdel) x.fit = ''; }); delete data.fits[d.fitdel]; render(); return;
+  }
+  switch (d.act){
+    case 'new': {
+      const name = prompt('Nombre de la nueva prenda'); if (!name || !name.trim()) return;
+      editing = newProduct(name.trim()).id; render(); window.scrollTo(0, 0); return;
+    }
+    case 'back': editing = null; render(); return;
+    case 'vadd': p.variants.push({name: 'Color ' + (p.variants.length + 1), code: '', imgs: [], block: ['#0B2246', '#FFFFFF'], stock: p.sizes.length > 1 ? Object.fromEntries(p.sizes.map(s => [s, 0])) : 0}); render(); return;
+    case 'pdel':
+      if (!(await ask('Eliminar prenda', `¿Eliminar “${p.name}”? Se quita de la tienda, del inicio y de las sugerencias. Sus fotos quedan en GitHub.`, 'Eliminar', true))) return;
+      data.products = data.products.filter(x => x.id !== p.id); removeRefs(p.id); editing = null; render(); return;
+    case 'radd': { const first = data.products.find(x => !x.hidden); if (first) data.home.rack.push([first.id, 0]); render(); return; }
+    case 'fitnew': {
+      const name = prompt('Nombre de la tabla (por ejemplo: Polerones)'); if (!name || !name.trim()) return;
+      let k = slug(name), n = 2; while (data.fits[k]) k = slug(name) + '-' + n++;
+      data.fits[k] = {title: name.trim(), note: 'Medidas de la prenda en estiramiento plano.', rows: [['S', 0, 0], ['M', 0, 0], ['L', 0, 0], ['XL', 0, 0]]}; render(); return;
+    }
+    case 'reload':
+      if (dirty() && !(await ask('Recargar desde GitHub', 'Vas a perder los cambios sin publicar.', 'Recargar', true))) return;
+      await start(true); return;
+    case 'download': {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], {type: 'application/json'}));
+      a.download = `productos-${today()}.json`; a.click(); return;
+    }
+    case 'discard':
+      if (!(await ask('Descartar cambios', 'Se borran todos los cambios y fotos que no has publicado.', 'Descartar', true))) return;
+      data = JSON.parse(base); previews = {}; localStorage.removeItem(DRAFT_KEY); editing = null; render(); return;
+    case 'logout':
+      if (dirty() && !(await ask('Desconectar', 'Tienes cambios sin publicar. Quedan guardados en este navegador.', 'Desconectar'))) return;
+      cfg.token = ''; localStorage.setItem(CFG_KEY, JSON.stringify(cfg)); location.reload(); return;
+  }
+});
+$('#publish').addEventListener('click', publish);
+$('#preview').addEventListener('click', () => {
+  try { localStorage.setItem(DRAFT_KEY, JSON.stringify({data, imgs: previews, dataSha: remote.dataSha})); }
+  catch(e){ toast('Hay demasiadas fotos nuevas para la vista previa; publícalas primero o revisa sin ellas.', true); }
+  window.open('../?preview', '_blank');
+});
+
+/* ============================================================
+   ARRANQUE
+   ============================================================ */
+async function start(force){
+  $('#login').hidden = true;
+  $('#app').hidden = false;
+  $('#content').innerHTML = '<p class="note" style="display:flex;gap:10px;align-items:center"><span class="spin"></span> Cargando la tienda desde GitHub…</p>';
+  try {
+    const txt = await loadRemote();
+    const loaded = JSON.parse(txt);
+    base = JSON.stringify(loaded); data = loaded; previews = {};
+    const draft = !force && JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
+    if (draft && draft.data && JSON.stringify(draft.data) !== base){
+      const same = draft.dataSha === remote.dataSha;
+      const ok = await ask('Tienes cambios sin publicar', same
+        ? 'Encontré cambios de una sesión anterior que no alcanzaste a publicar. ¿Quieres recuperarlos?'
+        : 'Encontré cambios sin publicar, pero los datos en GitHub cambiaron después. Si los recuperas, al publicar reemplazarán lo que hay en GitHub.', 'Recuperar');
+      if (ok){ data = draft.data; previews = draft.imgs || {}; if (!same) remote.dataSha = remote.dataSha; }
+      else localStorage.removeItem(DRAFT_KEY);
+    }
+    render();
+  } catch(e){
+    $('#app').hidden = true; $('#login').hidden = false;
+    $('#loginMsg').textContent = explain(e);
+  }
+}
+function guess(){
+  const m = location.hostname.match(/^([^.]+)\.github\.io$/);
+  if (m){ $('#cOwner').value = m[1]; const seg = location.pathname.split('/').filter(Boolean)[0]; if (seg && seg !== 'admin') $('#cRepo').value = seg; }
+}
+$('#connect').addEventListener('click', () => {
+  cfg = {owner: $('#cOwner').value.trim(), repo: $('#cRepo').value.trim(), branch: $('#cBranch').value.trim() || 'main', dir: $('#cDir').value.trim(), token: $('#cToken').value.trim()};
+  if (!cfg.owner || !cfg.repo || !cfg.token){ $('#loginMsg').textContent = 'Completa usuario, repositorio y token.'; return; }
+  localStorage.setItem(CFG_KEY, JSON.stringify(cfg));
+  start();
+});
+if (cfg && cfg.token) start();
+else {
+  $('#login').hidden = false; guess();
+  if (cfg){ $('#cOwner').value = cfg.owner || ''; $('#cRepo').value = cfg.repo || ''; $('#cBranch').value = cfg.branch || 'main'; $('#cDir').value = cfg.dir || ''; }
+}
+</script>
+</body>
+</html>
